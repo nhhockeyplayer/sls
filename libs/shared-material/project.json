@@ -1,0 +1,45 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/shared-material/src",
+  "prefix": "sls",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": [
+        "dist/libs/shared-material"
+      ],
+      "options": {
+        "project": "libs/shared-material/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/shared-material/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/shared-material/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/shared-material"
+      ],
+      "options": {
+        "jestConfig": "libs/shared-material/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared-material/src/**/*.ts",
+          "libs/shared-material/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/sls-shared-sass",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "styleIncludePaths": [
+      "node_modules",
+      "node_modules/@angular/material",
+      "src/lib",
+      "src/lib/theme"
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use 'node_modules/@angular/material' as mat;
+@use 'node_modules/@angular/material/theming' as theming;
+@use "libs/sls-shared-sass/src/lib" as theme;
+@use "libs/sls-shared-sass/src/lib/theme/theme" as stylesheet;
+@use "libs/sls-shared-sass/src/lib/theme/_breakpoint";
+
+@import "libs/sls-shared-sass/src/lib/theme/_breakpoint";
+
+@mixin cascade ($theme) {
+  $color-config: mat.get-color-config($theme);
+  $typography-config: mat.get-typography-config($theme);
+
+  //@include theme.theme-all-component-theme($theme);
+  //@include theme.color-all-component-color($color-config);
+  //@include theme.typography-all-component-typography($typography-config);
+
+  //@include mat.all-component-themes($theme);
+  //@include mat.all-component-colors($theme);
+  //@include mat.all-component-typographies($theme);
+}
+
+body {
+  @extend .mat-app-background  !optional;
+  @include cascade(stylesheet.$dark-theme);
+}
+
+
+body.dark {
+  @extend .mat-app-background  !optional;
+  @include cascade(stylesheet.$dark-theme);
+}
+
+.responsive-test {
+  @include xs {
+    color: red;
+    background-color: red;
+  }
+  @include sm {
+    color: blue;
+    background-color: blue;
+  }
+  @include md {
+    color: green;
+    background-color: green;
+  }
+  @include lg {
+    color: purple;
+    background-color: purple;
+  }
+  @include xl {
+    color: orange;
+    background-color: orange;
+  }
+}

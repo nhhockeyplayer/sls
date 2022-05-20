@@ -1,0 +1,148 @@
+@mixin font-props($name) {
+  @each $prop, $value in map-get($fonts, $name) {
+    #{$prop}: #{$value} !important;
+  }
+}
+
+/*
+  For specific file theming  (styles.scss)
+*/
+@mixin theme-bg-color($selector, $color-number) {
+  @each $theme, $colors in $background-colors {
+    :host-context(.#{$theme}) #{$selector} {
+      background-color: map-get($colors, $color-number) !important;
+    }
+  }
+}
+
+@mixin theme-txt-color($selector, $color-number) {
+  @each $theme, $colors in $text-colors {
+    :host-context(.#{$theme}) #{$selector} {
+      color: map-get($colors, $color-number) !important;
+    }
+  }
+}
+
+@mixin theme-border-color($selector, $color-number) {
+  @each $theme, $colors in $border-colors {
+    :host-context(.#{$theme}) #{$selector} {
+      border-color: map-get($colors, $color-number) !important;
+    }
+  }
+}
+
+/*
+  For topest of top levels of theming  (styles.scss)
+*/
+@mixin global-theme-bg-color($selector, $color-number) {
+  @each $theme, $colors in $background-colors {
+    .#{$theme} #{$selector} {
+      background-color: map-get($colors, $color-number) !important;
+    }
+  }
+}
+
+@mixin global-theme-txt-color($selector, $color-number) {
+  @each $theme, $colors in $text-colors {
+    .#{$theme} #{$selector} {
+      color: map-get($colors, $color-number) !important;
+    }
+  }
+}
+
+@mixin global-theme-border-color($selector, $color-number) {
+  @each $theme, $colors in $border-colors {
+    .#{$theme} #{$selector} {
+      border-color: map-get($colors, $color-number) !important;
+    }
+  }
+}
+
+@mixin size-classes($size, $property) {
+  $first-letter: str-slice($property, 0, 1);
+  $size: getRem($size);
+  $half-size: $size * 0.5;
+
+  &-#{$first-letter} {
+    #{$property}: $size !important;
+
+    &x {
+      #{$property}-left: $size !important;
+      #{$property}-right: $size !important;
+
+      &-child > * {
+        #{$property}-left: $size !important;
+        #{$property}-right: $size !important;
+      }
+
+      &-half {
+        #{$property}-left: $half-size !important;
+        #{$property}-right: $half-size !important;
+      }
+    }
+
+    &y {
+      #{$property}-top: $size !important;
+      #{$property}-bottom: $size !important;
+
+      &-child > * {
+        #{$property}-top: $size !important;
+        #{$property}-bottom: $size !important;
+      }
+
+      &-half {
+        #{$property}-top: $half-size !important;
+        #{$property}-bottom: $half-size !important;
+      }
+    }
+
+    &t {
+      #{$property}-top: $size !important;
+
+      &-child > * {
+        #{$property}-top: $size !important;
+      }
+
+      &-half {
+        #{$property}-top: $half-size !important;
+      }
+    }
+
+    &r {
+      #{$property}-right: $size !important;
+
+      &-child > * {
+        #{$property}-right: $size !important;
+      }
+
+      &-half {
+        #{$property}-right: $half-size !important;
+      }
+    }
+
+    &b {
+      #{$property}-bottom: $size !important;
+
+      &-child > * {
+        #{$property}-bottom: $size !important;
+      }
+
+      &-half {
+        #{$property}-bottom: $half-size !important;
+      }
+    }
+
+    &l {
+      #{$property}-left: $size !important;
+
+      &-child > * {
+        #{$property}-left: $size !important;
+      }
+
+      &-half {
+        #{$property}-left: $half-size !important;
+      }
+    }
+  }
+}
+

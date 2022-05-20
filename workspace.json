@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "demo": "apps/demo",
+    "demo-e2e": "apps/demo-e2e",
+    "shared-env": "libs/shared-env",
+    "shared-material": "libs/shared-material",
+    "sls-shared-feature": "libs/sls-shared-feature",
+    "sls-shared-sass": "libs/sls-shared-sass",
+    "sls-shared-widgets": "libs/sls-shared-widgets",
+    "sls-shared-widgets-e2e": "apps/sls-shared-widgets-e2e"
+  },
+  "cli": {
+    "cache": {
+      "enabled": false
+    }
+  }
+}

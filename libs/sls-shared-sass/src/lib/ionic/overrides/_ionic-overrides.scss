@@ -1,0 +1,19 @@
+
+.text-primary {
+  color: $primary !important;
+}
+
+.ion-toggle {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+
+  &::before {
+    content: '' !important;
+    border-left: getRem(5px) solid transparent;
+    border-right: getRem(5px) solid transparent;
+    border-top: getRem(5px) solid $secondary;
+  }
+}
+

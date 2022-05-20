@@ -1,0 +1,65 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@sls/shared-env": [
+        "libs/shared-env/src/index.ts"
+      ],
+      "@sls/shared-env/*": [
+        "libs/shared-env/src/lib/*"
+      ],
+      "@sls/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ],
+      "@sls/api-interfaces/*": [
+        "libs/api-interfaces/src/lib/*"
+      ],
+      "@sls/shared-material": [
+        "libs/shared-material/src/index.ts"
+      ],
+      "@sls/shared-material/*": [
+        "libs/shared-material/src/lib/*"
+      ],
+      "@sls/sls-shared-feature": [
+        "libs/sls-shared-feature/src/index.ts"
+      ],
+      "@sls/sls-shared-feature/*": [
+        "libs/sls-shared-feature/src/lib/*"
+      ],
+      "@sls/sls-shared-sass": [
+        "libs/sls-shared-sass/src/index.ts"
+      ],
+      "@sls/sls-shared-sass/*": [
+        "libs/sls-shared-sass/src/lib/*"
+      ],
+      "@sls/sls-shared-widgets": [
+        "libs/sls-shared-widgets/src/index.ts"
+      ],
+      "@sls/sls-shared-widgets/*": [
+        "libs/sls-shared-widgets/src/lib/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "tmp",
+    ".vscode"
+  ]
+}

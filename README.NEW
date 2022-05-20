@@ -1,0 +1,137 @@
+nx run-many --all --target build
+
+-- capacitor GENERATE app named mobile-app
+npx create-nx-workspace@latest <workspace name>
+
+
+# RESET ENVIRONMENT Install Nrwl first omit typescript its bundled
+-- globals
+cd ~HOME
+rm -rf .config .npm
+yarn cache clean
+npm cache clean --force
+rm -rf .npm
+npm -g install yarn
+
+#startover after installing node.js
+npm i -g yarn
+yarn global add @nrwl/cli
+yarn global add npm-check
+yarn global add @ionic/cli
+yarn global add @nrwl/workspace
+yarn global add cordova
+yarn global add @nestjs/cli
+yarn global add @angular/cli
+yarn add @nrwl/cli -D
+
+yarn global add @nrwl/cli@latest
+yarn global add @nrwl/workspace@latest
+yarn global add @nrwl/schematics@latest
+yarn global add @angular/cli
+yarn global add @ionic/cli
+yarn global add @nest/cli
+yarn global add cordova
+
+yarn add @capacitor/core @capacitor/cli
+
+nx g @nrwl/workspace:remove api-service
+nx g @nrwl/workspace:remove core
+nx g @nrwl/workspace:remove env
+nx g @nrwl/workspace:remove isomorphic-interface
+nx g @nrwl/workspace:remove service
+nx g @nrwl/workspace:remove shared-assets
+nx g @nrwl/workspace:remove shared-directives
+nx g @nrwl/workspace:remove shared-dto
+nx g @nrwl/workspace:remove shared-entity
+nx g @nrwl/workspace:remove shared-enums
+nx g @nrwl/workspace:remove shared-env
+nx g @nrwl/workspace:remove shared-features
+nx g @nrwl/workspace:remove shared-generics-collections
+nx g @nrwl/workspace:remove shared-ionic
+nx g @nrwl/workspace:remove shared-material
+nx g @nrwl/workspace:remove shared-pipes
+nx g @nrwl/workspace:remove shared-sass
+nx g @nrwl/workspace:remove shared-util
+nx g @nrwl/workspace:remove shared-widgets
+
+-- new project back end api typegoose
+nx g @nrwl/nest:app api-typegoose --frontendProject=mobile-tabbed
+
+nx g @nrwl/workspace:lib api-service
+nx g @nrwl/workspace:lib core
+nx g @nrwl/workspace:lib env
+nx g @nrwl/workspace:lib isomorphic-interface
+nx g @nrwl/workspace:lib service
+nx g @nrwl/workspace:lib shared-assets
+nx g @nrwl/workspace:lib shared-directives
+nx g @nrwl/workspace:lib shared-dto
+nx g @nrwl/workspace:lib shared-entity
+nx g @nrwl/workspace:lib shared-enums
+nx g @nrwl/workspace:lib shared-env
+nx g @nrwl/workspace:lib shared-features
+nx g @nrwl/workspace:lib shared-generics-collections
+nx g @nrwl/workspace:lib shared-ionic
+nx g @nrwl/workspace:lib shared-material
+nx g @nrwl/workspace:lib shared-pipes
+nx g @nrwl/workspace:lib shared-sass
+nx g @nrwl/workspace:lib shared-util
+nx g @nrwl/workspace:lib shared-widgets
+
+ng g @nrwl/workspace:remove project-name
+nx g @nrwl/workspace:move --projectName my-feature-lib --destination shared/my-feature-lib
+
+#CAPACITOR on mobile app
+https://nxtend.dev/docs/ionic-angular/getting-started/
+yarn add --save-dev --exact @nxtend/ionic-angular
+nx generate @nxtend/ionic-angular:init
+nx generate @nxtend/ionic-angular:application mobile-app --capacitor true
+
+nx build mobile-app
+nx run mobile-app:add:ios --generates a full ios app in subfolder of your project directory runs copy + update from project
+nx run mobile-app:add:android
+nx run mobile-app:open:android
+@sync means (copy new added plugins, copy build assets, new plugin in package.json update dependencies)
+
+
+#Nx
+yarn ng --version
+nx migrate latest
+yarn
+nx migrate --run-migrations
+
+-- quik cmds
+--cap
+nx run mobile-app:cap --cmd="--help"
+nx run mobile-app:cap -- --help
+nx run mobile-app:cap --cmd="doctor"
+
+--nx
+nx g @nrwl/workspace:remove collections -- remove library
+
+nx generate @nrwl/angular:lib material
+nx g @nrwl/workspace:lib collections
+nx g @nrwl/workspace:lib util
+nx generate @nrwl/angular:lib pipes
+
+https://github.com/ionic-team/capacitor
+npm install @capacitor/core @capacitor/cli
+npx cap init
+Next, install any of the desired native platforms:
+npm install @capacitor/android
+npx cap add android
+npm install @capacitor/ios
+npx cap add ios
+
+yarn add --save-dev --exact @nxtend/ionic-angular
+nx generate @nxtend/ionic-angular:init
+nx generate @nxtend/ionic-angular:application myApp
+nx generate @nxtend/ionic-angular:application mobile-app --capacitor true
+nx run mobile-app:add:ios
+
+-- platforms
+nx run {frontend project}:add:ios
+nx run {frontend project}:add:android
+nx run {frontend project}:add --platform {native platform}
+nx run my-app:add:android
+nx run my-app:cap --cmd="add android"
+

@@ -1,0 +1,37 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as theming;
+
+@mixin datepicker-theme($theme) {
+  $color-config: theming.get-color-config($theme);
+  $typography-config: theming.get-typography-config($theme);
+
+  @if $color-config != null {
+    @include datepicker-color($color-config);
+  }
+  @if $typography-config != null {
+    @include datepicker-typography($typography-config);
+  }
+}
+
+
+@mixin datepicker-color($config) {
+  $primary: map.get($config, primary);
+  $accent: map.get($config, accent);
+  $warn: map.get($config, warn);
+  $background: map.get($config, background);
+  $foreground: map.get($config, foreground);
+
+}
+
+@mixin datepicker-typography($config) {
+  $primary: map.get($config, primary);
+  $accent: map.get($config, accent);
+  $warn: map.get($config, warn);
+  $background: map.get($config, background);
+  $foreground: map.get($config, foreground);
+}
+

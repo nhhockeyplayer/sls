@@ -1,0 +1,23 @@
+@each $theme, $colors in $background-colors {
+  .#{$theme} {
+    .bg-color {
+      @each $num, $color in $colors {
+        &-#{$num} {
+          background-color: $color !important;
+        }
+      }
+    }
+  }
+}
+
+@each $theme, $colors in $text-colors {
+  .#{$theme} {
+    .txt-color {
+      @each $num, $color in $colors {
+        &-#{$num} {
+          color: $color !important;
+        }
+      }
+    }
+  }
+}

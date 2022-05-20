@@ -1,0 +1,178 @@
+$base-rem-size: 16px;
+
+$fonts: (
+  primary: (
+    font-family: (
+      'Roboto',
+      sans-serif,
+    ),
+    font-style: normal,
+    font-weight: 400,
+  ),
+  primary-regular: (
+    font-family: (
+      'nunito-sans',
+      sans-serif,
+    ),
+    font-style: normal,
+    font-weight: 400,
+  ),
+  primary-bold: (
+    font-family: (
+      'nunito-sans',
+      sans-serif,
+    ),
+    font-style: normal,
+    font-weight: 600,
+  ),
+  secondary-regular: (
+    font-family: (
+      'rig-shaded-medium-face',
+      sans-serif,
+    ),
+    font-style: normal,
+    font-weight: 500,
+  ),
+);
+
+/*
+ * xl = Desktop
+ * md = Tablet and Mobile
+*/
+$typography: (
+  header-1: (
+    font-family: 'secondary-regular',
+    font-size: 30px,
+    tracking: 200,
+  ),
+  header-2: (
+    font-family: 'primary-regular',
+    font-size: 36px,
+  ),
+  header-3: (
+    font-family: 'primary-bold',
+    font-size: 14px,
+    text-transform: uppercase,
+    tracking: 200,
+  ),
+  header-4: (
+    font-family: 'primary-bold',
+    font-size: 18px,
+  ),
+  text-1: (
+    font-family: 'primary-regular',
+    font-size: 18px,
+  ),
+  text-2: (
+    font-family: 'primary-regular',
+    font-size: 14px,
+  ),
+);
+
+/*
+ * Bootstrap color vars
+ * These are technically bootstrap variables but need to be here so we can
+ * use them to set our color classes as well
+ */
+$primary: #01c6b2;
+$secondary: #505050;
+$success: #96d701;
+$warning: #ffcd00;
+$danger: #ff7d01;
+
+/*
+  Below this comment are the variables that are still the bootstrap defaults.
+  Once changed to our color, move them above this comment.
+*/
+
+$white: #ffffff;
+$gray-100: #f8f8f8;
+$gray-200: #ebebeb;
+$gray-300: #cccccc;
+$gray-400: #999999;
+$gray-500: #666666;
+$gray-600: red; // Set to red so that it is obvious that this is not supposed to be used
+$gray-700: #505050;
+$gray-800: #3a3a3a;
+$gray-900: #333333;
+$black: #000;
+/*
+ * End Bootstrap color vars
+ */
+$theme-names: (
+  dark: 'dark-mode',
+  light: 'light-mode',
+);
+$background-colors: (
+  map-get($theme-names, 'dark'): (
+    1: $gray-900,
+    // header, card, table backgrounds
+      2: $gray-800,
+    // main background
+      3: $gray-700,
+    // alt rows, nav highlight, blank cards
+      4: $gray-500,
+    // divider rules,,,
+      5: $gray-400,
+    // Dropdowns
+      6: $gray-500,
+  ),
+  map-get($theme-names, 'light'): (
+    1: $white,
+    // header, card / table backgrounds
+      2: $gray-100,
+    // main background
+      3: $gray-200,
+    // alt rows, nav highlight, blank cards
+      4: $gray-300,
+    // divider rules,,,,
+      5: $gray-400,
+    // Dropdowns
+      6: $white,
+  ),
+);
+$text-colors: (
+  dark-mode: (
+    1: $gray-400,
+    // disabled / de-emphasized type
+      2: $gray-300,
+    // table / card headers, body copy
+      3: $white,
+    // titles, headlines, key data / info,,,,,,,,
+      4: $gray-700 // bell-watermark for notifications,,,,,,
+  ),
+  light-mode: (
+    1: $gray-400,
+    // disabled / de-emphasized type
+      2: $gray-500,
+    // table / card headers, body copy
+      3: $gray-900,
+    // titles, headlines, key data / info,,,,,,,,,
+      4: $gray-100 // bell-watermark for notifications,,,,,,
+  ),
+);
+// Specific to border changes for theme
+$border-colors: (
+  map-get($theme-names, 'dark'): (
+    1: $gray-900,
+    // header, card, table backgrounds
+      2: $gray-800,
+    // main background
+      3: $gray-700,
+    // alt rows, nav highlight, blank cards
+      4: $gray-500,
+    // divider rules, borders
+      5: $gray-400,
+  ),
+  map-get($theme-names, 'light'): (
+    1: $white,
+    // header, card / table backgrounds
+      2: $gray-100,
+    // main background
+      3: $gray-200,
+    // alt rows, nav highlight, blank cards
+      4: $gray-300,
+    // divider rules, borders
+      5: $gray-400,
+  ),
+);

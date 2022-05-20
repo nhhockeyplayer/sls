@@ -1,0 +1,51 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+@use '@angular/material' as mat;
+@use '@angular/material/_theming' as theming;
+@use '../_breakpoint';
+@import '../breakpoint';
+
+@mixin button-theme($theme) {
+    $color-config: theming.get-color-config($theme);
+    $typography-config: theming.get-typography-config($theme);
+
+    @if $color-config != null {
+        @include button-color($color-config);
+    }
+    @if $typography-config != null {
+        @include button-typography($typography-config);
+    }
+
+    @include button-responsive;
+}
+
+
+@mixin button-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+}
+
+@mixin button-typography($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+}
+
+
+@mixin button-responsive($config) {
+
+    @xs {
+        color: red;
+        background-color: cyan;
+    }
+
+}
+

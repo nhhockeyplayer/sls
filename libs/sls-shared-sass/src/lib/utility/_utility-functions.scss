@@ -1,0 +1,33 @@
+@use "sass:math";
+
+@function getRem($size) {
+  @return divide($size, $base-rem-size) * 1rem;
+}
+
+@function getEm($size, $base-em-size) {
+  @return divide($size, $base-em-size) * 1em;
+}
+
+@function endsWith($string, $find) {
+  @if (str-index($string, $find) == (str-length($string) - str-length($find) + 1)) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function psTrackingToPx($tracking, $return: 'rem', $base: '16') {
+  $final: ($tracking * $base) * 0.001;
+  @if $return == 'rem' {
+    @return getRem($final);
+  } @else {
+    @return $final;
+  }
+}
+
+@function mapDeepGet($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

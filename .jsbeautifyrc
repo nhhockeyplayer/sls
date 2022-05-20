@@ -1,0 +1,11 @@
+{
+  "beautify.language": {
+    "html": [
+      "html"
+    ],
+    "css": [],
+    "js": []
+  },
+  "indent_size": 2,
+  "wrap_line_length": 150
+}

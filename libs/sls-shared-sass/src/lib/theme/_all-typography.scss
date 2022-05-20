@@ -1,0 +1,9 @@
+@use './mat/_button' as button;
+@use './mat/_datepicker' as datepicker;
+@use './mat/_radio' as radio;
+
+@mixin all-component-typography($theme) {
+  @include button.button-typography($theme);
+  @include datepicker.datepicker-typography($theme);
+  @include radio.radio-typography($theme);
+}

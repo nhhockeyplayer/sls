@@ -1,0 +1,205 @@
+/*
+    This file is used to override global component styles
+    from MDB and Bootstrap.
+    The html & body tag is here to add an extra layer of spcificity so
+    we can cut down on the number of !importants we have
+*/
+
+html {
+  height: 100%;
+
+  body {
+    height: 100%;
+    margin: 0;
+    line-height: 1;
+
+    @each $theme, $theme-name in $theme-names {
+      &.#{$theme-name} {
+        $bg: mapDeepGet($background-colors, $theme-name, 1);
+
+        background-color: $bg !important;
+      }
+    }
+
+    /**************************
+     * Elements
+     **************************/
+    a {
+      color: $primary;
+
+      &:hover {
+        color: $primary;
+        text-decoration: underline;
+      }
+    }
+
+    header {
+      height: unset !important; // this is bc bootstrap sets headers height to 0
+    }
+
+    /**************************
+     * End Elements
+     **************************/
+
+    /**************************
+     * Classes
+     **************************/
+    .navbar {
+      box-shadow: none;
+      padding: 0;
+      display: block;
+    }
+
+    .side-nav {
+      width: unset;
+
+      //This will need a variant for dark mode. For now this a quick fix for the demo.
+      background-color: $white;
+
+      a {
+        padding: unset;
+      }
+    }
+
+    .text-primary {
+      color: $primary !important;
+    }
+
+    .mdb-select-toggle,
+    .mdb-select-arrow {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      align-items: center;
+
+      &::before {
+        content: '' !important;
+        border-left: getRem(5px) solid transparent;
+        border-right: getRem(5px) solid transparent;
+        border-top: getRem(5px) solid $secondary;
+      }
+    }
+
+    .mdb-select-arrow {
+      top: 0 !important;
+    }
+
+    &.hidden-sn {
+      main {
+        padding: 0;
+      }
+    }
+
+    .raw-select {
+      & > div {
+        & > div.single {
+          border: none !important;
+          padding: 0 !important;
+        }
+      }
+    }
+
+    .text-primary {
+      color: $primary !important;
+    }
+
+    .btn {
+      box-shadow: none;
+      &.btn-primary {
+        background-color: $primary !important;
+        box-shadow: none !important;
+        letter-spacing: 2px;
+
+        // TODO: Ethan should look at this later to assign the proper color
+        &:disabled {
+          background-color: $gray-300 !important;
+        }
+      }
+
+      &.btn-outline-primary {
+        border: getRem(1.5px) solid $primary !important;
+        background-color: transparent !important;
+        color: $primary !important;
+        box-shadow: none !important;
+      }
+
+      &.btn-outline-secondary {
+        border: getRem(1.5px) solid $gray-500 !important;
+        background-color: transparent !important;
+        color: $gray-500;
+        box-shadow: none !important;
+
+        &:hover {
+          color: white !important;
+          border-color: transparent !important;
+        }
+      }
+
+      &:hover {
+        background-color: #28696d !important;
+      }
+    }
+
+    .close {
+      opacity: unset;
+    }
+
+    .mdb-select {
+      position: relative;
+    }
+
+    .md-form {
+      @extend .md-outline;
+
+      &.md-outline {
+        label.active {
+          top: -5px;
+          padding-left: 0px;
+          background: transparent;
+        }
+      }
+    }
+
+    .mdb-select-label.outline.active {
+      top: 6px;
+      padding-left: 0px;
+      background-color: transparent;
+    }
+
+    .mdb-select-value {
+      padding: getRem(6px) 0 !important;
+    }
+
+    mdb-accordion-item-head .card-header a {
+      text-decoration: none;
+    }
+
+    .mdb-accordion-indicator::after {
+      display: block;
+      width: 0;
+      height: 0;
+      border-right: getRem(4px) solid $black;
+      border-top: getRem(4px) solid transparent;
+      border-left: 0 dotted;
+      border-bottom: getRem(4px) solid transparent;
+      padding: 0;
+      transform: rotate(90deg);
+      content: '';
+    }
+    /**************************
+     * End Classes
+     **************************/
+
+    /**************************
+     * Form Elements
+     **************************/
+
+    // mdb-date-picker {
+    //   ::placeholder
+    // }
+
+    /**************************
+     * End Form Elements
+     **************************/
+  }
+}
