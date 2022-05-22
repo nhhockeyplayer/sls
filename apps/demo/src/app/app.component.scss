@@ -11,3 +11,25 @@
 .card-content {
   padding: 1rem;
 }
+
+mat-toolbar {
+    display: flex;
+    align-items: center;
+}
+
+.space-maintainer {
+    flex: 1 0 auto;
+}
+
+.nav-item {
+    display: flex;
+}
+
+.content {
+    padding: 16px;
+    min-height: 100vh;
+}
+
+mat-card {
+    max-width: 400px;
+}

@@ -8,9 +8,14 @@ import { RadioComponent } from './widget/radio/radio.component';
 import { IconComponent } from './widget/icon/icon.component';
 import { AlertComponent } from './widget/alert/alert.component';
 import { HeadingDirective } from './directive/heading/heading.directive';
+import {SharedMaterialModule} from '@sls/shared-material'
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+      CommonModule,
+
+      SharedMaterialModule
+  ],
   declarations: [
     ButtonComponent,
     CardComponent,
