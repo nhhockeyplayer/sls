@@ -1,0 +1,39 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '_brand';
+@use '_breakpoint';
+@use '_constant';
+@use '_default';
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as theming;
+
+@import '@angular/material';
+@import '@angular/material/theming';
+@import 'breakpoint';
+
+// Import here all themes for your custom components
+@import '../app/app.component.scss-theme';
+
+// configured typography. Do not forget to include your custom typography there
+@import 'root-typography';
+@import '@angular/material/theming';
+
+@import 'apps/demo/src/app/app.component.scss-theme';
+
+@mixin app-style-core($theme) {
+    @include mat.all-component-themes($theme);
+
+    // This mixin comes form _app-typography
+    // It contains already configured typography
+    @include app-typography();
+}
+
+@mixin app-theme($theme) {
+    @include mat.all-component-themes($theme);
+
+    // Custom themes for components
+    @include app-component-theme($theme);
+}

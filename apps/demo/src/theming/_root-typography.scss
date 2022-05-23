@@ -1,0 +1,31 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '_brand';
+@use '_breakpoint';
+@use '_constant';
+@use '_default';
+
+
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as theming;
+
+@import 'breakpoint';
+@import '@angular/material';
+@import '@angular/material/theming';
+
+@import 'apps/demo/src/app/app.component.scss-theme';
+
+$root-typography: theming.mat-typography-config(
+  $font-family: 'Open Sans',
+  $title: theming.mat-typography-level(24px, 32px, bold)
+);
+
+@mixin app-typography($typography: $root-typography) {
+    @include mat.all-component-typographies($typography);
+
+  // custom component typography
+  @include app-component-typography($typography);
+}

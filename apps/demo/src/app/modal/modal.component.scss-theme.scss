@@ -1,0 +1,49 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as theming;
+
+@import '@angular/material/theming';
+
+@mixin app-modal-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+    $color-config: mat.get-color-config($theme);
+    $typography-config: mat.get-typography-config($theme);
+    @if $color-config != null {
+        @include app-modal-color($color-config);
+    }
+    @if $typography-config != null {
+        @include app-modal-typography($typography-config);
+    }
+}
+
+@mixin app-modal-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+    app-modal {
+        background-color: $accent;
+        color: $warn;
+    }
+    h1 {
+        color: theming.mat-color($foreground, text);
+    }
+}
+
+
+@mixin app-modal-typography($config) {
+    app-modal {
+        h1 {
+            @include theming.mat-typography-level-to-styles($config, title);
+        }
+    }
+}

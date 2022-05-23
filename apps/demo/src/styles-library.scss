@@ -3,8 +3,8 @@
 @use 'sass:meta';
 @use 'sass:math';
 @use 'sass:string';
-@use 'node_modules/@angular/material' as mat;
-@use 'node_modules/@angular/material/theming' as theming;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as theming;
 @use "libs/sls-shared-sass/src/lib" as theme;
 @use "libs/sls-shared-sass/src/lib/theme/theme" as stylesheet;
 @use "libs/sls-shared-sass/src/lib/theme/_breakpoint";

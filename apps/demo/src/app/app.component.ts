@@ -6,7 +6,7 @@ import {DOCUMENT} from '@angular/common'
 import {MatDialog} from '@angular/material/dialog'
 import {OverlayContainer} from '@angular/cdk/overlay'
 import {FormControl} from '@angular/forms'
-import {SampleDialogComponent} from './sample-dialog/sample-dialog.component'
+import {ModalComponent} from './modal/modal.component'
 
 export enum EBrand {
     IONIC = 'ionic',
@@ -20,7 +20,7 @@ interface IColor {
 }
 
 @Component({
-    selector: 'sls-root',
+    selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
@@ -109,6 +109,6 @@ export class AppComponent implements OnInit {
     }
 
     showDialog(): void {
-        this.dialog.open(SampleDialogComponent, {width: '500px'})
+        this.dialog.open(ModalComponent, {width: '500px'})
     }
 }

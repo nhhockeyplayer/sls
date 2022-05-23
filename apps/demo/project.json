@@ -31,8 +31,7 @@
                     }
                 ],
                 "styles": [
-                    "apps/demo/src/styles-default.scss",
-                    "apps/demo/src/styles-library.scss",
+                    "apps/demo/src/styles.scss",
                     "libs/sls-shared-sass/src/lib/_index.scss",
                     "libs/sls-shared-sass/src/lib/theme/_theme.scss"
                 ],

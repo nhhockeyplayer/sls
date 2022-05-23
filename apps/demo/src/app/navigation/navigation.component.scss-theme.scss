@@ -3,57 +3,48 @@
 @use 'sass:meta';
 @use 'sass:math';
 @use 'sass:string';
-@use '_brand';
-@use '_breakpoint';
-@use '_constant';
-@use '_default';
+
 @use '@angular/material' as mat;
 @use '@angular/material/theming' as theming;
 
-@import 'breakpoint';
-@import '@angular/material';
 @import '@angular/material/theming';
 
-@mixin app-component-theme($theme) {
+@mixin app-navigation-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
     $color-config: mat.get-color-config($theme);
-    $primary: map-get($color-config, primary);
-    $accent: map-get($color-config, accent);
-    $warn: map-get($color-config, warn);
-    $is-dark-theme: map-get($color-config, is-dark);
-    @debug (' is dark ===> ', $is-dark-theme);
-
-    $color-config: mat.get-color-config($theme);
     $typography-config: mat.get-typography-config($theme);
-
     @if $color-config != null {
-        @include app-component-color($color-config);
+        @include app-navigation-color($color-config);
     }
     @if $typography-config != null {
-        @include app-component-typography($typography-config);
+        @include app-navigation-typography($typography-config);
     }
 }
 
-@mixin app-component-color($config) {
+
+@mixin app-navigation-color($config) {
     $primary: map.get($config, primary);
     $accent: map.get($config, accent);
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 
-    app-root {
+    app-navigation {
         background-color: theming.mat-color($background, background);
-
-        h1 {
-            color: theming.mat-color($foreground, text);
-        }
+    }
+    h1 {
+        color: theming.mat-color($foreground, text);
     }
 }
 
-@mixin app-component-typography($config) {
-    app-root {
+
+@mixin app-navigation-typography($config) {
+    app-navigation {
         h1 {
             @include theming.mat-typography-level-to-styles($config, title);
         }

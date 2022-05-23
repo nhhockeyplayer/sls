@@ -1,0 +1,44 @@
+/*
+Error: Invalid CSS after "...lor-config: mat": expected "}", was ".get-color-conf..."
+        on line 15 of styles-library.scss
+
+10: @use "libs/sls-shared-sass/src/lib/theme/_breakpoint";
+11: 
+12: @import "libs/sls-shared-sass/src/lib/theme/_breakpoint";
+13: 
+14: @mixin cascade ($theme) {
+15:   $color-config: mat.get-color-config($theme);
+16:   $typography-config: mat.get-typography-config($theme);
+17: 
+18:   //@include theme.theme-all-component-theme($theme);
+19:   //@include theme.color-all-component-color($color-config);
+20:   //@include theme.typography-all-component-typography($typography-config);
+
+Backtrace:
+styles-library.scss:15
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:1305:in `expected'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:1235:in `expected'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:1230:in `tok!'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:690:in `block'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:246:in `mixin_directive'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:234:in `special_directive'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:209:in `directive'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:707:in `block_child'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:700:in `block_contents'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:137:in `stylesheet'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/scss/parser.rb:41:in `parse'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/engine.rb:414:in `_to_tree'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/exec/sass_scss.rb:387:in `run'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/exec/base.rb:50:in `parse'
+/Users/meanstack02/.gem/gems/sass-3.7.0/lib/sass/exec/base.rb:18:in `parse!'
+/Users/meanstack02/.gem/gems/sass-3.7.0/bin/sass:13:in `<top (required)>'
+/Users/meanstack02/.gem/bin/sass:23:in `load'
+/Users/meanstack02/.gem/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...lor-config: mat\": expected \"}\", was \".get-color-conf...\"\A         on line 15 of styles-library.scss\A \A 10: @use \"libs/sls-shared-sass/src/lib/theme/_breakpoint\";\A 11: \A 12: @import \"libs/sls-shared-sass/src/lib/theme/_breakpoint\";\A 13: \A 14: @mixin cascade ($theme) {\A 15:   $color-config: mat.get-color-config($theme);\A 16:   $typography-config: mat.get-typography-config($theme);\A 17: \A 18:   //@include theme.theme-all-component-theme($theme);\A 19:   //@include theme.color-all-component-color($color-config);\A 20:   //@include theme.typography-all-component-typography($typography-config);"; }

@@ -31,9 +31,9 @@ $grid-breakpoints: (
 );
 $success-colors: mat-palette($mat-green, 400);
 $warning-colors: mat-palette($mat-amber, 400);
-$primary: mat-color($app-primary);
-$accent: mat-color($app-accent);
-$warn: mat-color($app-warn);
+$primary: theming.mat-color($app-primary);
+$accent: theming.mat-color($app-accent);
+$warn: theming.mat-color($app-warn);
 
 
 /*
@@ -464,15 +464,15 @@ $warn: mat-color($app-warn);
 ////)
 //
 //$colors: (
-//    primary:    mat-color($app-primary),
-//    secondary:  mat-color($app-accent),
+//    primary:    theming.mat-color($app-primary),
+//    secondary:  theming.mat-color($app-accent),
 //    danger:     #f53d3d,
-//    accent:      mat-color($app-accent),
-//    light:      mat-color($app-accent),
+//    accent:      theming.mat-color($app-accent),
+//    light:      theming.mat-color($app-accent),
 //    dark:       #222,
-//    contrast:   mat-color($app-accent),
-//    shade:      mat-color($app-accent),
-//    tint:       mat-color($app-accent)
+//    contrast:   theming.mat-color($app-accent),
+//    shade:      theming.mat-color($app-accent),
+//    tint:       theming.mat-color($app-accent)
 //);
 //
 //

@@ -6,24 +6,24 @@
   $foreground: map-get($theme, foreground);
 
   a {
-    color: mat-color($foreground, text);
+    color: theming.mat-color($foreground, text);
 
     &:hover {
-      color: mat-color($accent);
+      color: theming.mat-color($accent);
     }
   }
 
   code {
-    color: mat-color($accent, lighter-contrast);
-    background-color: mat-color($accent, lighter);
+    color: theming.mat-color($accent, lighter-contrast);
+    background-color: theming.mat-color($accent, lighter);
   }
 
   p {
     a {
-      color: mat-color($accent);
+      color: theming.mat-color($accent);
 
       &:hover {
-        color: mat-color($accent, darker);
+        color: theming.mat-color($accent, darker);
       }
     }
   }

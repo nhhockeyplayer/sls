@@ -1,6 +1,6 @@
-@import '~@angular/material/theming';
-@import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/bootstrap-grid';
+@import '@angular/material/theming';
+@import 'bootstrap/scss/bootstrap-reboot';
+@import 'bootstrap/scss/bootstrap-grid';
 @include mat-core();
 
 @import 'material/theme/theme-defs/default-theme';

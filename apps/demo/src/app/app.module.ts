@@ -8,7 +8,7 @@ import {SlsSharedWidgetsModule} from '@sls/sls-shared-widgets'
 import {NavigationComponent} from './navigation/navigation.component'
 import {SharedMaterialModule} from '@sls/shared-material'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {SampleDialogComponent} from './sample-dialog/sample-dialog.component'
+import {ModalComponent} from './modal/modal.component'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
@@ -26,12 +26,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     declarations: [
         AppComponent,
         NavigationComponent,
-        SampleDialogComponent,
+        ModalComponent,
         NxWelcomeComponent
     ],
     exports:[
         NavigationComponent,
-        SampleDialogComponent,
+        ModalComponent,
         NxWelcomeComponent
     ],
     providers: [],

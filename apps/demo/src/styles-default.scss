@@ -1,6 +1,18 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '_brand';
+@use '_breakpoint';
+@use '_constant';
+@use '_default';
 @use '@angular/material' as mat;
+@use '@angular/material/theming' as theming;
 
-@import "@angular/material/theming";
+@import '_breakpoint';
+@import '@angular/material';
+@import '@angular/material/theming';
 
 @include mat.core();
 
