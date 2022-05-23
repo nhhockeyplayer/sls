@@ -23,9 +23,10 @@ $root-typography: theming.mat-typography-config(
   $title: theming.mat-typography-level(24px, 32px, bold)
 );
 
-@mixin app-typography($typography: $root-typography) {
-    @include mat.all-component-typographies($typography);
+@mixin app-typography($typography-config: $root-typography) {
+    // mat-core
+    @include mat.all-component-typographies($typography-config);
 
-  // custom component typography
-  @include app-component-typography($typography);
+  // components
+  @include app-component-typography($typography-config);
 }

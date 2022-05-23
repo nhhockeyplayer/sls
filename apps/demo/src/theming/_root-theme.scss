@@ -23,17 +23,10 @@
 
 @import 'apps/demo/src/app/app.component.scss-theme';
 
-@mixin app-style-core($theme) {
-    @include mat.all-component-themes($theme);
-
-    // This mixin comes form _app-typography
-    // It contains already configured typography
-    @include app-typography();
-}
-
 @mixin app-theme($theme) {
+    // mat-core
     @include mat.all-component-themes($theme);
 
-    // Custom themes for components
+    // components
     @include app-component-theme($theme);
 }

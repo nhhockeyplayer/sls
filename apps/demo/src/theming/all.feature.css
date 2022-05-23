@@ -6,13 +6,13 @@ Error: Invalid CSS after "    @include app": expected "}", was ".app-component-.
 21: 
 22: @import "@angular/material/theming";
 23: 
-24: @mixin cascade-app-componment($theme) {
+24: @mixin cascade-app-component($theme) {
 25:     @include app.app-component-theme($theme);
-26:     @include app.app-component-theme($theme);
-27:     @include app.app-component-theme($theme);
-28: }
-29: 
-30: @mixin cascade ($theme) {
+26: 
+27: }
+28: 
+29: @mixin cascade ($theme) {
+30:     @include cascade-app-component($theme);
 
 Backtrace:
 all.feature.scss:25
@@ -41,4 +41,4 @@ all.feature.scss:25
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"    @include app\": expected \"}\", was \".app-component-...\"\A         on line 25 of all.feature.scss\A \A 20: @use \"apps/demo/src/app/navigation/navigation.component.scss-theme\" as nav;\A 21: \A 22: @import \"@angular/material/theming\";\A 23: \A 24: @mixin cascade-app-componment($theme) {\A 25:     @include app.app-component-theme($theme);\A 26:     @include app.app-component-theme($theme);\A 27:     @include app.app-component-theme($theme);\A 28: }\A 29: \A 30: @mixin cascade ($theme) {"; }
+  content: "Error: Invalid CSS after \"    @include app\": expected \"}\", was \".app-component-...\"\A         on line 25 of all.feature.scss\A \A 20: @use \"apps/demo/src/app/navigation/navigation.component.scss-theme\" as nav;\A 21: \A 22: @import \"@angular/material/theming\";\A 23: \A 24: @mixin cascade-app-component($theme) {\A 25:     @include app.app-component-theme($theme);\A 26: \A 27: }\A 28: \A 29: @mixin cascade ($theme) {\A 30:     @include cascade-app-component($theme);"; }

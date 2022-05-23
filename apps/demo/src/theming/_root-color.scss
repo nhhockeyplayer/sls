@@ -9,13 +9,16 @@
 
 @import '@angular/material/theming';
 
+@import 'apps/demo/src/app/app.component.scss-theme';
+
 $app-primary: theming.mat-palette(theme.$teal-palette, A200, A100, A400);
 $app-accent: theming.mat-palette(theme.$grey-palette, A200, A100, A400);
 $app-warn: theming.mat-palette(theme.$red-palette, A200, A100, A400);
 
-@mixin app-color($color) {
-    @include mat.all-component-colors($color);
+@mixin app-color($color-config) {
+    // mat-core
+    @include mat.all-component-colors($color-config);
 
-    // Custom themes for components
-    //@include app-root-color($theme);
+    // components
+    @include app-component-color($color-config);
 }

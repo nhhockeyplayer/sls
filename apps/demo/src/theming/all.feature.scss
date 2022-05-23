@@ -21,14 +21,11 @@
 
 @import "@angular/material/theming";
 
-@mixin cascade-app-componment($theme) {
+@mixin cascade-app-component($theme) {
     @include app.app-component-theme($theme);
-    @include app.app-component-theme($theme);
-    @include app.app-component-theme($theme);
+
 }
 
 @mixin cascade ($theme) {
-    @include cascade-app-componment($theme);
-    @include cascade-app-componment($theme);
-    @include cascade-app-componment($theme);
+    @include cascade-app-component($theme);
 }

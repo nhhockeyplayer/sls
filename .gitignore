@@ -13,6 +13,7 @@
 # IDEs and editors
 /.idea
 .project
+.map
 .classpath
 .c9/
 *.launch
