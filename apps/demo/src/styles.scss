@@ -49,27 +49,6 @@ $dark-theme: mat.define-dark-theme(
     @include mat.all-component-colors($dark-theme);
 }
 
-mat-select {
-    border-color: aqua;
-}
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-h2,
-p {
-    padding: 16px;
-}
-
-.mr-8 {
-    margin-right: 8px;
-}
 
 // ######################################################## //
 //

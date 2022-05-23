@@ -12,8 +12,10 @@
 
 # IDEs and editors
 /.idea
+.sass-cache
 .project
-.map
+*.map
+*.css
 .classpath
 .c9/
 *.launch

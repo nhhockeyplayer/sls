@@ -26,11 +26,35 @@
 <!--        (darkModeSwitched)="switchMode($event)"-->
 <!--        [isDarkMode]="isDarkMode"-->
 <!--&gt;</app-navigation>-->
+<h1 slsHeading>Component heading</h1>
 <main class="content">
-    <h1>Component heading</h1>
+
     <mat-card>
         <mat-card-header>
-            <mat-card-title>User Card</mat-card-title>
+
+            <mat-toolbar color="primary">
+                Angular Dark Mode
+                <div class="space-maintainer"></div>
+                <mat-icon class="mr-8">brightness_5</mat-icon>
+                <mat-slide-toggle [formControl]="toggleForm" class="mr-8">
+                </mat-slide-toggle>
+                <mat-icon>bedtime</mat-icon>
+            </mat-toolbar>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+
+            <mat-toolbar color="primary">
+                Angular Dark Mode
+                <div class="space-maintainer"></div>
+                <mat-icon class="mr-8">brightness_5</mat-icon>
+                <mat-slide-toggle [formControl]="toggleForm" class="mr-8">
+                </mat-slide-toggle>
+                <mat-icon>bedtime</mat-icon>
+            </mat-toolbar>
         </mat-card-header>
         <mat-card-content class="card-content">
             <mat-form-field>
@@ -61,19 +85,11 @@
                 </sls-button>
             </sls-card>
 
-            <mat-toolbar color="primary">
-                Angular Dark Mode
-                <div class="space-maintainer"></div>
-                <mat-icon class="mr-8">brightness_5</mat-icon>
-                <mat-slide-toggle [formControl]="toggleForm" class="mr-8">
-                </mat-slide-toggle>
-                <mat-icon>bedtime</mat-icon>
-            </mat-toolbar>
 
             <div class="content mat-app-background" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
 
                 <div fxFlex="50">
-                    <h1>Buttons</h1>
+                    <h1 slsHeading>Buttons</h1>
 
                     <div fxLayout="row" fxLayoutGap="16px">
                         <button mat-raised-button color="primary" (click)="showDialog()">
@@ -91,7 +107,7 @@
 
                     <br><br>
 
-                    <h1>Input</h1>
+                    <h1 slsHeading>Input</h1>
 
                     <mat-form-field>
                         <input matInput placeholder="Enter some information">
@@ -99,13 +115,13 @@
 
                     <br><br>
 
-                    <h1>Checkbox</h1>
+                    <h1 slsHeading>Checkbox</h1>
 
                     <mat-checkbox>Check this box!</mat-checkbox>
 
                     <br><br>
 
-                    <h1>Expansion panel</h1>
+                    <h1 slsHeading>Expansion panel</h1>
 
                     <mat-expansion-panel hideToggle>
                         <mat-expansion-panel-header>
@@ -125,7 +141,7 @@
 
                 </div>
                 <div fxFlex="50">
-                    <h1>A card</h1>
+                    <h1 slsHeading>A card</h1>
                     <mat-card class="example-card">
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
