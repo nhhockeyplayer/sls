@@ -1,16 +1,17 @@
 
 :host {
-  height: 100vh;
-  display: block;
+    height: 100vh;
+    display: block;
 }
+
 .content {
     display: flex;
-  padding: 2rem;
-  box-sizing: border-box;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 .card-content {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 mat-toolbar {
