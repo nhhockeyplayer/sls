@@ -10,12 +10,12 @@
 @include material.core();
 
 @include material.all-component-themes(theme.$light-theme);
-@include lib.theme-all-component-theme(theme.$light-theme);
+@include theme.theme(theme.$light-theme);
 @include root.cascade(theme.$light-theme);
 
 .darkMode {
     @include material.all-component-themes(theme.$dark-theme);
-    @include lib.theme-all-component-theme(theme.$dark-theme);
+    @include theme.theme(theme.$dark-theme);
     @include root.cascade(theme.$dark-theme);
 }
 

@@ -9,7 +9,6 @@
 @mixin button-theme($theme) {
     $color-config: material.get-color-config($theme);
     $typography-config: material.get-typography-config($theme);
-    $density-config: material.get-density-config($theme);
 
     @if $color-config != null {
         @include button-color($color-config);
@@ -17,10 +16,6 @@
     @if $typography-config != null {
         @include button-typography($typography-config);
     }
-    @if $density-config != null {
-        @include button-density($density-config);
-    }
-
     @include button-responsive;
 }
 
@@ -41,11 +36,6 @@
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 }
-
-@mixin button-density($config) {
-
-}
-
 
 @mixin button-responsive() {
 

@@ -239,19 +239,7 @@ $light-theme: material.define-light-theme((color: (
     accent: $light-accent-palette,
     warn: $warn-palette
 ),
-    typography: $font-config,
-    density: (
-        height: (
-            default: 36px,
-            maximum: 40px,
-            minimum: 24px,
-        ),
-        width: (
-            default: 56px,
-            maximum: 64px,
-            minimum: 48px,
-        ),
-    )
+    typography: $font-config
 ));
 
 $dark-theme: material.define-light-theme((color: (
@@ -259,19 +247,7 @@ $dark-theme: material.define-light-theme((color: (
     accent: $dark-accent-palette,
     warn: $warn-palette
 ),
-    typography: $font-config,
-    density: (
-        height: (
-            default: 36px,
-            maximum: 40px,
-            minimum: 24px,
-        ),
-        width: (
-            default: 56px,
-            maximum: 64px,
-            minimum: 48px,
-        ),
-    )
+    typography: $font-config
 ));
 
 
@@ -411,23 +387,16 @@ $font-config: material.define-typography-config(
 /* theme, color, typography, density */
 @include all-theme.all-component-theme($light-theme);
 $color-config: material.get-color-config($light-theme);
-//@if $color-config != null {
-//    @include all-color.all-component-color($color-config);
-//}
 $typography-config: material.get-typography-config($light-theme);
-//@if $typography-config != null {
-//    @include all-typography.all-component-typography($typography-config);
-//}
-$density-config: material.get-density-config($light-theme);
-//@if $density-config != null {
-//    @include all-typography.all-component-typography($density-config);
-//}
-
 
 $is-dark-theme: map-get($color-config, is-dark);
 @debug (' is dark ===> ', $is-dark-theme);
 
 @mixin theme($theme) {
+    @include all-theme.all-component-theme($theme);
+    @include all-color.all-component-color($theme);
+    @include all-typography.all-component-typography($theme);
+
     $color-config: material.get-color-config($theme);
     $primary-palette: map.get($color-config, 'primary');
     $caption-color: material.get-color-from-palette($primary-palette, text);

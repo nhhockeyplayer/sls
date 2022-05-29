@@ -9,16 +9,11 @@
 @mixin radio-theme($theme) {
     $color-config: material.get-color-config($theme);
     $typography-config: material.get-typography-config($theme);
-    $density-config: material.get-density-config($theme);
-
     @if $color-config != null {
         @include radio-color($color-config);
     }
     @if $typography-config != null {
         @include radio-typography($typography-config);
-    }
-    @if $density-config != null {
-        @include radio-density($density-config);
     }
 }
 
@@ -38,9 +33,5 @@
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
-}
-
-@mixin radio-density($config) {
-
 }
 

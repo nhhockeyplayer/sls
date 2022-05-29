@@ -9,16 +9,12 @@
 @mixin datepicker-theme($theme) {
     $color-config: material.get-color-config($theme);
     $typography-config: material.get-typography-config($theme);
-    $density-config: material.get-density-config($theme);
 
     @if $color-config != null {
         @include datepicker-color($color-config);
     }
     @if $typography-config != null {
         @include datepicker-typography($typography-config);
-    }
-    @if $density-config != null {
-        @include datepicker-density($density-config);
     }
 }
 
@@ -38,9 +34,5 @@
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
-}
-
-@mixin datepicker-density($config) {
-
 }
 
