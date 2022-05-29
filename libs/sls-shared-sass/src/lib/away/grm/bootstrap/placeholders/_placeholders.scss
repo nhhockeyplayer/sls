@@ -1,0 +1,141 @@
+@import 'bootstrap-placeholders';
+
+// Typography
+@each $class-name, $props in $typography {
+    %#{$class-name} {
+        @each $prop, $value in $props {
+            // output font-family properties
+            @if ($prop == 'font-family') {
+                @include font-props($value);
+
+                // Photoshop uses "tracking" to measure letter spacing so we need to convert it
+            } @else if ($prop == 'tracking') {
+                // it takes in a base font size so get that here:
+                $font-size-base: mapDeepGet($typography, $class-name, 'font-size');
+                letter-spacing: psTrackingToPx($value, 'rem', $font-size-base) !important;
+            } @else {
+                // convert to rem if in px
+                @if (endsWith('#{$value}', 'px')) {
+                    $value: getRem($value);
+                }
+
+                // if no other processing is needed, print the final property
+                #{$prop}: #{$value} !important;
+            }
+        }
+    }
+
+    // a size only class to use for things like font icons to match headers
+    %#{$class-name}-size {
+        $size: mapDeepGet($typography, $class-name, 'font-size');
+
+        // convert to rem if in px
+        @if (endsWith('#{$size}', 'px')) {
+            $size: getRem($size);
+        }
+
+        font-size: $size !important;
+    }
+}
+
+@each $theme, $colors in $background-colors {
+    %#{$theme} {
+        %bg-color {
+            @each $num, $color in $colors {
+                &-#{$num} {
+                    background-color: $color !important;
+                }
+            }
+        }
+    }
+}
+
+@each $theme, $colors in $text-colors {
+    %#{$theme} {
+        %txt-color {
+            @each $num, $color in $colors {
+                &-#{$num} {
+                    color: $color !important;
+                }
+            }
+        }
+    }
+}
+
+
+//@use "sass:math";
+//@use 'sass:map';
+//
+//@use '~bootstrap/scss/_variables' as var;
+//@use '~bootstrap/scss/mixins/_container' as cont;
+//@use '~bootstrap/scss/mixins/_grid' as grid;
+//@use '~bootstrap/scss/mixins/_breakpoints' as bp;
+//
+//@import '~bootstrap/scss/_variables';
+//@import '~bootstrap/scss/mixins/_container';
+//@import '~bootstrap/scss/mixins/_grid';
+//@import '~bootstrap/scss/mixins/_breakpoints';
+//
+//@import '_bootstrap-placeholders';
+//
+//// Typography
+//@each $class-name, $props in $typography {
+//  %#{$class-name} {
+//    @each $prop, $value in $props {
+//      // output font-family properties
+//      @if ($prop == 'font-family') {
+//        @include font-props($value);
+//
+//        // Photoshop uses "tracking" to measure letter spacing so we need to convert it
+//      } @else if ($prop == 'tracking') {
+//        // it takes in a base font size so get that here:
+//        $font-size-base: mapDeepGet($typography, $class-name, 'font-size');
+//        letter-spacing: psTrackingToPx($value, 'rem', $font-size-base) !important;
+//      } @else {
+//        // convert to rem if in px
+//        @if (endsWith('#{$value}', 'px')) {
+//          $value: getRem($value);
+//        }
+//
+//        // if no other processing is needed, print the final property
+//        #{$prop}: #{$value} !important;
+//      }
+//    }
+//  }
+//
+//  // a size only class to use for things like font icons to match headers
+//  %#{$class-name}-size {
+//    $size: mapDeepGet($typography, $class-name, 'font-size');
+//
+//    // convert to rem if in px
+//    @if (endsWith('#{$size}', 'px')) {
+//      $size: getRem($size);
+//    }
+//
+//    font-size: $size !important;
+//  }
+//}
+//
+//@each $theme, $colors in $background-colors {
+//  %#{$theme} {
+//    %bg-color {
+//      @each $num, $color in $colors {
+//        &-#{$num} {
+//          background-color: $color !important;
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//@each $theme, $colors in $text-colors {
+//  %#{$theme} {
+//    %txt-color {
+//      @each $num, $color in $colors {
+//        &-#{$num} {
+//          color: $color !important;
+//        }
+//      }
+//    }
+//  }
+//}

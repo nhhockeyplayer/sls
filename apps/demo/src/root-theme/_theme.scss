@@ -1,0 +1,13 @@
+@use '@angular/material';
+
+@import 'apps/demo/src/app/app.component.scss-theme';
+@import 'apps/demo/src/app/navigation/navigation.component.scss-theme';
+@import 'apps/demo/src/app/modal/modal.component.scss-theme';
+
+@mixin app-theme($theme) {
+    @include material.all-component-themes($theme);  // mat-core
+
+    @include app-component-theme($theme);           // feature components
+    @include app-navigation-theme($theme);
+    @include app-modal-theme($theme);
+}

@@ -1,0 +1,17 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
+
+@use 'material/_button' as button;
+@use 'material/_datepicker' as datepicker;
+@use 'material/_radio' as radio;
+
+@mixin all-component-density($density-config) {
+  @include button.button-density($density-config);
+  @include datepicker.datepicker-density($density-config);
+  @include radio.radio-density($density-config);
+}

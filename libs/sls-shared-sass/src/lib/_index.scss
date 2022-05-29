@@ -5,16 +5,19 @@
 @use 'sass:string';
 
 /* partials */
-@forward "_sls";
-@forward "theme/_constant";
-@forward "theme/_default";
-@forward "theme/_mixin";
-@forward "theme/_breakpoint";
-@forward "theme/_brand";
+@forward 'theme/mechanics/_default';
+@forward 'theme/mechanics/_constant';
+@forward 'theme/mechanics/_breakpoint';
+@forward 'theme/mechanics/_brand';
+@forward 'theme/mechanics/_layout';
+@forward 'theme/mechanics/_mixin';
+@forward 'theme/mechanics/_partial';
+@forward 'theme/mechanics/_placeholder';
 
 /* component theming */
-@forward 'theme/mat/_button' as button-* show button-theme, button-color, button-typography;
-@forward 'theme/mat/_datepicker' as datepicker-* show datepicker-theme, datepicker-color, datepicker-typography;
+@forward 'theme/material/_button' as button-* show button-theme, button-color, button-typography;
+@forward 'theme/material/_datepicker' as datepicker-* show datepicker-theme, datepicker-color, datepicker-typography;
+@forward 'theme/material/_radio' as radio-* show radio-theme, radio-color, radio-typography;
 
 /* Theme bundles */
 @forward 'theme/_all-theme' as theme-* show all-component-theme;

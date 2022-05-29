@@ -1,0 +1,22 @@
+@use "apps/demo/src/app/app.component.scss-theme" as app;
+@use "apps/demo/src/app/modal/modal.component.scss-theme" as modal;
+@use "apps/demo/src/app/navigation/navigation.component.scss-theme" as nav;
+
+@mixin cascade-app-component($theme) {
+    @include app.app-component-theme($theme);
+}
+
+@mixin cascade-app-modal($theme) {
+    @include modal.app-modal-theme($theme);
+}
+
+@mixin cascade-app-navigation($theme) {
+    @include nav.app-navigation-theme($theme);
+}
+
+/* -------- MAIN MIXIN --------*/
+@mixin cascade ($theme) {
+    @include cascade-app-component($theme);
+    @include cascade-app-modal($theme);
+    @include cascade-app-navigation($theme);
+}

@@ -1,9 +1,17 @@
-@use './mat/_button' as button;
-@use './mat/_datepicker' as datepicker;
-@use './mat/_radio' as radio;
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
 
-@mixin all-component-typography($theme) {
-  @include button.button-typography($theme);
-  @include datepicker.datepicker-typography($theme);
-  @include radio.radio-typography($theme);
+@use 'material/_button' as button;
+@use 'material/_datepicker' as datepicker;
+@use 'material/_radio' as radio;
+
+@mixin all-component-typography($typography-config) {
+  @include button.button-typography($typography-config);
+  @include datepicker.datepicker-typography($typography-config);
+  @include radio.radio-typography($typography-config);
 }

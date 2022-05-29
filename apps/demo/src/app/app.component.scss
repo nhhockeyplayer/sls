@@ -1,38 +1,72 @@
+@use 'sass:map';
+@use '@angular/material';
+@use '@angular/material/theming';
 
-:host {
-    height: 100vh;
-    display: block;
-}
+@use 'libs/sls-shared-sass/src/lib/theme/theme';
 
-.content {
+@use 'mechanics/breakpoint';
+
+.container {
     display: flex;
-    padding: 2rem;
-    box-sizing: border-box;
-}
-
-.card-content {
-    padding: 1rem;
-}
-
-mat-toolbar {
-    display: flex;
-    align-items: center;
-}
-
-.space-maintainer {
-    flex: 1 0 auto;
-}
-
-.nav-item {
-    display: flex;
-}
-
-.content {
-    padding: 16px;
-    min-height: 100vh;
+    padding: 2em;
 }
 
 mat-card {
-    max-width: 400px;
+    $color-config: material.get-color-config(theme.$light-theme);
+    $primary: map-get($color-config, primary);
+    $accent: map-get($color-config, accent);
+    $warn: map-get($color-config, warn);
+    border-spacing: 2em;
+    background-color: $primary !important;
 }
+mat-card-header {
+    background-color: green;
+}
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    background-color: green;
+    border-spacing: 2em;
+}
+
+//
+//.content {
+//    display: flex;
+//    padding: 2rem;
+//    box-sizing: border-box;
+//}
+//
+//.card-content {
+//    padding: 1rem;
+//}
+//
+//mat-toolbar {
+//    display: flex;
+//    align-items: center;
+//}
+//
+//.space-maintainer {
+//    flex: 1 0 auto;
+//}
+//
+//.nav-item {
+//    display: flex;
+//}
+//
+//.content {
+//    padding: 16px;
+//    min-height: 100vh;
+//}
+//
+//mat-card {
+//    min-width: 400px;
+//    display: flex;
+//    flex-direction: row;
+//    position: relative;
+//    top: 15px;
+//    left: 15px;
+//    right: 15px;
+//    bottom: 15px;
+//}
+//
 

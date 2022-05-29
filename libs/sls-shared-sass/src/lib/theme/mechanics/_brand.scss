@@ -1,0 +1,16 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
+
+$theme-brand: var(--theme-brand) !default;
+$theme-brand-ionic: var(--theme-brand-ionic) !default;
+$theme-brand-material: var(--theme-brand-material) !default;
+$theme-brand-bootstrap: var(--theme-brand-bootstrap) !default;
+@if ($theme-brand == $theme-brand-ionic) {
+} @else if ($theme-brand == $theme-brand-material) {
+} @else if ($theme-brand == $theme-brand-bootstrap) {
+}

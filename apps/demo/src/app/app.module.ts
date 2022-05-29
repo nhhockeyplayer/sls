@@ -10,6 +10,7 @@ import {SharedMaterialModule} from '@sls/shared-material'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {ModalComponent} from './modal/modal.component'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {RxjsComponent} from './rxjs.component'
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
         AppComponent,
         NavigationComponent,
         ModalComponent,
-        NxWelcomeComponent
+        NxWelcomeComponent,
+        RxjsComponent
     ],
     exports:[
         NavigationComponent,

@@ -69,7 +69,7 @@
         },
         "projectBuildConfig": "sls-shared-widgets:build-storybook",
         "styles": [
-          "libs/sls-shared-sass/src/lib/_sls.scss"
+          "libs/sls-shared-sass/src/lib/_index.scss"
         ],
         "stylePreprocessorOptions": {
           "includePaths": [

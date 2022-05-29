@@ -32,13 +32,11 @@
                 ],
                 "styles": [
                     "apps/demo/src/styles.scss",
-                    "libs/sls-shared-sass/src/lib/_index.scss",
-                    "libs/sls-shared-sass/src/lib/theme/_theme.scss"
+                    "libs/sls-shared-sass/src/lib/_index.scss"
                 ],
                 "stylePreprocessorOptions": {
                     "includePaths": [
-                        "libs/sls-shared-sass/src/lib",
-                        "libs/sls-shared-sass/src/lib/theme"
+                        "libs/sls-shared-sass/src/lib"
                     ]
                 }
             },

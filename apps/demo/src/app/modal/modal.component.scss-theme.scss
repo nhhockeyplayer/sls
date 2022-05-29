@@ -1,20 +1,13 @@
-@use 'sass:list';
 @use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
-
-@use '@angular/material' as mat;
-@use '@angular/material/theming' as theming;
-
-@import '@angular/material/theming';
+@use '@angular/material';
+@use '@angular/material/theming';
 
 @mixin app-modal-theme($theme) {
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
-    $color-config: mat.get-color-config($theme);
-    $typography-config: mat.get-typography-config($theme);
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
     @if $color-config != null {
         @include app-modal-color($color-config);
     }
@@ -31,11 +24,45 @@
     $foreground: map.get($config, foreground);
 
     app-modal {
-        background-color: $accent;
-        color: $warn;
+        //background-color: $accent;
+        //color: $warn;
     }
     h1 {
         color: theming.mat-color($foreground, text);
+
+
+        @debug('accent---> ', map.get($config, accent));
+        @debug('$accent---> ', $accent);
+        @debug('$primary--->', $primary);
+        @debug('$accent--->', $accent);
+        @debug('$warn--->', $warn);
+        @debug('$background--->', $background);
+        @debug('$foreground--->', $foreground);
+
+        @xs {
+            color: #1a468c;
+            background-color: #050f0f;
+        }
+        @sm {
+            color: #ff18e9;
+            background-color: #7caaaa;
+        }
+        @md {
+            color: #07155b;
+            background-color: #911e55;
+        }
+        @lg {
+            color: #dcc125;
+            background-color: #4458a8;
+        }
+        @xl {
+            color: red;
+            background-color: cyan;
+        }
+        @xxl {
+            color: #a3441f;
+            background-color: #2ee533;
+        }
     }
 }
 
@@ -47,3 +74,47 @@
         }
     }
 }
+
+
+//@use 'sass:map';
+//@use '@angular/material';
+//@use '@angular/material/theming';
+//
+//@mixin app-modal-theme($theme) {
+//  $background: map-get($theme, background);
+//  $foreground: map-get($theme, foreground);
+//
+//    $color-config: material.get-color-config($theme);
+//    $typography-config: material.get-typography-config($theme);
+//    @if $color-config != null {
+//        @include app-modal-color($color-config);
+//    }
+//    @if $typography-config != null {
+//        @include app-modal-typography($typography-config);
+//    }
+//}
+//
+//@mixin app-modal-color($config) {
+//    $primary: map.get($config, primary);
+//    $accent: map.get($config, accent);
+//    $warn: map.get($config, warn);
+//    $background: map.get($config, background);
+//    $foreground: map.get($config, foreground);
+//
+//    app-modal {
+//        background-color: $accent;
+//        color: $warn;
+//    }
+//    h1 {
+//        color: theming.mat-color($foreground, text);
+//    }
+//}
+//
+//
+//@mixin app-modal-typography($config) {
+//    app-modal {
+//        h1 {
+//            @include theming.mat-typography-level-to-styles($config, title);
+//        }
+//    }
+//}

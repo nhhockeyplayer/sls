@@ -3,39 +3,44 @@
 @use 'sass:meta';
 @use 'sass:math';
 @use 'sass:string';
-
-@use '@angular/material' as mat;
-@use '@angular/material/theming' as theming;
-
-@import '@angular/material/theming';
+@use '@angular/material';
+@use '@angular/material/_theming';
 
 @mixin datepicker-theme($theme) {
-  $color-config: theming.get-color-config($theme);
-  $typography-config: theming.get-typography-config($theme);
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
+    $density-config: material.get-density-config($theme);
 
-  @if $color-config != null {
-    @include datepicker-color($color-config);
-  }
-  @if $typography-config != null {
-    @include datepicker-typography($typography-config);
-  }
+    @if $color-config != null {
+        @include datepicker-color($color-config);
+    }
+    @if $typography-config != null {
+        @include datepicker-typography($typography-config);
+    }
+    @if $density-config != null {
+        @include datepicker-density($density-config);
+    }
 }
 
 
 @mixin datepicker-color($config) {
-  $primary: map.get($config, primary);
-  $accent: map.get($config, accent);
-  $warn: map.get($config, warn);
-  $background: map.get($config, background);
-  $foreground: map.get($config, foreground);
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
 
 }
 
 @mixin datepicker-typography($config) {
-  $primary: map.get($config, primary);
-  $accent: map.get($config, accent);
-  $warn: map.get($config, warn);
-  $background: map.get($config, background);
-  $foreground: map.get($config, foreground);
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+}
+
+@mixin datepicker-density($config) {
+
 }
 

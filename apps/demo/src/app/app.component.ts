@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostBinding, Inject, OnInit, Renderer2} from '@angular/core'
+import {Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, HostBinding, Inject, OnInit, Renderer2} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Message} from '@sls/api-interfaces'
 import {Brand, environment} from '@sls/shared-env/environments/environment'
@@ -16,13 +16,13 @@ export enum EBrand {
 
 interface IColor {
     value: string;
-    viewValue: string;
+    displayKey: string;
 }
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
     hello$ = this.http.get<Message>('/api/hello')
@@ -39,9 +39,9 @@ export class AppComponent implements OnInit {
 
     selectedColor: string = '';
     colors: IColor[] = [
-        {value: 'amber', viewValue: 'Amber'},
-        {value: 'purple', viewValue: 'Purple'},
-        {value: 'gray', viewValue: 'Gray'},
+        {value: 'amber', displayKey: 'Amber'},
+        {value: 'purple', displayKey: 'Purple'},
+        {value: 'gray', displayKey: 'Gray'},
     ];
 
     constructor(

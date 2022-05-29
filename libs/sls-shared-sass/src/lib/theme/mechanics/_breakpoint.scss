@@ -1,0 +1,54 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
+
+$grid-breakpoint: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+@mixin xs {
+    @media (min-width: map-get($grid-breakpoint, 'xs')) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (min-width: map-get($grid-breakpoint, 'sm')) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: map-get($grid-breakpoint, 'md')) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: map-get($grid-breakpoint, 'lg')) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: map-get($grid-breakpoint, 'xl')) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media (min-width: map-get($grid-breakpoint, 'xxl')) {
+        @content;
+    }
+}
+
+

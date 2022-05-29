@@ -1,38 +1,35 @@
-@use 'sass:list';
 @use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
-@use '@angular/material' as mat;
-@use '@angular/material/theming' as theming;
-@use "libs/sls-shared-sass/src/lib" as theme;
-@use "libs/sls-shared-sass/src/lib/theme/theme" as stylesheet;
-@use "libs/sls-shared-sass/src/lib/theme/_breakpoint";
+@use '@angular/material';
+@use '@angular/material/theming';
 
-@import "libs/sls-shared-sass/src/lib/theme/_breakpoint";
+@use "libs/sls-shared-sass/src/lib" as lib;
+@use "libs/sls-shared-sass/src/lib/theme/theme" as theme;
+@use "../../../libs/sls-shared-sass/src/lib/theme/mechanics/breakpoint";
+
+@import "../../../libs/sls-shared-sass/src/lib/theme/mechanics/breakpoint";
 
 @mixin cascade ($theme) {
-  $color-config: mat.get-color-config($theme);
-  $typography-config: mat.get-typography-config($theme);
+  $color-config: material.get-color-config($theme);
+  $typography-config: material.get-typography-config($theme);
 
-  //@include theme.theme-all-component-theme($theme);
-  //@include theme.color-all-component-color($color-config);
-  //@include theme.typography-all-component-typography($typography-config);
+  //@include lib.theme-all-component-theme($theme);
+  //@include lib.color-all-component-color($color-config);
+  //@include lib.typography-all-component-typography($typography-config);
 
-  //@include mat.all-component-themes($theme);
-  //@include mat.all-component-colors($theme);
-  //@include mat.all-component-typographies($theme);
+  //@include material.all-component-themes($theme);
+  //@include material.all-component-colors($theme);
+  //@include material.all-component-typographies($theme);
 }
 
 body {
   @extend .mat-app-background  !optional;
-  @include cascade(stylesheet.$dark-theme);
+  @include cascade(theme.$dark-theme);
 }
 
 
 body.dark {
   @extend .mat-app-background  !optional;
-  @include cascade(stylesheet.$dark-theme);
+  @include cascade(theme.$dark-theme);
 }
 
 .responsive-test {

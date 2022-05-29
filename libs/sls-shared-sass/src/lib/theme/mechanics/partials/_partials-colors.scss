@@ -1,0 +1,31 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
+
+@each $theme, $colors in $background-colors {
+  .#{$theme} {
+    .bg-color {
+      @each $num, $color in $colors {
+        &-#{$num} {
+          background-color: $color !important;
+        }
+      }
+    }
+  }
+}
+
+@each $theme, $colors in $text-colors {
+  .#{$theme} {
+    .txt-color {
+      @each $num, $color in $colors {
+        &-#{$num} {
+          color: $color !important;
+        }
+      }
+    }
+  }
+}

@@ -1,27 +1,15 @@
-@use 'sass:list';
 @use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
-@use '_brand';
-@use '_breakpoint';
-@use '_constant';
-@use '_default';
-@use '@angular/material' as mat;
-@use '@angular/material/theming' as theming;
+@use '@angular/material';
+@use '@angular/material/theming';
 
-@import '_breakpoint';
-@import '@angular/material';
-@import '@angular/material/theming';
+@include material.core();
 
-@include mat.core();
+$angular-primary: material.define-palette(material.$teal-palette, 500, 100, 900);
+$angular-accent: material.define-palette(material.$pink-palette, A200, A100, A400);
 
-$angular-primary: mat.define-palette(mat.$teal-palette, 500, 100, 900);
-$angular-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$angular-warn: material.define-palette(material.$red-palette);
 
-$angular-warn: mat.define-palette(mat.$red-palette);
-
-$angular-default-theme: mat.define-light-theme(
+$angular-default-theme: material.define-light-theme(
         (
             color: (
                 primary: $angular-primary,
@@ -31,9 +19,9 @@ $angular-default-theme: mat.define-light-theme(
         )
 );
 
-@include mat.all-component-themes($angular-default-theme);
+@include material.all-component-themes($angular-default-theme);
 
-$angular-dark-theme: mat.define-dark-theme(
+$angular-dark-theme: material.define-dark-theme(
         (
             color: (
                 primary: $angular-primary,
@@ -44,7 +32,7 @@ $angular-dark-theme: mat.define-dark-theme(
 );
 
 .darkMode {
-    @include mat.all-component-colors($angular-dark-theme);
+    @include material.all-component-colors($angular-dark-theme);
 }
 
 html,
@@ -70,7 +58,9 @@ p {
 //
 //// Custom Theming for Angular Material
 //// For more information: https://material.angular.io/guide/theming
-//@import '@angular/material/theming';
+//@use 'sass:map';
+//@use '@angular/material';
+//@use '@angular/material/theming';
 //
 //@import './assets/styles/app-color-palette';
 //@import './assets/styles/app-theme';

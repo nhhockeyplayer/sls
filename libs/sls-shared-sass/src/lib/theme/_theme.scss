@@ -3,46 +3,38 @@
 @use 'sass:meta';
 @use 'sass:math';
 @use 'sass:string';
-@use '_brand';
-@use '_breakpoint';
-@use '_constant';
-@use '_default';
-@use '@angular/material' as mat;
-@use '@angular/material/theming' as theming;
+@use '@angular/material';
+@use '@angular/material/_theming';
 
-@import 'breakpoint';
-@import '@angular/material';
-@import '@angular/material/theming';
-
-@include mat-core();
-
-$my-custom-level: mat.define-typography-level(
-        $font-family: Roboto,
-        $font-weight: 400,
-        $font-size: 1rem,
-        $line-height: 1,
-        $letter-spacing: normal,
-);
-
-
+@use '_all-theme' as all-theme;
+@use '_all-color' as all-color;
+@use '_all-typography' as all-typography;
 
 $font-family: Roboto, 'Helvetica Neue', sans-serif;
 
-$font-config: define-typography-config(
-        $font-family: $font-family,
-        $display-4: mat.define-typography-level(96px, 114px, 300, $font-family, -0.05em),
-        $display-3: mat.define-typography-level(75px, 90px, 400, $font-family, -0.02em),
-        $display-2: mat.define-typography-level(64px, 77px, 400, $font-family, -0.005em),
-        $display-1: mat.define-typography-level(56px, 67px, 400, $font-family),
-        $headline: mat.define-typography-level(48px, 58px, 400, $font-family),
-        $title: mat.define-typography-level(40px, 48px, 500, $font-family),
-        $subheading-2: mat.define-typography-level(32px, 38px, 400, $font-family, 0.0094em),
-        $subheading-1: mat.define-typography-level(24px, 28px, 500, $font-family, 0.0067em),
-        $body-2: mat.define-typography-level(20px, 32px, 500, $font-family, 0.0156em),
-        $body-1: mat.define-typography-level(16px, 25px, 400, $font-family, 0.0156em),
-        $caption: mat.define-typography-level(14px, 22px, 400, $font-family, 0.0286em),
-        $button: mat.define-typography-level(16px, 16px, 500, $font-family, 0.0781em),
-        $input: mat.define-typography-level(inherit, 1.125, 400, $font-family, 1.5px),
+$my-custom-level: material.define-typography-level(
+    $font-family: Roboto,
+    $font-weight: 400,
+    $font-size: 1rem,
+    $line-height: 1,
+    $letter-spacing: normal,
+);
+
+$font-config: material.define-typography-config(
+    $font-family: $font-family,
+    $display-4: material.define-typography-level(96px, 114px, 300, $font-family, -0.05em),
+    $display-3: material.define-typography-level(75px, 90px, 400, $font-family, -0.02em),
+    $display-2: material.define-typography-level(64px, 77px, 400, $font-family, -0.005em),
+    $display-1: material.define-typography-level(56px, 67px, 400, $font-family),
+    $headline: material.define-typography-level(48px, 58px, 400, $font-family),
+    $title: material.define-typography-level(40px, 48px, 500, $font-family),
+    $subheading-2: material.define-typography-level(32px, 38px, 400, $font-family, 0.0094em),
+    $subheading-1: material.define-typography-level(24px, 28px, 500, $font-family, 0.0067em),
+    $body-2: material.define-typography-level(20px, 32px, 500, $font-family, 0.0156em),
+    $body-1: material.define-typography-level(16px, 25px, 400, $font-family, 0.0156em),
+    $caption: material.define-typography-level(14px, 22px, 400, $font-family, 0.0286em),
+    $button: material.define-typography-level(16px, 16px, 500, $font-family, 0.0781em),
+    $input: material.define-typography-level(inherit, 1.125, 400, $font-family, 1.5px)
 );
 
 $teal-10: #F2FCFC;
@@ -50,28 +42,28 @@ $teal-medium: #28A3AF;
 $teal-dark: #06748C;
 $navy-blue: #1A1446;
 $teal-color-grades: (
-        50: $teal-10,
-        100: mix($teal-10, $teal-medium, $weight: 20%),
-        200: mix($teal-10, $teal-medium, $weight: 40%),
-        300: mix($teal-10, $teal-medium, $weight: 60%),
-        400: mix($teal-10, $teal-medium, $weight: 80%),
-        500: $teal-medium,
-        600: mix($teal-medium, $teal-10, $weight: 25%),
-        700: mix($teal-medium, $teal-10, $weight: 50%),
-        800: mix($teal-medium, $teal-10, $weight: 75%),
-        900: $teal-dark,
-        contrast: (
-                50: $navy-blue,
-                100: $navy-blue,
-                200: $navy-blue,
-                300: $navy-blue,
-                400: $navy-blue,
-                500: $navy-blue,
-                600: white,
-                700: white,
-                800: white,
-                900: white
-        )
+    50: $teal-10,
+    100: mix($teal-10, $teal-medium, $weight: 20%),
+    200: mix($teal-10, $teal-medium, $weight: 40%),
+    300: mix($teal-10, $teal-medium, $weight: 60%),
+    400: mix($teal-10, $teal-medium, $weight: 80%),
+    500: $teal-medium,
+    600: mix($teal-medium, $teal-10, $weight: 25%),
+    700: mix($teal-medium, $teal-10, $weight: 50%),
+    800: mix($teal-medium, $teal-10, $weight: 75%),
+    900: $teal-dark,
+    contrast: (
+        50: $navy-blue,
+        100: $navy-blue,
+        200: $navy-blue,
+        300: $navy-blue,
+        400: $navy-blue,
+        500: $navy-blue,
+        600: white,
+        700: white,
+        800: white,
+        900: white
+    )
 );
 
 $gray-04: #F5F5F5;
@@ -83,56 +75,56 @@ $gray-86: #565656;
 $gray-dark: #343741;
 $black: #000;
 $gray-color-grades: (
-        50: $gray-04,
-        100: mix($gray-04, $gray-10, $weight: 50%),
-        200: $gray-10,
-        300: $gray-29,
-        400: mix($gray-29, $gray-69, $weight: 50%),
-        500: $gray-69,
-        600: $gray-73,
-        700: $gray-86,
-        800: $gray-dark,
-        900: scale-color($gray-dark, $lightness: -20%),
-        contrast: (
-                50: $black,
-                100: $black,
-                200: $black,
-                300: $black,
-                400: $black,
-                500: $black,
-                600: $black,
-                700: white,
-                800: white,
-                900: white
-        )
+    50: $gray-04,
+    100: mix($gray-04, $gray-10, $weight: 50%),
+    200: $gray-10,
+    300: $gray-29,
+    400: mix($gray-29, $gray-69, $weight: 50%),
+    500: $gray-69,
+    600: $gray-73,
+    700: $gray-86,
+    800: $gray-dark,
+    900: scale-color($gray-dark, $lightness: -20%),
+    contrast: (
+        50: $black,
+        100: $black,
+        200: $black,
+        300: $black,
+        400: $black,
+        500: $black,
+        600: $black,
+        700: white,
+        800: white,
+        900: white
+    )
 );
 
 $red-light: #FFF4F5;
 $red-medium: #E92243;
 $red-dark: #D32F2F;
 $red-color-grades: (
-        50: $red-light,
-        100: mix($red-light, $red-medium, $weight: 20%),
-        200: mix($red-light, $red-medium, $weight: 40%),
-        300: mix($red-light, $red-medium, $weight: 60%),
-        400: mix($red-light, $red-medium, $weight: 80%),
-        500: $red-medium,
-        600: mix($red-medium, $red-dark, $weight: 30%),
-        700: mix($red-medium, $red-dark, $weight: 70%),
-        800: $red-dark,
-        900: scale-color($red-dark, $lightness: -20%),
-        contrast: (
-                50: $black,
-                100: $black,
-                200: $black,
-                300: $black,
-                400: $black,
-                500: white,
-                600: white,
-                700: white,
-                800: white,
-                900: white
-        )
+    50: $red-light,
+    100: mix($red-light, $red-medium, $weight: 20%),
+    200: mix($red-light, $red-medium, $weight: 40%),
+    300: mix($red-light, $red-medium, $weight: 60%),
+    400: mix($red-light, $red-medium, $weight: 80%),
+    500: $red-medium,
+    600: mix($red-medium, $red-dark, $weight: 30%),
+    700: mix($red-medium, $red-dark, $weight: 70%),
+    800: $red-dark,
+    900: scale-color($red-dark, $lightness: -20%),
+    contrast: (
+        50: $black,
+        100: $black,
+        200: $black,
+        300: $black,
+        400: $black,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white
+    )
 );
 
 
@@ -152,20 +144,20 @@ $grey-palette: (
     A400: #bdbdbd,
     A700: #616161,
     contrast: (
-        50: $dark-primary-text,
-        100: $dark-primary-text,
-        200: $dark-primary-text,
-        300: $dark-primary-text,
-        400: $dark-primary-text,
-        500: $dark-primary-text,
-        600: $light-primary-text,
-        700: $light-primary-text,
-        800: $light-primary-text,
-        900: $light-primary-text,
-        A100: $dark-primary-text,
-        A200: $dark-primary-text,
-        A400: $dark-primary-text,
-        A700: $light-primary-text,
+        50: theming.$dark-primary-text,
+        100: theming.$dark-primary-text,
+        200: theming.$dark-primary-text,
+        300: theming.$dark-primary-text,
+        400: theming.$dark-primary-text,
+        500: theming.$dark-primary-text,
+        600: theming.$light-primary-text,
+        700: theming.$light-primary-text,
+        800: theming.$light-primary-text,
+        900: theming.$light-primary-text,
+        A100: theming.$dark-primary-text,
+        A200: theming.$dark-primary-text,
+        A400: theming.$dark-primary-text,
+        A700: theming.$light-primary-text,
     )
 );
 
@@ -185,20 +177,20 @@ $teal-palette: (
     A400: #1de9b6,
     A700: #00bfa5,
     contrast: (
-        50: $dark-primary-text,
-        100: $dark-primary-text,
-        200: $dark-primary-text,
-        300: $dark-primary-text,
-        400: $dark-primary-text,
-        500: $light-primary-text,
-        600: $light-primary-text,
-        700: $light-primary-text,
-        800: $light-primary-text,
-        900: $light-primary-text,
-        A100: $dark-primary-text,
-        A200: $dark-primary-text,
-        A400: $dark-primary-text,
-        A700: $dark-primary-text,
+        50: theming.$dark-primary-text,
+        100: theming.$dark-primary-text,
+        200: theming.$dark-primary-text,
+        300: theming.$dark-primary-text,
+        400: theming.$dark-primary-text,
+        500: theming.$light-primary-text,
+        600: theming.$light-primary-text,
+        700: theming.$light-primary-text,
+        800: theming.$light-primary-text,
+        900: theming.$light-primary-text,
+        A100: theming.$dark-primary-text,
+        A200: theming.$dark-primary-text,
+        A400: theming.$dark-primary-text,
+        A700: theming.$dark-primary-text,
     )
 );
 
@@ -219,68 +211,68 @@ $red-palette: (
     A400: #ff1744,
     A700: #d50000,
     contrast: (
-        50: $dark-primary-text,
-        100: $dark-primary-text,
-        200: $dark-primary-text,
-        300: $dark-primary-text,
-        400: $dark-primary-text,
-        500: $light-primary-text,
-        600: $light-primary-text,
-        700: $light-primary-text,
-        800: $light-primary-text,
-        900: $light-primary-text,
-        A100: $dark-primary-text,
-        A200: $light-primary-text,
-        A400: $light-primary-text,
-        A700: $light-primary-text,
+        50: theming.$dark-primary-text,
+        100: theming.$dark-primary-text,
+        200: theming.$dark-primary-text,
+        300: theming.$dark-primary-text,
+        400: theming.$dark-primary-text,
+        500: theming.$light-primary-text,
+        600: theming.$light-primary-text,
+        700: theming.$light-primary-text,
+        800: theming.$light-primary-text,
+        900: theming.$light-primary-text,
+        A100: theming.$dark-primary-text,
+        A200: theming.$light-primary-text,
+        A400: theming.$light-primary-text,
+        A700: theming.$light-primary-text,
     )
 );
 
-$light-primary-palette: mat.define-palette($gray-color-grades);
-$light-accent-palette: mat.define-palette($teal-color-grades);
-$dark-primary-palette: mat.define-palette($gray-color-grades);
-$dark-accent-palette: mat.define-palette($teal-color-grades);
-$warn-palette: mat.define-palette($red-color-grades);
+$light-primary-palette: material.define-palette($gray-color-grades);
+$light-accent-palette: material.define-palette($teal-color-grades);
+$dark-primary-palette: material.define-palette($gray-color-grades);
+$dark-accent-palette: material.define-palette($teal-color-grades);
+$warn-palette: material.define-palette($red-color-grades);
 
-$light-theme: mat.define-light-theme((color: (
-        primary: $light-primary-palette,
-        accent: $light-accent-palette,
-        warn: $warn-palette
+$light-theme: material.define-light-theme((color: (
+    primary: $light-primary-palette,
+    accent: $light-accent-palette,
+    warn: $warn-palette
 ),
-        typography: $font-config
+    typography: $font-config,
+    density: (
+        height: (
+            default: 36px,
+            maximum: 40px,
+            minimum: 24px,
+        ),
+        width: (
+            default: 56px,
+            maximum: 64px,
+            minimum: 48px,
+        ),
+    )
 ));
 
-$dark-theme: mat.define-light-theme((color: (
-        primary: $dark-primary-palette,
-        accent: $dark-accent-palette,
-        warn: $warn-palette
+$dark-theme: material.define-light-theme((color: (
+    primary: $dark-primary-palette,
+    accent: $dark-accent-palette,
+    warn: $warn-palette
 ),
-        typography: $font-config
+    typography: $font-config,
+    density: (
+        height: (
+            default: 36px,
+            maximum: 40px,
+            minimum: 24px,
+        ),
+        width: (
+            default: 56px,
+            maximum: 64px,
+            minimum: 48px,
+        ),
+    )
 ));
-
-@mixin theme($theme) {
-  $color-config: mat.get-color-config($theme);
-  $primary-palette: map.get($color-config, 'primary');
-  $caption-color: mat.get-color-from-palette($primary-palette, text);
-
-  $color-config: mat.get-color-config($theme);
-  @if $color-config != null {
-    @include color($color-config);
-  }
-  $typography-config: mat.get-typography-config($theme);
-  @if $typography-config != null {
-    @include typography($typography-config);
-  }
-}
-
-@mixin color($config) {
-  $primary-palette: map.get($config, 'primary');
-  $caption-color: mat.get-color-from-palette($primary-palette, text);
-}
-
-@mixin typography($config) {
-  $typography-config: mat.get-typography-config($config);
-}
 
 
 //$success-colors: theming.mat-palette($mat-green, 400);
@@ -290,39 +282,171 @@ $dark-theme: mat.define-light-theme((color: (
 //$warn: theming.theming.mat-color($app-warn);
 
 $mat-red: (
-        50: #ffebee,
-        100: #ffcdd2,
-        200: #ef9a9a,
-        300: #e57373,
-        400: #ef5350,
-        500: #f44336,
-        600: #e53935,
-        700: #d32f2f,
-        800: #c62828,
-        900: #b71c1c,
-        A100: #ff8a80,
-        A200: #ff5252,
-        A400: #ff1744,
-        A700: #d50000,
-        contrast: (
-                50: $black-87-opacity,
-                100: $black-87-opacity,
-                200: $black-87-opacity,
-                300: $black-87-opacity,
-                400: $black-87-opacity,
-                500: white,
-                600: white,
-                700: white,
-                800: $white-87-opacity,
-                900: $white-87-opacity,
-                A100: $black-87-opacity,
-                A200: white,
-                A400: white,
-                A700: white,
-        )
+    50: #ffebee,
+    100: #ffcdd2,
+    200: #ef9a9a,
+    300: #e57373,
+    400: #ef5350,
+    500: #f44336,
+    600: #e53935,
+    700: #d32f2f,
+    800: #c62828,
+    900: #b71c1c,
+    A100: #ff8a80,
+    A200: #ff5252,
+    A400: #ff1744,
+    A700: #d50000,
+    contrast: (
+        50: theming.$black-87-opacity,
+        100: theming.$black-87-opacity,
+        200: theming.$black-87-opacity,
+        300: theming.$black-87-opacity,
+        400: theming.$black-87-opacity,
+        500: white,
+        600: white,
+        700: white,
+        800: theming.$white-87-opacity,
+        900: theming.$white-87-opacity,
+        A100: theming.$black-87-opacity,
+        A200: white,
+        A400: white,
+        A700: white,
+    )
 );
 
 
 $app-primary: theming.mat-palette($red-palette);
 $app-accent: theming.mat-palette($grey-palette, A200, A100, A400);
 $app-warn: theming.mat-palette($mat-red);
+
+//@import 'away/grm/ionic/ionic-workspace-utils';
+
+/* spacing */
+$default-padding: 1.5rem;
+$default-margin: 1.5rem;
+$default-radius: 0.2rem;
+$default-border: 1px;
+
+$primary: var(--ion-color-primary);
+$secondary: var(--ion-color-primary);
+
+$dark: var(--ion-color-dark);
+$light: var(--ion-color-light);
+$grey: var(--ion-color-dark-tint);
+$lightgrey: var(--ion-color-medium-shade);
+
+/* alerts */
+$success: var(--ion-color-success);
+$info: var(--ion-color-secondary-tint);
+$danger: var(--ion-color-danger);
+$warning: var(--ion-color-warning);
+
+$caution: var(--ion-color-warning);
+$error: var(--ion-color-danger);
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+);
+
+$grid-gutter-width: 0px;
+
+$angular-primary: material.define-palette(material.$cyan-palette, 500, 100, 900);
+$angular-accent: material.define-palette(material.$pink-palette, A200, A100, A400);
+$angular-warn: material.define-palette(material.$red-palette);
+
+$font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+$typography-level: material.define-typography-level(
+    $font-family: Roboto,
+    $font-weight: 400,
+    $font-size: 1rem,
+    $line-height: 1,
+    $letter-spacing: normal,
+);
+
+$font-config: material.define-typography-config(
+    $font-family: $font-family,
+    $display-4: material.define-typography-level(96px, 114px, 300, $font-family, -0.05em),
+    $display-3: material.define-typography-level(75px, 90px, 400, $font-family, -0.02em),
+    $display-2: material.define-typography-level(64px, 77px, 400, $font-family, -0.005em),
+    $display-1: material.define-typography-level(56px, 67px, 400, $font-family),
+    $headline: material.define-typography-level(48px, 58px, 400, $font-family),
+    $title: material.define-typography-level(40px, 48px, 500, $font-family),
+    $subheading-2: material.define-typography-level(32px, 38px, 400, $font-family, 0.0094em),
+    $subheading-1: material.define-typography-level(24px, 28px, 500, $font-family, 0.0067em),
+    $body-2: material.define-typography-level(20px, 32px, 500, $font-family, 0.0156em),
+    $body-1: material.define-typography-level(16px, 25px, 400, $font-family, 0.0156em),
+    $caption: material.define-typography-level(14px, 22px, 400, $font-family, 0.0286em),
+    $button: material.define-typography-level(16px, 16px, 500, $font-family, 0.0781em),
+    $input: material.define-typography-level(inherit, 1.125, 400, $font-family, 1.5px)
+);
+
+//$light-theme: material.define-light-theme(
+//        (color: (
+//            primary: $angular-primary,
+//            accent: $angular-accent,
+//            warn: $angular-warn,
+//        ),
+//            typography: $font-config
+//        )
+//);
+//
+//$dark-theme: material.define-dark-theme(
+//        (color: (
+//            primary: $angular-primary,
+//            accent: $angular-accent,
+//            warn: $angular-warn,
+//        ),
+//            typography: $font-config
+//        )
+//);
+
+@include material.all-component-themes($light-theme);
+
+
+/* theme, color, typography, density */
+@include all-theme.all-component-theme($light-theme);
+$color-config: material.get-color-config($light-theme);
+//@if $color-config != null {
+//    @include all-color.all-component-color($color-config);
+//}
+$typography-config: material.get-typography-config($light-theme);
+//@if $typography-config != null {
+//    @include all-typography.all-component-typography($typography-config);
+//}
+$density-config: material.get-density-config($light-theme);
+//@if $density-config != null {
+//    @include all-typography.all-component-typography($density-config);
+//}
+
+
+$is-dark-theme: map-get($color-config, is-dark);
+@debug (' is dark ===> ', $is-dark-theme);
+
+@mixin theme($theme) {
+    $color-config: material.get-color-config($theme);
+    $primary-palette: map.get($color-config, 'primary');
+    $caption-color: material.get-color-from-palette($primary-palette, text);
+
+    $color-config: material.get-color-config($theme);
+    @if $color-config != null {
+        @include color($color-config);
+    }
+    $typography-config: material.get-typography-config($theme);
+    @if $typography-config != null {
+        @include typography($typography-config);
+    }
+}
+
+@mixin color($config) {
+    $primary-palette: map.get($config, 'primary');
+    $caption-color: material.get-color-from-palette($primary-palette, text);
+}
+
+@mixin typography($config) {
+    $typography-config: material.get-typography-config($config);
+}

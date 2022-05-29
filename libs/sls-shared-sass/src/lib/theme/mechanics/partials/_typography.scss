@@ -1,0 +1,44 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
+
+@each $class-name, $props in $typography {
+  .#{$class-name} {
+    @each $prop, $value in $props {
+      // output font-family properties
+      @if ($prop == 'font-family') {
+        @include font-props($value);
+
+        // Photoshop uses "tracking" to measure letter spacing so we need to convert it
+      } @else if ($prop == 'tracking') {
+        // it takes in a base font size so get that here:
+        $font-size-base: mapDeepGet($typography, $class-name, 'font-size');
+        letter-spacing: psTrackingToPx($value, 'rem', $font-size-base) !important;
+      } @else {
+        // convert to rem if in px
+        @if (endsWith('#{$value}', 'px')) {
+          $value: getRem($value);
+        }
+
+        // if no other processing is needed, print the final property
+        #{$prop}: #{$value} !important;
+      }
+    }
+  }
+
+  // a size only class to use for things like font icons to match headers
+  .#{$class-name}-size {
+    $size: mapDeepGet($typography, $class-name, 'font-size');
+
+    // convert to rem if in px
+    @if (endsWith('#{$size}', 'px')) {
+      $size: getRem($size);
+    }
+
+    font-size: $size !important;
+  }
+}

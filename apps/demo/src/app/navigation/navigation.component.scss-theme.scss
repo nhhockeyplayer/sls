@@ -1,13 +1,6 @@
-@use 'sass:list';
 @use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
-
-@use '@angular/material' as mat;
-@use '@angular/material/theming' as theming;
-
-@import '@angular/material/theming';
+@use '@angular/material';
+@use '@angular/material/theming';
 
 @mixin app-navigation-theme($theme) {
   $background: map-get($theme, background);
@@ -16,8 +9,8 @@
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    $color-config: mat.get-color-config($theme);
-    $typography-config: mat.get-typography-config($theme);
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
     @if $color-config != null {
         @include app-navigation-color($color-config);
     }
