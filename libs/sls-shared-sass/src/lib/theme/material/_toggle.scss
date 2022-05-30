@@ -1,0 +1,231 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+
+@use '@angular/material';
+@use '@angular/material/theming';
+
+
+/* typography and color constants */
+$toggle-fontSize: 1rem;
+$toggle-lineHeight: 1.6;
+$toggle-label-textColor: #343741;
+$toggle-label-fontWeight: 700;
+
+/* capsule */
+$toggle-capsule-height: 28px;
+$toggle-capsule-width: 56px;
+$toggle-capsule-borderRadius: $toggle-capsule-width;
+$toggle-capsule-marginLeftRight: 16px;
+$toggle-capsule-defualt-color: #E6E6E6;
+
+$toggle-disabled-color: $toggle-capsule-defualt-color;
+$toggle-disabled-text-color: #707070;
+
+$active-color: #28A3AF;
+
+@mixin toggle-theme($theme) {
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
+
+    @if $color-config != null {
+        @include toggle-color($color-config);
+    }
+    @if $typography-config != null {
+        @include toggle-typography($typography-config);
+    }
+
+
+    .toggle-container {
+        .toggle-label {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            height: 44px;
+            min-height: 44px;
+
+            &.disabled {
+                cursor: not-allowed;
+                color: $toggle-disabled-text-color;
+            }
+        }
+    }
+
+    .mat-slide-toggle {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+
+        .mat-slide-toggle-bar {
+            height: $toggle-capsule-height;
+            width: $toggle-capsule-width;
+            border-radius: $toggle-capsule-borderRadius;
+            margin-left: $toggle-capsule-marginLeftRight;
+        }
+
+        .mat-slide-toggle-thumb-container {
+            width: 26px;
+            height: 24px;
+            top: 0;
+
+            .mat-slide-toggle-thumb {
+                width: 24px;
+                height: 24px;
+                box-shadow: none;
+            }
+        }
+
+        .mat-slide-toggle-content {
+            min-width: 1.75rem
+        }
+
+        &.mat-checked {
+            .mat-slide-toggle-bar {
+                background-color: $active-color;
+            }
+
+            .mat-slide-toggle-thumb-container {
+                transform: translate3d(30px, 0, 0);
+            }
+        }
+
+        &.mat-disabled {
+            opacity: 1;
+
+            .mat-slide-toggle-bar, &.mat-checked .mat-slide-toggle-bar {
+                cursor: not-allowed;
+            }
+
+            .mat-slide-toggle-thumb, &.mat-checked .mat-slide-toggle-thumb {
+                cursor: not-allowed;
+            }
+
+            .mat-slide-toggle-content {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .toggle--dynamicWidth {
+        justify-content: flex-end;
+
+        .toggle-label {
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+    }
+
+    .mat-ripple-element {
+        display: none !important;
+    }
+
+    .toggle-container {
+        div {
+            display: flex;
+            justify-content: flex-start;
+        }
+    }
+
+    @include toggle-responsive;
+}
+
+
+@mixin toggle-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+    $background: #FFFFFF;
+
+    @if material.get-color-from-palette($config, 'is-dark') {
+        $background: #303030;
+    }
+
+    $foreground: #101010;
+    $shadow-color: darken($background, 35%);
+    $active-thumb-border-color: #06748C;
+    $active-thumb-color: #fff;
+    $default-border-color: #919191;
+
+    .toggle-container {
+        .toggle-label {
+            &.disabled {
+                color: $toggle-disabled-text-color;
+            }
+        }
+
+        .mat-slide-toggle {
+            .mat-slide-toggle-bar {
+                background-color: $toggle-capsule-defualt-color;
+            }
+
+            .mat-slide-toggle-thumb-container {
+                .mat-slide-toggle-thumb {
+                    border: solid 2px $default-border-color;
+                }
+            }
+
+            .mat-slide-toggle-content {
+                color: $toggle-label-textColor;
+            }
+
+            &.mat-checked {
+                .mat-slide-toggle-bar {
+                    background-color: $active-color;
+                }
+
+                .mat-slide-toggle-thumb-container {
+                    .mat-slide-toggle-thumb {
+                        background-color: $active-thumb-color;
+                        border-color: $active-thumb-border-color;
+                    }
+                }
+            }
+
+            &.mat-disabled {
+                .mat-slide-toggle-bar, &.mat-checked .mat-slide-toggle-bar {
+                    background-color: $toggle-disabled-color;
+                }
+
+                .mat-slide-toggle-thumb, &.mat-checked .mat-slide-toggle-thumb {
+                    border-color: $toggle-disabled-color;
+                }
+
+                .mat-slide-toggle-content {
+                    color: $toggle-disabled-text-color;
+                }
+            }
+        }
+    }
+}
+
+@mixin toggle-typography($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+    .toggle-container {
+        font-size: $toggle-fontSize;
+        line-height: $toggle-lineHeight;
+        letter-spacing: 0.3px;
+
+        div {
+
+            .toggle-label {
+                font-weight: $toggle-label-fontWeight;
+            }
+        }
+    }
+
+}
+
+@mixin toggle-responsive() {
+
+}
+

@@ -18,4 +18,6 @@
     @include select.select-theme($config);
     @include toggle.toggle-theme($config);
     @include tooltip.tooltip-theme($config);
+
+    @debug('***SASS*** MAIN SASS-library theming lib components completed');
 }

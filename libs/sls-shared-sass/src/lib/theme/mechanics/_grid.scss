@@ -1,0 +1,66 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
+
+@use '_breakpoint';
+
+$grid-columns: 12;
+
+/* bring content container to bring congtent to central columnb on the page with max-width */
+.container {
+    width: 100%;
+    max-width: map-get(breakpoint.$grid-breakpoint, 'xxl');
+    margin: 0 auto;     // 0 top/bottom auto left/right, centralizes our content to central column on page
+    padding: 0 20px;    // 0 top/bottom 20px left/right
+    box-sizing: border-box; // padding + border (if we have one) is incorporated into the total width
+}
+
+// row of grid elements
+.row {
+    display: flex;          // every column inside will be flex-item
+    flex-flow: row wrap;    // if we have alot of diff ele in single row if screen gets smaller it will wrap to next row down
+}
+
+// classes to distribute content in a row
+// col classes
+// .col-xs-12 on extra small screens give this element a width of 12 columns to tak eup whole row in the grid (12)
+// .col-md-6 take up 6 cols of width on medium size screens and up
+// different width in columns
+// generate classes for all of the diff breakpoints
+// lets generate these column classes for each one of these breakpoints
+// outside in .. inside out... mixins & classes... usually we have class and we include the mixin...
+// BUT here we will defines the mixin and make the class on the inside to be found elsewhere
+
+// cycle thru 12 columns we have col-xs-1, col-xs-2, col-xs-3... col-sx-12, cycle thru & generate class for each one
+@mixin generate-grid-column-class-based-on-grid-breakpoints($size: 'lg') {
+    @for $i from 1 through $grid-columns {  // create class for each column
+        .col-#{$i}-#{$size} {
+            box-sizing: border-box;
+            flex-grow: 0;
+            width: math.div($i * 100%, $grid-columns);
+        }
+    }
+}
+
+@include breakpoint.xs {
+    @include generate-grid-column-class-based-on-grid-breakpoints('xs')
+}
+@include breakpoint.sm {
+    @include generate-grid-column-class-based-on-grid-breakpoints('sm')
+}
+@include breakpoint.md {
+    @include generate-grid-column-class-based-on-grid-breakpoints('md')
+}
+@include breakpoint.lg {
+    @include generate-grid-column-class-based-on-grid-breakpoints('lg')
+}
+@include breakpoint.xl {
+    @include generate-grid-column-class-based-on-grid-breakpoints('xl')
+}
+@include breakpoint.xxl {
+    @include generate-grid-column-class-based-on-grid-breakpoints('xxl')
+}

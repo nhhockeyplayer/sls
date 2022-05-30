@@ -1,0 +1,86 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+
+@use '@angular/material';
+@use '@angular/material/theming';
+
+@mixin radio-theme($theme) {
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
+
+    @if $color-config != null {
+        @include radio-color($color-config);
+    }
+    @if $typography-config != null {
+        @include radio-typography($typography-config);
+    }
+    @include radio-responsive;
+}
+
+
+@mixin radio-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+    .mat-radio-group {
+        margin: 32px 0;
+    }
+
+    .mat-radio-button {
+        margin-bottom: 24px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:only-child {
+            margin-bottom: 24px;
+        }
+
+        &:hover {
+            .mat-radio-outer-circle {
+                border-color: #28A3AF;
+            }
+        }
+
+        &.cdk-focused {
+            .mat-radio-outer-circle {
+                border: solid 2px #28A3AF !important;
+            }
+        }
+    }
+
+    .mat-radio-button .mat-ripple-element {
+        display: none !important;
+    }
+
+    .mat-radio-outer-circle {
+        border-width: 1px !important;
+    }
+
+    .mat-radio-button.mat-accent .mat-radio-inner-circle {
+        background-color: #565656;
+    }
+
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: rgba(0, 0, 0, 0.54);
+    }
+}
+
+@mixin radio-typography($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+}
+
+@mixin radio-responsive() {
+}

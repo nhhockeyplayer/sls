@@ -56,9 +56,7 @@ $grid-breakpoint: (
 @import 'apps/demo/src/app/navigation/navigation.component.scss-theme';
 @import 'apps/demo/src/app/modal/modal.component.scss-theme';
 
-@mixin app-typography($typography-config: $root-typography) {
-    @include material.all-component-typographies($typography-config);    // mat-core
-
+@mixin apply-app-typography($typography-config: $root-typography) {
     @include app-component-typography($typography-config);               // feature components
     @include app-navigation-typography($typography-config);
     @include app-modal-typography($typography-config);

@@ -4,7 +4,7 @@
 @import 'apps/demo/src/app/navigation/navigation.component.scss-theme';
 @import 'apps/demo/src/app/modal/modal.component.scss-theme';
 
-@mixin app-theme($theme) {
+@mixin apply-app-theme($theme) {
     @include material.all-component-themes($theme);  // mat-core
 
     @include app-component-theme($theme);           // feature components

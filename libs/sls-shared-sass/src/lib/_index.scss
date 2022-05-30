@@ -4,22 +4,42 @@
 @use 'sass:math';
 @use 'sass:string';
 
-/* partials */
-@forward 'theme/mechanics/_default';
-@forward 'theme/mechanics/_constant';
-@forward 'theme/mechanics/_breakpoint';
+/**
+ *  As a sass developer you should be acclimated to
+ *      o   run loops to generate sets of classes
+ *      o   create maps & variables & mixins
+ *      o   project API from @forward sass libraries to show/hide private/public interfaces
+ */
+
+/* partials mechamics GRM Global Retail Mgt Design System */
 @forward 'theme/mechanics/_brand';
+@forward 'theme/mechanics/_breakpoint';
+@forward 'theme/mechanics/_colors';
+@forward 'theme/mechanics/_constant';
+@forward 'theme/mechanics/_functions';
+@forward 'theme/mechanics/_grid';
 @forward 'theme/mechanics/_layout';
 @forward 'theme/mechanics/_mixin';
 @forward 'theme/mechanics/_partial';
 @forward 'theme/mechanics/_placeholder';
 
 /* component theming */
-@forward 'theme/material/_button' as button-* show button-theme, button-color, button-typography;
-@forward 'theme/material/_datepicker' as datepicker-* show datepicker-theme, datepicker-color, datepicker-typography;
-@forward 'theme/material/_radio' as radio-* show radio-theme, radio-color, radio-typography;
+@forward 'theme/material/_button' as button-* show button-color, button-theme, button-typography;
+@forward 'theme/material/_checkbox' as checkbox-* show checkbox-color, checkbox-typography, checkbox-theme;
+@forward 'theme/material/_datepicker' as datepicker-* show datepicker-color, datepicker-typography, datepicker-theme;
+@forward 'theme/material/_input' as input-* show input-color, input-typography, input-theme;
+@forward 'theme/material/_page' as page-* show page-color, page-typography, page-theme;
+@forward 'theme/material/_radio' as radio-* show radio-color, radio-typography, radio-theme;
+@forward 'theme/material/_select' as select-* show select-color, select-typography, select-theme;
+@forward 'theme/material/_toggle' as toggle-* show toggle-color, toggle-typography, toggle-theme;
+@forward 'theme/material/_tooltip' as tooltip-* show tooltip-color, tooltip-typography, tooltip-theme;
 
 /* Theme bundles */
-@forward 'theme/_all-theme' as theme-* show all-component-theme;
-@forward 'theme/_all-color' as color-* show all-component-color;
-@forward 'theme/_all-typography' as typography-* show all-component-typography;
+@forward 'theme/all-theme' as theme-* show all-theme;
+@forward 'theme/all-color' as color-* show all-color;
+@forward 'theme/all-typography' as typography-* show all-typography;
+
+/* Theme API */
+@forward 'theme/_theme' as lib-* show $light-theme, $dark-theme, $font-config, $mobile-font-config;
+
+

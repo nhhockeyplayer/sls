@@ -5,19 +5,93 @@
 @use 'libs/sls-shared-sass/src/lib/theme/theme';
 @use 'libs/sls-shared-sass/src/lib' as lib;
 
-@use 'root-theme/_all-component' as root;
+@use 'app-theme/_all-component' as app-theme;
+@use 'app-theme/_typography' as app-typography;
 
 @include material.core();
 
-@include material.all-component-themes(theme.$light-theme);
-@include theme.theme(theme.$light-theme);
-@include root.cascade(theme.$light-theme);
+@include material.all-component-themes(theme.$light-theme); // material base styles dark/light
+@include theme.apply-library-theme(theme.$light-theme);     // extra grm base widget styles dark/light
+@include app-theme.cascade(theme.$light-theme);             // app feature styles dark/light
 
-.darkMode {
-    @include material.all-component-themes(theme.$dark-theme);
-    @include theme.theme(theme.$dark-theme);
-    @include root.cascade(theme.$dark-theme);
+html, body {
+    height: 100vh;
+    padding: 0;
 }
+
+body {
+    margin: 0;
+}
+
+body.lightMode {
+    @include material.all-component-themes(theme.$light-theme);  // material base styles dark/light
+    @include theme.apply-library-theme(theme.$light-theme);      // extra grm base widget styles dark/light
+    @include app-theme.cascade(theme.$light-theme);              // app feature styles dark/light
+}
+
+body.darkMode {
+    @include material.all-component-themes(theme.$dark-theme);  // material base styles dark/light
+    @include theme.apply-library-theme(theme.$dark-theme);      // extra grm base widget styles dark/light
+    @include app-theme.cascade(theme.$dark-theme);              // app feature styles dark/light
+}
+
+@media screen and (max-width: 479px) {
+    @include material.all-component-typographies(theme.$mobile-font-config);
+    @include theme.apply-library-typography(theme.$mobile-font-config);
+    @include app-typography.apply-app-typography(theme.$mobile-font-config);
+}
+
+
+
+.full-width-container {
+    width: 100%;
+    display: flex;
+    flex-flow:row;
+}
+.full-height-container {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+mat-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.step-icon {
+    height: 20px;
+    margin-right: 8px;
+    margin-top: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//$color-config: material.get-color-config(theme.$dark-theme);
+//@include material.all-component-themes(theme.$light-theme);
+//@include theme.apply-library-theme(theme.$light-theme);
+//@include app-theme.cascade(theme.$light-theme);
+
+//.darkMode {
+//    @include material.all-component-themes(theme.$dark-theme);
+//    @include theme.theme(theme.$dark-theme);
+//    @include app-theme.cascade(theme.$dark-theme);
+//}
 
 
 

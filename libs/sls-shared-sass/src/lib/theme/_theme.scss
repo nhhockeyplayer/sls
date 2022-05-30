@@ -6,18 +6,18 @@
 @use '@angular/material';
 @use '@angular/material/_theming';
 
-@use '_all-theme' as all-theme;
-@use '_all-color' as all-color;
-@use '_all-typography' as all-typography;
+@use '_all-theme' as lib-theme;
+@use '_all-color' as lib-color;
+@use '_all-typography' as lib-typography;
 
 $font-family: Roboto, 'Helvetica Neue', sans-serif;
 
-$my-custom-level: material.define-typography-level(
+$typography-level: material.define-typography-level(
     $font-family: Roboto,
     $font-weight: 400,
     $font-size: 1rem,
     $line-height: 1,
-    $letter-spacing: normal,
+    $letter-spacing: normal
 );
 
 $font-config: material.define-typography-config(
@@ -34,6 +34,23 @@ $font-config: material.define-typography-config(
     $body-1: material.define-typography-level(16px, 25px, 400, $font-family, 0.0156em),
     $caption: material.define-typography-level(14px, 22px, 400, $font-family, 0.0286em),
     $button: material.define-typography-level(16px, 16px, 500, $font-family, 0.0781em),
+    $input: material.define-typography-level(inherit, 1.125, 400, $font-family, 1.5px)
+);
+
+$mobile-font-config: material.define-typography-config(
+    $font-family: 'Roboto, \"Helvetica Neue\", sans-serif',
+    $display-4: material.define-typography-level(76px, 90px, 300, $font-family, -0.05em),
+    $display-3: material.define-typography-level(64px, 77px, 400, $font-family, -0.02em),
+    $display-2: material.define-typography-level(56px, 67px, 400, $font-family, -0.005em),
+    $display-1: material.define-typography-level(48px, 58px, 400, $font-family),
+    $headline: material.define-typography-level(40px, 48px, 400, $font-family),
+    $title: material.define-typography-level(36px, 43px, 500, $font-family),
+    $subheading-2: material.define-typography-level(28px, 33px, 400, $font-family, 0.0094em),
+    $subheading-1: material.define-typography-level(20px, 24px, 500, $font-family, 0.0067em),
+    $body-2: material.define-typography-level(18px, 29px, 500, $font-family, 0.0156em),
+    $body-1: material.define-typography-level(16px, 25px, 400, $font-family, 0.0156em),
+    $button: material.define-typography-level(16px, 16px, 500, $font-family, 0.0781em),
+    $caption: material.define-typography-level(14px, 22px, 400, $font-family, 0.0286em),
     $input: material.define-typography-level(inherit, 1.125, 400, $font-family, 1.5px)
 );
 
@@ -381,21 +398,9 @@ $font-config: material.define-typography-config(
 //        )
 //);
 
-@include material.all-component-themes($light-theme);
-
-
-/* theme, color, typography, density */
-@include all-theme.all-component-theme($light-theme);
-$color-config: material.get-color-config($light-theme);
-$typography-config: material.get-typography-config($light-theme);
-
-$is-dark-theme: map-get($color-config, is-dark);
-@debug (' is dark ===> ', $is-dark-theme);
-
-@mixin theme($theme) {
-    @include all-theme.all-component-theme($theme);
-    @include all-color.all-component-color($theme);
-    @include all-typography.all-component-typography($theme);
+/* order important, must be before actual usage below !!! */
+@mixin apply-library-theme($theme) {
+    @include lib-theme.all-theme($theme);
 
     $color-config: material.get-color-config($theme);
     $primary-palette: map.get($color-config, 'primary');
@@ -403,19 +408,45 @@ $is-dark-theme: map-get($color-config, is-dark);
 
     $color-config: material.get-color-config($theme);
     @if $color-config != null {
-        @include color($color-config);
+        @include apply-library-color($color-config);
     }
     $typography-config: material.get-typography-config($theme);
     @if $typography-config != null {
-        @include typography($typography-config);
+        @include apply-library-typography($typography-config);
     }
+
+    @debug('***SASS*** MAIN SASS-Library theming core components completed');
 }
 
-@mixin color($config) {
+@mixin apply-library-color($config) {
     $primary-palette: map.get($config, 'primary');
     $caption-color: material.get-color-from-palette($primary-palette, text);
+    @include lib-color.all-color($config);
 }
 
-@mixin typography($config) {
+@mixin apply-library-typography($config) {
     $typography-config: material.get-typography-config($config);
+    @include lib-typography.all-typography($config);
 }
+
+//
+//@include material.core();
+//
+//@include material.all-component-themes($light-theme);
+
+/* theme, color, typography, density */
+//@include lib-theme.all-theme($light-theme);
+//@include apply-theme($light-theme);
+//$color-config: material.get-color-config($light-theme);
+//$typography-config: material.get-typography-config($light-theme);
+//
+//$is-dark-theme: map-get($color-config, is-dark);
+//@debug (' is dark ===> ', $is-dark-theme);
+
+
+//.darkMode {
+    //@include material.all-component-themes($dark-theme);
+    //@include lib-theme.all-theme($dark-theme);
+    //@include apply-theme($dark-theme);
+//}
+

@@ -1,0 +1,134 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+
+@use '@angular/material';
+@use '@angular/material/theming';
+
+@use '../mechanics/_functions' as fn;
+
+@mixin checkbox-theme($theme) {
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
+
+    @if $color-config != null {
+        @include checkbox-color($color-config);
+    }
+    @if $typography-config != null {
+        @include checkbox-typography($typography-config);
+    }
+
+    .checkbox-group {
+        margin: 32px 0;
+
+        .mat-checkbox {
+            margin-bottom: 24px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &:only-child {
+                margin-bottom: 24px;
+            }
+
+            &:hover {
+                .mat-checkbox-frame, .mat-checkbox-background {
+                    border-color: #28A3AF;
+                }
+            }
+
+            .mat-checkbox-frame {
+                border-width: 1px;
+                transition: border fn.interaction('enter');
+                background-color: #fff;
+            }
+
+            .mat-checkbox-checkmark {
+                opacity: 0;
+                transition: opacity fn.interaction('exit');
+                transform: fn.interaction('exit');
+            }
+
+            &.mat-checkbox-checked {
+                .mat-checkbox-checkmark {
+                    opacity: 1;
+                    transform: translateY(0px);
+                    transition: opacity fn.interaction('enter'), transform fn.interaction('enter');
+
+                    .mat-checkbox-checkmark-path {
+                        transform: scale(1.2) translate(-3px, -1px) rotate(-8deg);
+                    }
+                }
+            }
+
+            &.cdk-focused {
+                .mat-checkbox-frame,
+                .mat-checkbox-background {
+                    border: 2px solid #28A3AF;
+                }
+            }
+        }
+    }
+
+    .mat-checkbox-layout .mat-checkbox-label {
+        line-height: 20px !important;
+        font-size: 1rem;
+    }
+
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color: #fff !important;
+        border: solid 1px #919191;
+    }
+
+    .mat-checkbox-checked .mat-checkbox-checkmark .mat-checkbox-checkmark-path {
+        stroke: #1a1446 !important;
+        stroke-width: 1.3px;
+    }
+
+    .mat-checkbox .mat-ripple-element {
+        display: none !important;
+    }
+
+
+    @keyframes zoom-in-out {
+        0% {
+            transform: scale(1, 1);
+        }
+
+        50% {
+            transform: scale(1.3, 1.3);
+        }
+
+        100% {
+            transform: scale(1, 1);
+        }
+    }
+
+    $interactions-ease-out: cubic-bezier(0, 0, 0.58, 1);
+}
+
+
+@mixin checkbox-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+}
+
+@mixin checkbox-typography($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+}
+
+
+
+

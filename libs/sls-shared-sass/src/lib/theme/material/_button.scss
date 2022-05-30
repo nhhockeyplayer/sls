@@ -1,0 +1,97 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+
+@use '@angular/material';
+@use '@angular/material/theming';
+
+@mixin button-theme($theme) {
+    .mat-fab,
+    .mat-mini-fab,
+    .mat-raised-button {
+        &.mat-primary {
+            background-color: #99e5ea;
+            border-color: #99e5ea;
+            color: #1a1446;
+            -webkit-box-shadow: 0 3px 0 0 #06748c;
+            box-shadow: 0 3px 0 0 #06748c;
+        }
+
+        &.mat-accent {
+            background-color: #ffffff;
+            border: 1px solid #1a1446;
+            color: #1a1446;
+            -webkit-box-shadow: 0 3px 0 0 #c0bfc0;
+            box-shadow: 0 3px 0 0 #c0bfc0;
+        }
+
+        &:hover {
+            background-color: #06748c;
+            border: 1px solid #06748c;
+            color: #fff;
+            -webkit-box-shadow: 0 3px 0 0 #1a1446;
+            box-shadow: 0 3px 0 0 #1a1446;
+        }
+    }
+
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
+
+    @if $color-config != null {
+        @include button-color($color-config);
+    }
+    @if $typography-config != null {
+        @include button-typography($typography-config);
+    }
+    @include button-responsive;
+}
+
+
+@mixin button-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+}
+
+@mixin button-typography($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+}
+
+@mixin button-responsive() {
+
+    @xs {
+        color: #1a468c;
+        background-color: #050f0f;
+    }
+    @sm {
+        color: #ff18e9;
+        background-color: #7caaaa;
+    }
+    @md {
+        color: #07155b;
+        background-color: #911e55;
+    }
+    @lg {
+        color: #dcc125;
+        background-color: #4458a8;
+    }
+    @xl {
+        color: red;
+        background-color: cyan;
+    }
+    @xxl {
+        color: #a3441f;
+        background-color: #2ee533;
+    }
+
+}
+

@@ -1,0 +1,96 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+
+@use '@angular/material';
+@use '@angular/material/theming';
+
+@mixin page-theme($theme) {
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
+
+    @if $color-config != null {
+        @include page-color($color-config);
+    }
+    @if $typography-config != null {
+        @include page-typography($typography-config);
+    }
+    @include page-responsive;
+}
+
+
+@mixin page-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+}
+
+@mixin page-typography($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
+    h1 {
+        @include material.typography-level($config, 'headline');
+    }
+
+    h2 {
+        @include material.typography-level($config, 'title');
+    }
+
+    h3 {
+        @include material.typography-level($config, 'subheading-2');
+    }
+
+    h4 {
+        @include material.typography-level($config, 'subheading-1');
+    }
+
+    body {
+        @include material.typography-level($config, 'body-1');
+    }
+
+    .article {
+        @include material.typography-level($config, 'body-2');
+    }
+
+    .caption {
+        @include material.typography-level($config, 'caption');
+    }
+}
+
+@mixin page-responsive() {
+
+    @xs {
+        color: #1a468c;
+        background-color: #050f0f;
+    }
+    @sm {
+        color: #ff18e9;
+        background-color: #7caaaa;
+    }
+    @md {
+        color: #07155b;
+        background-color: #911e55;
+    }
+    @lg {
+        color: #dcc125;
+        background-color: #4458a8;
+    }
+    @xl {
+        color: red;
+        background-color: cyan;
+    }
+    @xxl {
+        color: #a3441f;
+        background-color: #2ee533;
+    }
+
+}

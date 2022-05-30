@@ -6,7 +6,7 @@
 @import '../../../../../../../../../node_modules/bootstrap/scss/bootstrap-grid';
 
 
-@include material.core();
+//@include material.core();
 
 $starter-primary: mat-palette(theming.$mat-indigo, 800, 300, 900);
 $starter-accent: mat-palette(theming.$mat-light-blue);

@@ -31,13 +31,13 @@
         color: theming.mat-color($foreground, text);
 
 
-        @debug('accent---> ', map.get($config, accent));
-        @debug('$accent---> ', $accent);
-        @debug('$primary--->', $primary);
-        @debug('$accent--->', $accent);
-        @debug('$warn--->', $warn);
-        @debug('$background--->', $background);
-        @debug('$foreground--->', $foreground);
+        //@debug('accent---> ', map.get($config, accent));
+        //@debug('$accent---> ', $accent);
+        //@debug('$primary--->', $primary);
+        //@debug('$accent--->', $accent);
+        //@debug('$warn--->', $warn);
+        //@debug('$background--->', $background);
+        //@debug('$foreground--->', $foreground);
 
         @xs {
             color: #1a468c;

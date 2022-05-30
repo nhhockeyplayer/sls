@@ -214,7 +214,7 @@ $app-warn: theming.mat-palette($red-palette, A200, A100, A400);
 @import 'apps/demo/src/app/navigation/navigation.component.scss-theme';
 @import 'apps/demo/src/app/modal/modal.component.scss-theme';
 
-@mixin app-color($color-config) {
+@mixin apply-app-color($color-config) {
     @include material.all-component-colors($color-config);   // mat-core
 
     @include app-component-color($color-config);       // feature components

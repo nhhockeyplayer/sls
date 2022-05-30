@@ -1,0 +1,20 @@
+@use 'sass:math';
+
+$interactions-ease-out: cubic-bezier(0, 0, 0.58, 1);
+
+/* from legacy _foundation.scss */
+@function interaction( $typee: 'enter', $base-speed: 0.2s, $delay-steps: 0, $easing: $interactions-ease-out, $instant: false ) {
+    $speed: $base-speed;
+
+    @if $typee == 'exit' {
+        $speed: math.div($base-speed, 2);
+    }
+
+    $delay: $delay-steps * $speed;
+
+    @if $instant {
+        $speed: 0s;
+    }
+
+    @return $speed $delay $easing;
+}
