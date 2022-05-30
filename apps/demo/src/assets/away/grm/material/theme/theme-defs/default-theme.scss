@@ -8,16 +8,16 @@
 
 //@include material.core();
 
-$starter-primary: mat-palette(theming.$mat-indigo, 800, 300, 900);
-$starter-accent: mat-palette(theming.$mat-light-blue);
-$starter-warn: mat-palette(theming.$mat-pink, 600);
+$starter-primary: define-palette(theming.$mat-indigo, 800, 300, 900);
+$starter-accent: define-palette(theming.$mat-light-blue);
+$starter-warn: define-palette(theming.$mat-pink, 600);
 
 $starter-theme: mat-light-theme($starter-primary, $starter-accent, $starter-warn);
 
 // Copy the palettes from your selected theme (usually theme.scss).
-$app-primary: mat-palette(theming.$mat-indigo, 800, 300, 900);
-$app-accent: mat-palette(theming.$mat-light-blue);
-$app-warn: mat-palette(theming.$mat-pink, 600);
+$app-primary: define-palette(theming.$mat-indigo, 800, 300, 900);
+$app-accent: define-palette(theming.$mat-light-blue);
+$app-warn: define-palette(theming.$mat-pink, 600);
 
 // ------------- new variables ------------ //
 $toolbar-breakpoint: 600px;
@@ -34,8 +34,8 @@ $grid-breakpoints: (
     lg: 992px,
     xl: 1200px
 );
-$success-colors: mat-palette(theming.$mat-green, 400);
-$warning-colors: mat-palette(theming.$mat-amber, 400);
+$success-colors: define-palette(theming.$mat-green, 400);
+$warning-colors: define-palette(theming.$mat-amber, 400);
 $primary: theming.mat-color($app-primary);
 $accent: theming.mat-color($app-accent);
 $warn: theming.mat-color($app-warn);

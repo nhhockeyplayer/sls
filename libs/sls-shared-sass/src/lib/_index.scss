@@ -35,9 +35,10 @@
 @forward 'theme/material/_tooltip' as tooltip-* show tooltip-color, tooltip-typography, tooltip-theme;
 
 /* Theme bundles */
-@forward 'theme/all-theme' as theme-* show all-theme;
-@forward 'theme/all-color' as color-* show all-color;
-@forward 'theme/all-typography' as typography-* show all-typography;
+@forward 'theme/_all-theme' as theme-* show all-theme;
+@forward 'theme/_all-color' as color-* show all-color;
+@forward 'theme/_all-typography' as typography-* show all-typography;
+@forward 'theme/_palettes-grades-fonts' as shared-*;
 
 /* Theme API */
 @forward 'theme/_theme' as lib-* show $light-theme, $dark-theme, $font-config, $mobile-font-config;

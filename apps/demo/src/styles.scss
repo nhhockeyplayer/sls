@@ -10,7 +10,7 @@
 
 @include material.core();
 
-@include material.all-component-themes(theme.$light-theme); // material base styles dark/light
+
 @include theme.apply-library-theme(theme.$light-theme);     // extra grm base widget styles dark/light
 @include app-theme.cascade(theme.$light-theme);             // app feature styles dark/light
 
@@ -23,13 +23,9 @@ body {
     margin: 0;
 }
 
-body.lightMode {
-    @include material.all-component-themes(theme.$light-theme);  // material base styles dark/light
-    @include theme.apply-library-theme(theme.$light-theme);      // extra grm base widget styles dark/light
-    @include app-theme.cascade(theme.$light-theme);              // app feature styles dark/light
-}
+@include material.all-component-themes(theme.$light-theme); // material base styles dark/light
 
-body.darkMode {
+.darkMode {
     @include material.all-component-themes(theme.$dark-theme);  // material base styles dark/light
     @include theme.apply-library-theme(theme.$dark-theme);      // extra grm base widget styles dark/light
     @include app-theme.cascade(theme.$dark-theme);              // app feature styles dark/light

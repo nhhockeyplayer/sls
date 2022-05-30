@@ -1,6 +1,13 @@
+@use 'sass:list';
 @use 'sass:map';
-@use '../../../../../../../node_modules/@angular/material/index';
-@use '../../../../../../../node_modules/@angular/material/theming';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/_theming';
+
+@use 'bootstrap/scss/bootstrap-reboot';
+@use 'bootstrap/scss/bootstrap-grid';
 
 @include material.core();
 
@@ -15,51 +22,27 @@
 @import 'theme/styles-reset';
 @import 'theme/styles-reset.scss-theme';
 
-//@import '~@workspace/shared-widgets/widgets/big-input/big-input/big-input.component.scss-theme';
-//@import '~@workspace/shared-features/about/about/about.component.scss-theme';
-//@import '~@workspace/shared-features/user/user-list.component.scss-theme';
-//@import '~@workspace/shared-features/user/admin/admin/admin.component.scss-theme';
-//@import '~@workspace/shared-features/user/usertable/usertable.component.scss-theme';
-//@import '~@workspace/shared-features/login/login/login.component.scss-theme';
-
-@import '../../../shared-widgets/src/lib/widgets/big-input/big-input/big-input.component.scss-theme';
-@import 'libs/shared-features/src/lib/about/about/about.component.scss-theme';
-@import 'libs/shared-features/src/lib/user/user-list.component.scss-theme';
-@import 'libs/shared-features/src/lib/user/admin/admin/admin.component.scss-theme';
-@import 'libs/shared-features/src/lib/user/usertable/usertable.component.scss-theme';
-@import 'libs/shared-features/src/lib/login/login/login.component.scss-theme';
-
 @mixin custom-components-theme($theme) {
     @include styles-reset-theme($theme);
-    //@include starter-app-component-theme($theme);
-
-    //@include starter-big-input-component-theme($theme);
-
-    //@include app-tabs-component-theme($theme);
-    @include app-about-component-theme($theme);
-    @include app-user-list-component-theme($theme);
-    @include app-admin-component-theme($theme);
-    @include app-usertable-component-theme($theme);
-    @include app-tab-login-component-theme($theme);
 }
 
 .default-theme {
-    @include angular-material-theme($starter-theme);
+    @include theming.all-component-themes($starter-theme);
     @include custom-components-theme($starter-theme);
 }
 
 .light-theme {
-    @include angular-material-theme($starter-light-theme);
+    @include theming.all-component-themes($starter-light-theme);
     @include custom-components-theme($starter-light-theme);
 }
 
 .black-theme {
-    @include angular-material-theme($starter-black-theme);
+    @include theming.all-component-themes($starter-black-theme);
     @include custom-components-theme($starter-black-theme);
 }
 
 .nature-theme {
-    @include angular-material-theme($starter-nature-theme);
+    @include theming.all-component-themes($starter-nature-theme);
     @include custom-components-theme($starter-nature-theme);
 }
 

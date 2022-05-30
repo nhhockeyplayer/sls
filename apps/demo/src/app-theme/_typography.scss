@@ -2,59 +2,16 @@
 @use '@angular/material';
 @use '@angular/material/theming';
 
+@import 'apps/demo/src/app/app.component.scss-theme';
+@import 'apps/demo/src/app/navigation/navigation.component.scss-theme';
+@import 'apps/demo/src/app/modal/modal.component.scss-theme';
+
 $root-spacing: 0.25em;
-//$root-border-color: theming.$mat-teal;
-//$root-border-color: material.get-color-from-palette(
-//        material.$teal-palette,
-//        map.get(material.$teal-palette, accent)
-//);
 
 $root-typography: theming.mat-typography-config(
     $font-family: 'Roboto',
     $title: theming.mat-typography-level(24px, 32px, bold)
 );
-
-$grid-breakpoint: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px
-);
-
-@mixin xs {
-    @media (min-width: map-get($grid-breakpoint, 'xs')) {
-        @content;
-    }
-}
-
-@mixin sm {
-    @media (min-width: map-get($grid-breakpoint, 'sm')) {
-        @content;
-    }
-}
-
-@mixin md {
-    @media (min-width: map-get($grid-breakpoint, 'md')) {
-        @content;
-    }
-}
-
-@mixin lg {
-    @media (min-width: map-get($grid-breakpoint, 'lg')) {
-        @content;
-    }
-}
-
-@mixin xl {
-    @media (min-width: map-get($grid-breakpoint, 'xl')) {
-        @content;
-    }
-}
-
-@import 'apps/demo/src/app/app.component.scss-theme';
-@import 'apps/demo/src/app/navigation/navigation.component.scss-theme';
-@import 'apps/demo/src/app/modal/modal.component.scss-theme';
 
 @mixin apply-app-typography($typography-config: $root-typography) {
     @include app-component-typography($typography-config);               // feature components

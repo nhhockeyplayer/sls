@@ -2,9 +2,9 @@
 @use '../../../../../../../../../node_modules/@angular/material/index';
 @use '../../../../../../../../../node_modules/@angular/material/theming';
 
-$starter-light-primary: mat-palette(theming.$mat-grey, 200, 500, 300);
-$starter-light-accent: mat-palette(theming.$mat-brown, 200);
-$starter-light-warn: mat-palette(theming.$mat-deep-orange, 200);
+$starter-light-primary: define-palette(theming.$mat-grey, 200, 500, 300);
+$starter-light-accent: define-palette(theming.$mat-brown, 200);
+$starter-light-warn: define-palette(theming.$mat-deep-orange, 200);
 
 $starter-light-theme: mat-light-theme(
   $starter-light-primary,
@@ -13,9 +13,9 @@ $starter-light-theme: mat-light-theme(
 );
 
 // Copy the palettes from your selected theme (usually theme.scss).
-$app-primary: mat-palette(theming.$mat-grey, 200, 500, 300);
-$app-accent: mat-palette(theming.$mat-brown, 200);
-$app-warn: mat-palette(theming.$mat-deep-orange, 200);
+$app-primary: define-palette(theming.$mat-grey, 200, 500, 300);
+$app-accent: define-palette(theming.$mat-brown, 200);
+$app-warn: define-palette(theming.$mat-deep-orange, 200);
 
 
 // ------------- new variables ------------ //
@@ -33,8 +33,8 @@ $grid-breakpoints: (
     lg: 992px,
     xl: 1200px
 );
-$success-colors: mat-palette(theming.$mat-green, 400);
-$warning-colors: mat-palette(theming.$mat-amber, 400);
+$success-colors: define-palette(theming.$mat-green, 400);
+$warning-colors: define-palette(theming.$mat-amber, 400);
 $primary: theming.mat-color($app-primary);
 $accent: theming.mat-color($app-accent);
 $warn: theming.mat-color($app-warn);
