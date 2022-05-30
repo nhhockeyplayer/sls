@@ -1,9 +1,21 @@
-@use 'material/_button' as button;
-@use 'material/_datepicker' as datepicker;
-@use 'material/_radio' as radio;
+@use 'material/button' as button;
+@use 'material/checkbox' as checkbox;
+@use 'material/datepicker' as datepicker;
+@use 'material/input' as input;
+@use 'material/page' as page;
+@use 'material/radio' as radio;
+@use 'material/select' as select;
+@use 'material/toggle' as toggle;
+@use 'material/tooltip' as tooltip;
 
-@mixin all-component-theme($theme) {
-  @include button.button-theme($theme);
-  @include datepicker.datepicker-theme($theme);
-  @include radio.radio-theme($theme);
+@mixin all-theme($config) {
+    @include button.button-theme($config);
+    @include checkbox.checkbox-theme($config);
+    @include datepicker.datepicker-theme($config);
+    @include input.input-theme($config);
+    @include page.page-theme($config);
+    @include radio.radio-theme($config);
+    @include select.select-theme($config);
+    @include toggle.toggle-theme($config);
+    @include tooltip.tooltip-theme($config);
 }

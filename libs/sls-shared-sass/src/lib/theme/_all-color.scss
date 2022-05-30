@@ -1,17 +1,21 @@
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
-@use '@angular/material';
-@use '@angular/material/_theming';
+@use 'material/button' as button;
+@use 'material/checkbox' as checkbox;
+@use 'material/datepicker' as datepicker;
+@use 'material/input' as input;
+@use 'material/page' as page;
+@use 'material/radio' as radio;
+@use 'material/select' as select;
+@use 'material/toggle' as toggle;
+@use 'material/tooltip' as tooltip;
 
-@use 'material/_button' as button;
-@use 'material/_datepicker' as datepicker;
-@use 'material/_radio' as radio;
-
-@mixin all-component-color($color-config) {
-  @include button.button-color($color-config);
-  @include datepicker.datepicker-color($color-config);
-  @include radio.radio-color($color-config);
+@mixin all-color($config) {
+    @include button.button-color($config);
+    @include checkbox.checkbox-color($config);
+    @include datepicker.datepicker-color($config);
+    @include input.input-color($config);
+    @include page.page-color($config);
+    @include radio.radio-color($config);
+    @include select.select-color($config);
+    @include toggle.toggle-color($config);
+    @include tooltip.tooltip-color($config);
 }

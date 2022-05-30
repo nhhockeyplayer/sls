@@ -1,12 +1,21 @@
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
-@use '@angular/material';
-@use '@angular/material/_theming';
+@use 'material/button' as button;
+@use 'material/checkbox' as checkbox;
+@use 'material/datepicker' as datepicker;
+@use 'material/input' as input;
+@use 'material/page' as page;
+@use 'material/radio' as radio;
+@use 'material/select' as select;
+@use 'material/toggle' as toggle;
+@use 'material/tooltip' as tooltip;
 
-@use 'material/_button' as button;
-@use 'material/_datepicker' as datepicker;
-@use 'material/_radio' as radio;
-
+@mixin all-density($config) {
+    //@include button.button-density($config);
+    //@include checkbox.checkbox-density($config);
+    //@include datepicker.datepicker-density($config);
+    //@include input.input-density($config);
+    //@include page.page-density($config);
+    //@include radio.radio-density($config);
+    //@include select.select-density($config);
+    //@include toggle.toggle-density($config);
+    //@include tooltip.tooltip-density($config);
+}

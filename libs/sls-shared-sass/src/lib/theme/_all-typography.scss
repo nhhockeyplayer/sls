@@ -1,17 +1,21 @@
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
-@use '@angular/material';
-@use '@angular/material/_theming';
+@use 'material/button' as button;
+@use 'material/checkbox' as checkbox;
+@use 'material/datepicker' as datepicker;
+@use 'material/input' as input;
+@use 'material/page' as page;
+@use 'material/radio' as radio;
+@use 'material/select' as select;
+@use 'material/toggle' as toggle;
+@use 'material/tooltip' as tooltip;
 
-@use 'material/_button' as button;
-@use 'material/_datepicker' as datepicker;
-@use 'material/_radio' as radio;
-
-@mixin all-component-typography($typography-config) {
-  @include button.button-typography($typography-config);
-  @include datepicker.datepicker-typography($typography-config);
-  @include radio.radio-typography($typography-config);
+@mixin all-typography($config) {
+    @include button.button-typography($config);
+    @include checkbox.checkbox-typography($config);
+    @include datepicker.datepicker-typography($config);
+    @include input.input-typography($config);
+    @include page.page-typography($config);
+    @include radio.radio-typography($config);
+    @include select.select-typography($config);
+    @include toggle.toggle-typography($config);
+    @include tooltip.tooltip-typography($config);
 }

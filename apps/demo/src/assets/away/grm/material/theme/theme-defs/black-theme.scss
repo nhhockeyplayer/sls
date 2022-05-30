@@ -1,6 +1,6 @@
 @use 'sass:map';
-@use '@angular/material';
-@use '@angular/material/theming';
+@use '../../../../../../../../../node_modules/@angular/material/index';
+@use '../../../../../../../../../node_modules/@angular/material/theming';
 
 $starter-black-primary: mat-palette(theming.$mat-grey, 700, 300, 900);
 $starter-black-accent: mat-palette(theming.$mat-blue-grey, 400);
