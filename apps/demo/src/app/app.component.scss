@@ -5,8 +5,16 @@
 //@use 'libs/sls-shared-sass/src/lib/theme/theme';
 //@use 'libs/sls-shared-sass/src/lib/theme/mechanics/breakpoint';
 
-.container {
+.app-root {
     display: flex;
+    flex-direction: column;
     padding: 2em;
+
+    border: 1px;
+    border-color: accent;
 }
 
+.root-main {
+    display: flex;
+    flex-direction: row;
+}

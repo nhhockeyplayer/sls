@@ -11,8 +11,8 @@
 @include material.core();
 
 
-//@include theme.apply-library-theme(theme.$light-theme);     // extra grm base widget styles dark/light
-//@include app-theme.cascade(theme.$light-theme);             // app feature styles dark/light
+@include theme.apply-library-theme(theme.$light-theme);     // extra grm base widget styles dark/light
+@include app-theme.cascade(theme.$light-theme);             // app feature styles dark/light
 //@import 'libs/sls-shared-sass/src/lib/theme/theme';
 
 html, body {
@@ -22,6 +22,10 @@ html, body {
 
 body {
     margin: 0;
+}
+
+.flex-fill {
+    flex: 1 1 auto;
 }
 
 //@include material.all-component-themes(theme.$light-theme); // material base styles dark/light
@@ -45,31 +49,8 @@ body.dark {
 }
 
 
-
-
-.full-width-container {
-    width: 100%;
-    display: flex;
-    flex-flow:row;
-}
-.full-height-container {
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-}
-
-.fill-remaining-space {
+.space-maintainer {
     flex: 1 1 auto;
-}
-mat-card {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.step-icon {
-    height: 20px;
-    margin-right: 8px;
-    margin-top: 4px;
 }
 
 

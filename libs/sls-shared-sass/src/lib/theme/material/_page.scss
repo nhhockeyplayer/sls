@@ -64,6 +64,10 @@
     .caption {
         @include material.typography-level($config, 'caption');
     }
+
+    mat-card {
+        margin: 2em;
+    }
 }
 
 @mixin page-responsive() {
