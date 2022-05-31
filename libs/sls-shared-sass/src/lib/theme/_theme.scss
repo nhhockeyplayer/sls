@@ -4,26 +4,42 @@
 @use 'sass:math';
 @use 'sass:string';
 @use '@angular/material';
-@use '@angular/material/_theming';
+@use '@angular/material/theming';
 
 @use '_all-theme' as lib-theme;
 @use '_all-color' as lib-color;
 @use '_all-typography' as lib-typography;
 
-@use 'palettes-grades-fonts' as pgNf;
+@use '_palettes-grades-fonts' as pgNf;
+@use 'mechanics/_reset' as reset;
+
+@use 'mechanics/_theme-generator' as tg;
 
 
-$light-primary-palette: material.define-palette(pgNf.$gray-color-grades);
-$light-accent-palette: material.define-palette(pgNf.$teal-color-grades);
-$dark-primary-palette: material.define-palette(pgNf.$gray-color-grades);
-$dark-accent-palette: material.define-palette(pgNf.$teal-color-grades);
-$warn-palette: material.define-palette(pgNf.$red-color-grades);
+//$light-primary-palette: material.define-palette(pgNf.$gray-color-grades);
+//$light-accent-palette: material.define-palette(pgNf.$red-palette);
+//$dark-primary-palette: material.define-palette(pgNf.$red-palette);
+//$dark-accent-palette: material.define-palette(pgNf.$teal-color-grades);
+//$warn-palette: material.define-palette(pgNf.$red-color-grades);
+
+//$app-primary: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
+//$app-accent: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
+//$app-warn: material.define-palette(theming.$mat-red, A200, A100, A400, 500);
+//$light-theme: theming.mat-light-theme($app-primary, $app-accent, $app-warn);
+//$dark-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+
+$light-primary-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
+$light-accent-palette: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
+$dark-primary-palette: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
+$dark-accent-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
+$warn-palette: material.define-palette(theming.$mat-red, A200, A100, A400, 500);
 
 $light-theme: material.define-light-theme(
         (color: (
             primary: $light-primary-palette,
             accent: $light-accent-palette,
-            warn: $warn-palette
+            warn: $warn-palette,
+            is-dark: false,
         ),
             typography: pgNf.$font-config
         ));
@@ -31,71 +47,94 @@ $light-theme: material.define-light-theme(
 $dark-theme: material.define-light-theme((color: (
     primary: $dark-primary-palette,
     accent: $dark-accent-palette,
-    warn: $warn-palette
+    warn: $warn-palette,
+    is-dark: true,
 ),
     typography: pgNf.$font-config
 ));
 
+//$themes-map: (
+//    indigo-pink: (
+//        primary-base: theming.$mat-indigo,
+//        accent-base: theming.$mat-pink,
+//    ),
+//
+//    deeppurple-amber: (
+//        primary-base: theming.$mat-deep-purple,
+//        accent-base: theming.$mat-amber,
+//    ),
+//
+//    pink-bluegrey: (
+//        primary-base: theming.$mat-pink,
+//        accent-base: theming.$mat-blue-gray,
+//    ),
+//
+//    purple-green: (
+//        primary-base: theming.$mat-purple,
+//        accent-base: theming.$mat-green,
+//    ),
+//);
+//tg.generate-themes($themes-map: map-get($themes-map, indigo-pink))
 
-$success-colors:    material.define-palette(theming.$mat-green,      700, 300, 900, 500);
-$warning-colors:    material.define-palette(theming.$mat-amber,      400, 300, 900, 500);
-$app-primary:       material.define-palette(theming.$mat-grey,       700, 300, 900, 500);
-$app-accent:        material.define-palette(theming.$mat-blue-grey,  400, 300, 900, 500);
-$app-warn:          material.define-palette(theming.$mat-red,        500, 300, 900, 500);
-$primary:           material.get-color-from-palette($app-primary,    700, 300);
-$accent:            material.get-color-from-palette($app-accent,     700, 300);
-$warn:              material.get-color-from-palette($app-warn,       700, 300);
-$app-primary: material.define-palette(pgNf.$red-palette);
-$app-accent: material.define-palette(pgNf.$grey-palette, A200, A100, A400);
-$app-warn: material.define-palette(pgNf.$mat-red);
-
-/* spacing */
-$default-padding: 1.5rem;
-$default-margin: 1.5rem;
-$default-radius: 0.2rem;
-$default-border: 1px;
-
-$primary: var(--ion-color-primary);
-$secondary: var(--ion-color-primary);
-
-$dark: var(--ion-color-dark);
-$light: var(--ion-color-light);
-$grey: var(--ion-color-dark-tint);
-$lightgrey: var(--ion-color-medium-shade);
-
-/* alerts */
-$success: var(--ion-color-success);
-$info: var(--ion-color-secondary-tint);
-$danger: var(--ion-color-danger);
-$warning: var(--ion-color-warning);
-
-$caution: var(--ion-color-warning);
-$error: var(--ion-color-danger);
-
-$grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px,
-);
-
-$grid-gutter-width: 0px;
-
-$angular-primary: material.define-palette(material.$cyan-palette, 500, 100, 900);
-$angular-accent: material.define-palette(material.$pink-palette, A200, A100, A400);
-$angular-warn: material.define-palette(material.$red-palette);
-
+//$success-colors: material.define-palette(theming.$mat-green, 700, 300, 900, 500);
+//$warning-colors: material.define-palette(theming.$mat-amber, 400, 300, 900, 500);
+//$app-primary: material.define-palette(theming.$mat-grey, 700, 300, 900, 500);
+//$app-accent: material.define-palette(theming.$mat-blue-grey, 400, 300, 900, 500);
+//$app-warn: material.define-palette(theming.$mat-red, 500, 300, 900, 500);
+//$primary: material.get-color-from-palette($app-primary, 700, 300);
+//$accent: material.get-color-from-palette($app-accent, 700, 300);
+//$warn: material.get-color-from-palette($app-warn, 700, 300);
+//$app-primary: material.define-palette(pgNf.$red-palette);
+//$app-accent: material.define-palette(pgNf.$grey-palette, A200, A100, A400);
+//$app-warn: material.define-palette(pgNf.$mat-red);
+//
+///* spacing */
+//$default-padding: 1.5rem;
+//$default-margin: 1.5rem;
+//$default-radius: 0.2rem;
+//$default-border: 1px;
+//
+//$primary: var(--ion-color-primary);
+//$secondary: var(--ion-color-primary);
+//
+//$dark: var(--ion-color-dark);
+//$light: var(--ion-color-light);
+//$grey: var(--ion-color-dark-tint);
+//$lightgrey: var(--ion-color-medium-shade);
+//
+///* alerts */
+//$success: var(--ion-color-success);
+//$info: var(--ion-color-secondary-tint);
+//$danger: var(--ion-color-danger);
+//$warning: var(--ion-color-warning);
+//
+//$caution: var(--ion-color-warning);
+//$error: var(--ion-color-danger);
+//
+//$grid-breakpoints: (
+//    xs: 0,
+//    sm: 576px,
+//    md: 768px,
+//    lg: 992px,
+//    xl: 1200px,
+//);
+//
+//$grid-gutter-width: 0px;
+//
+//$angular-primary: material.define-palette(material.$cyan-palette, 500, 100, 900);
+//$angular-accent: material.define-palette(material.$pink-palette, A200, A100, A400);
+//$angular-warn: material.define-palette(material.$red-palette);
+//
 $font-family: Roboto, 'Helvetica Neue', sans-serif;
-
-$typography-level: material.define-typography-level(
-    $font-family: Roboto,
-    $font-weight: 400,
-    $font-size: 1rem,
-    $line-height: 1,
-    $letter-spacing: normal,
-);
-
+//
+//$typography-level: material.define-typography-level(
+//    $font-family: Roboto,
+//    $font-weight: 400,
+//    $font-size: 1rem,
+//    $line-height: 1,
+//    $letter-spacing: normal,
+//);
+//
 $mobile-font-config: material.define-typography-config(
     $font-family: 'Roboto, \"Helvetica Neue\", sans-serif',
     $display-4: material.define-typography-level(76px, 90px, 300, $font-family, -0.05em),
@@ -135,6 +174,8 @@ $mobile-font-config: material.define-typography-config(
 
 /* order important, must be before actual usage below !!! */
 @mixin apply-library-theme($theme) {
+    @include reset.reset;
+
     @include lib-theme.all-theme($theme);
 
     $color-config: material.get-color-config($theme);

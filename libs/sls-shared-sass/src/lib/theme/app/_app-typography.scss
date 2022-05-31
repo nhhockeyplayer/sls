@@ -1,0 +1,25 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/theming';
+
+
+$lib-typography: mat-typography-config(
+  $font-family: 'Roboto',
+  $title: mat-typography-level(24px, 32px, bold)
+);
+
+@mixin app-typography($typography: $lib-typography) {
+  @include theming.mat-base-typography($typography);
+  @include mat-card-typography($typography);
+  @include mat-select-typography($typography);
+  @include mat-form-field-typography($typography);
+  @include mat-slide-toggle-typography($typography);
+  @include mat-toolbar-typography($typography);
+
+  // custom component typography
+  @include app-root-typography($typography);
+}

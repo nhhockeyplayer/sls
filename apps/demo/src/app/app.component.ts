@@ -8,6 +8,8 @@ import {OverlayContainer} from '@angular/cdk/overlay'
 import {FormControl} from '@angular/forms'
 import {ModalComponent} from './modal/modal.component'
 
+const DARK_SUFFIX = `-dark`;
+
 export enum EBrand {
     IONIC = 'ionic',
     MATERIAL = 'material',
@@ -18,6 +20,8 @@ interface IColor {
     value: string;
     displayKey: string;
 }
+
+export type ThemeMode = 'light' | 'dark'
 
 @Component({
     selector: 'app-root',
@@ -30,11 +34,10 @@ export class AppComponent implements OnInit {
     brand: EBrand | Brand = EBrand.MATERIAL
     brandName: string = EBrand.MATERIAL
 
-    title = 'Angular material dark mode'
+    title = 'Angular Material DESIGN SYSTEM'
 
     @HostBinding('class') classBinding = ''
 
-    colorForm = new FormControl(false)
     toggleForm = new FormControl(false)
 
     selectedColor: string = '';
@@ -54,32 +57,7 @@ export class AppComponent implements OnInit {
 
     }
 
-    tosslePerOne() {
-        // if (this.allSelected.selected) {
-        //     this.allSelected.deselect()
-        //     return false
-        // }
-        // if (this.colorForm.controls.userType.value.length == this.userTypeFilters.length)
-        //     this.allSelected.select()
-
-    }
-
-    toggleAllSelection() {
-        // if (this.allSelected.selected) {
-        //     this.colorForm.controls.userType
-        //         .patchValue([...this.userTypeFilters.map(item => item.key), 0])
-        // } else {
-        //     this.colorForm.controls.userType.patchValue([])
-        // }
-    }
-
-    // ------------------- //
-
-    get isDarkMode(): boolean {
-        return this.currentTheme === 'theme-dark'
-    }
-
-    private currentTheme = 'theme-light'
+    private currentTheme: ThemeMode = 'light'
 
     ngOnInit(): void {
         this.elementRef.nativeElement.style.setProperty('--theme-brand', environment.brand)
@@ -88,27 +66,57 @@ export class AppComponent implements OnInit {
         this.elementRef.nativeElement.style.setProperty('--theme-brand-material', EBrand.MATERIAL)
         this.elementRef.nativeElement.style.setProperty('--theme-brand-bootstrap', EBrand.BOOTSTRAP)
 
-        this.currentTheme = localStorage.getItem('activeTheme') || 'theme-light'
-        this.renderer.setAttribute(this.document.body, 'class', this.currentTheme)
-
-        this.toggleForm.valueChanges.subscribe((darkMode) => {
-            const darkClassName = 'darkMode'
-            this.classBinding = darkMode ? darkClassName : ''
-            if (darkMode) {
-                this.overlay.getContainerElement().classList.add(darkClassName)
+        this.currentTheme = localStorage.getItem('activeTheme')  as ThemeMode || 'light' as ThemeMode
+        this.applyTheme(this.currentTheme)
+        this.toggleForm.valueChanges.subscribe(() => {
+            if ( this.overlay.getContainerElement().classList.contains('light') ) {
+                this.currentTheme = 'light'
             } else {
-                this.overlay.getContainerElement().classList.remove(darkClassName)
+                if ( this.overlay.getContainerElement().classList.contains('dark') ) {
+                    this.currentTheme = 'dark'
+                }
             }
+
+            this.applyTheme(this.currentTheme)
         })
     }
 
+    applyTheme(currentThemeMode: ThemeMode) {
+        this.renderer.removeAttribute(this.document.body, 'class', 'light')
+        this.renderer.removeAttribute(this.document.body, 'class', 'dark')
+        switch (currentThemeMode) {
+            case 'light': {
+                this.overlay.getContainerElement().classList.remove('light')
+                this.overlay.getContainerElement().classList.add('dark')
+                this.renderer.setAttribute(this.document.body, 'class', 'dark')
+            }
+                break
+            case 'dark': {
+                this.overlay.getContainerElement().classList.remove('dark')
+                this.overlay.getContainerElement().classList.add('light')
+                this.renderer.setAttribute(this.document.body, 'class', 'light')
+            }
+                break
+            default: {
+                this.overlay.getContainerElement().classList.remove('light')
+                this.overlay.getContainerElement().classList.remove('dark')
+                this.overlay.getContainerElement().classList.add('light')
+                this.renderer.setAttribute(this.document.body, 'class', 'light')
+            }
+        }
+    }
+
     switchMode(isDarkMode: boolean) {
-        this.currentTheme = isDarkMode ? 'theme-dark' : 'theme-light'
+        this.currentTheme = isDarkMode ? 'dark' : 'light'
         this.renderer.setAttribute(this.document.body, 'class', this.currentTheme)
         localStorage.setItem('activeTheme', this.currentTheme)
     }
 
     showDialog(): void {
         this.dialog.open(ModalComponent, {width: '500px'})
+    }
+
+    get isDark(): boolean {
+        return this.currentTheme === 'dark'
     }
 }

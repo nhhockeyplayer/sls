@@ -1,0 +1,140 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use '@angular/material';
+@use '@angular/material/theming';
+
+$themes-map: (
+    indigo-pink: (
+        primary-base: theming.$mat-indigo,
+        accent-base: theming.$mat-pink,
+    ),
+
+    deeppurple-amber: (
+        primary-base: theming.$mat-deep-purple,
+        accent-base: theming.$mat-amber,
+    ),
+
+    pink-bluegrey: (
+        primary-base: theming.$mat-pink,
+        accent-base: theming.$mat-blue-gray,
+    ),
+
+    purple-green: (
+        primary-base: theming.$mat-purple,
+        accent-base: theming.$mat-green,
+    ),
+);
+
+@mixin themed-stylesheets($mat-theme) {
+    $primary: map-get($mat-theme, primary);
+    $accent: map-get($mat-theme, accent);
+    $warn: map-get($mat-theme, warn);
+    $background: map-get($mat-theme, background);
+    $foreground: map-get($mat-theme, foreground);
+
+    $primary-color: mat-color($primary);
+    $accent-color: mat-color($accent);
+    $warn-color: mat-color($warn);
+
+    $status-bar-color:               map-get($background, 'status-bar'              );
+    $app-bar-color:                  map-get($background, 'app-bar'                 );
+    $background-color:               map-get($background, 'background'              );
+    $hover-color:                    map-get($background, 'hover'                   );
+    $card-color:                     map-get($background, 'card'                    );
+    $dialog-color:                   map-get($background, 'dialog'                  );
+    $disabled-button-color:          map-get($background, 'disabled-button'         );
+    $raised-button-color:            map-get($background, 'raised-button'           );
+    $focused-button-color:           map-get($background, 'focused-button'          );
+    $selected-button-color:          map-get($background, 'selected-button'         );
+    $selected-disabled-button-color: map-get($background, 'selected-disabled-button');
+    $disabled-button-toggle-color:   map-get($background, 'disabled-button-toggle'  );
+    $unselected-chip-color:          map-get($background, 'unselected-chip'         );
+    $disabled-list-option-color:     map-get($background, 'disabled-list-option'    );
+
+    $base-color:              map-get($foreground, 'base'             );
+    $divider-color:           map-get($foreground, 'divider'          );
+    $dividers-color:          map-get($foreground, 'dividers'         );
+    $disabled-color:          map-get($foreground, 'disabled'         );
+    $disabled-button-color:   map-get($foreground, 'disabled-button'  );
+    $disabled-text-color:     map-get($foreground, 'disabled-text'    );
+    $elevation-color:         map-get($foreground, 'elevation'        );
+    $hint-text-color:         map-get($foreground, 'hint-text'        );
+    $secondary-text-color:    map-get($foreground, 'secondary-text'   );
+    $icon-color:              map-get($foreground, 'icon'             );
+    $icons-color:             map-get($foreground, 'icons'            );
+    $text-color:              map-get($foreground, 'text'             );
+    $slider-min-color:        map-get($foreground, 'slider-min'       );
+    $slider-off-color:        map-get($foreground, 'slider-off'       );
+    $slider-off-active-color: map-get($foreground, 'slider-off-active');
+
+    $is-dark: map-get($mat-theme, is-dark);
+}
+
+/**
+ * @param $themes-map - Custom themes should be passed via this argument.
+ * The "key" of each member is "the name of CSS class for that theme".
+ *
+ * Full schema of each member:
+ *     css-class-name: (
+ *         primary-base: base-palette,   // example: $mat-purple  // will be ignored if you set corresponding mat-palette (primary). Set it to `null` in this case.
+ *         accent-base:  base-palette,   // example: $mat-green   // will be ignored if you set corresponding mat-palette (accent). Set it to `null` in this case.
+ *         warn-base?:   base-palette,   // DEFAULT: $mat-red     // will be ignored if you set corresponding mat-palette (warn). Set it to `null` in this case.
+ *         primary?: mat-palette,   // DEFAULT: mat-palette(primary-base)
+ *         accent?:  mat-palette,   // DEFAULT: mat-palette(accent-base)
+ *         warn?:    mat-palette,   // DEFAULT: mat-palette(warn-base)
+ *         light-or-dark?: {'light' | 'dark' | ''},   // DEFAULT: '' => "Both light & dark"
+ *     ),
+ *
+ * @see `mat-palette()`: https://github.com/angular/components/blob/dcde115980a2e94fae8e667d1dfa300fc82a77cb/src/material/core/theming/_theming.scss#L12-L37
+ * @see https://material.angular.io/guide/theming
+ */
+//noinspection SassScssUnresolvedMixin, SassScssResolvedByNameOnly
+@mixin generate-themes($themes-map) {
+  @each $css-class, $theme in $themes-map {
+    $primary-base: map-get($theme, primary-base);
+    $accent-base: map-get($theme, accent-base);
+    $warn-base: if(map-has-key($theme, warn-base), map-get($theme, warn-base), $mat-red);
+
+    $primary: if(map-has-key($theme, primary), map-get($theme, primary), mat-palette($primary-base));
+    $accent: if(map-has-key($theme, accent), map-get($theme, accent), mat-palette($accent-base));
+    $warn: if(map-has-key($theme, warn), map-get($theme, warn), mat-palette($warn-base));
+
+    $light-or-dark: if(map-has-key($theme, light-or-dark), map-get($theme, light-or-dark), '');
+
+    // Light-themes:
+    @if $light-or-dark == '' or $light-or-dark == 'light' or $light-or-dark == 'l' or $light-or-dark == 'both' {
+      .#{$css-class} {
+        $mat-theme: mat-light-theme($primary, $accent, $warn);
+        @include angular-material-theme($mat-theme);
+        @if mixin-exists(themed-stylesheets) {
+          @include themed-stylesheets($mat-theme);
+        }
+      }
+    }
+
+    // Dark-themes:
+    @if $light-or-dark == '' or $light-or-dark == 'dark' or $light-or-dark == 'd' or $light-or-dark == 'both' {
+      .#{$css-class}-dark {
+        $mat-theme: mat-dark-theme($primary, $accent, $warn);
+        @include angular-material-theme($mat-theme);
+        @if mixin-exists(themed-stylesheets) {
+          @include themed-stylesheets($mat-theme);
+        }
+      }
+    }
+
+    // Below stylesheets have been used in theme-switcher-tool (in the toolbar):
+    .theme-primary.#{$css-class} {
+      background-color: mat-color($primary);
+    }
+    .theme-accent.#{$css-class} {
+      background-color: mat-color($accent);
+    }
+    .theme-warn.#{$css-class} {
+      background-color: mat-color($warn);
+    }
+  }
+}

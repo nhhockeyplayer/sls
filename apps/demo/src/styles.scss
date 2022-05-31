@@ -3,7 +3,7 @@
 @use '@angular/material/theming';
 
 @use 'libs/sls-shared-sass/src/lib/theme/theme';
-@use 'libs/sls-shared-sass/src/lib' as lib;
+//@use 'libs/sls-shared-sass/src/lib' as lib;
 
 @use 'app-theme/_all-component' as app-theme;
 @use 'app-theme/_typography' as app-typography;
@@ -11,8 +11,9 @@
 @include material.core();
 
 
-@include theme.apply-library-theme(theme.$light-theme);     // extra grm base widget styles dark/light
-@include app-theme.cascade(theme.$light-theme);             // app feature styles dark/light
+//@include theme.apply-library-theme(theme.$light-theme);     // extra grm base widget styles dark/light
+//@include app-theme.cascade(theme.$light-theme);             // app feature styles dark/light
+//@import 'libs/sls-shared-sass/src/lib/theme/theme';
 
 html, body {
     height: 100vh;
@@ -23,9 +24,15 @@ body {
     margin: 0;
 }
 
-@include material.all-component-themes(theme.$light-theme); // material base styles dark/light
+//@include material.all-component-themes(theme.$light-theme); // material base styles dark/light
 
-.darkMode {
+body.light {
+    @include material.all-component-themes(theme.$light-theme);  // material base styles dark/light
+    @include theme.apply-library-theme(theme.$light-theme);      // extra grm base widget styles dark/light
+    @include app-theme.cascade(theme.$light-theme);              // app feature styles dark/light
+}
+
+body.dark {
     @include material.all-component-themes(theme.$dark-theme);  // material base styles dark/light
     @include theme.apply-library-theme(theme.$dark-theme);      // extra grm base widget styles dark/light
     @include app-theme.cascade(theme.$dark-theme);              // app feature styles dark/light
@@ -36,6 +43,7 @@ body {
     @include theme.apply-library-typography(theme.$mobile-font-config);
     @include app-typography.apply-app-typography(theme.$mobile-font-config);
 }
+
 
 
 
