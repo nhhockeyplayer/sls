@@ -11,9 +11,30 @@
 
     <div class="flex-fill"></div>
     <div class="nav-item">
-        <mat-icon color="accent">brightness_5</mat-icon>
-        <mat-slide-toggle [formControl]="toggleForm"></mat-slide-toggle>
-        <mat-icon>bedtime</mat-icon>
+<!--        <mat-icon color="accent">brightness_5</mat-icon>-->
+<!--        <mat-slide-toggle [formControl]="toggleForm"></mat-slide-toggle>-->
+<!--        <mat-icon>bedtime</mat-icon>-->
+<!--        <mat-slide-toggle-->
+<!--            [formControl]="toggleForm"-->
+<!--            class="theme-toggle"-->
+<!--            aria-label="Toggle Dark Theme">-->
+<!--            <mat-icon color="accent">{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>-->
+<!--        </mat-slide-toggle>-->
+        <button
+            mat-icon-button
+            [formControl]="toggleForm"
+            (click)="onClick()"
+            class="theme-toggle"
+            aria-label="Toggle Dark Theme">
+            <mat-icon color="accent">{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        </button>
+<!--        <button-->
+<!--            mat-icon-button-->
+<!--            [formControl]="toggleForm"-->
+<!--            class="theme-toggle"-->
+<!--            aria-label="Toggle Dark Theme"        >-->
+<!--            <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>-->
+<!--        </button>-->
     </div>
 </mat-toolbar>
 
@@ -41,12 +62,12 @@
 
                 <div class="mat-app-background">
 
-                    <div fxFlex="50">
+
                         <h1 slsHeading>Buttons</h1>
 
-                        <div fxLayout="row" fxLayoutGap="16px">
-                            <button mat-raised-button color="primary" (click)="showDialog()">
-                                Open Dialog
+                        <div fxLayout="row" fxLayoutGap="16px" color="primary">
+                            <button mat-raised-button  (click)="showDialog()">
+                                Primary Button
                             </button>
 
                             <button mat-raised-button color="accent">
@@ -90,7 +111,7 @@
                         <br><br>
                     </div>
                 </div>
-            </div>
+
         </mat-card-content>
     </mat-card>
     <mat-card>

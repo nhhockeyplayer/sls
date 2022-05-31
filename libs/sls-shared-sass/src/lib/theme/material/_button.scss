@@ -8,19 +8,42 @@
 @use '@angular/material/theming';
 
 @mixin button-theme($theme) {
+    $color-config: material.get-color-config($theme);
+    $typography-config: material.get-typography-config($theme);
+
+    @if $color-config != null {
+        @include button-color($color-config);
+    }
+    @if $typography-config != null {
+        @include button-typography($typography-config);
+    }
+
+    @include button-responsive;
+}
+
+
+@mixin button-color($config) {
+    $primary: map.get($config, primary);
+    $accent: map.get($config, accent);
+    $warn: map.get($config, warn);
+    $background: map.get($config, background);
+    $foreground: map.get($config, foreground);
+
     .mat-fab,
     .mat-mini-fab,
     .mat-raised-button {
         &.mat-primary {
-            background-color: #99e5ea;
-            border-color: #99e5ea;
-            color: #1a1446;
-            -webkit-box-shadow: 0 3px 0 0 #06748c;
-            box-shadow: 0 3px 0 0 #06748c;
+            background-color: background;
+            color: foreground;
+            border: 1px solid teal;
+            border-color: #ffffff;
+            //color: #1a1446;
+            -webkit-box-shadow: 0 3px 0 0 warn;
+            box-shadow: 0 3px 0 0 warn;
         }
 
         &.mat-accent {
-            background-color: #ffffff;
+            background-color: accent;
             border: 1px solid #1a1446;
             color: #1a1446;
             -webkit-box-shadow: 0 3px 0 0 #c0bfc0;
@@ -36,25 +59,35 @@
         }
     }
 
-    $color-config: material.get-color-config($theme);
-    $typography-config: material.get-typography-config($theme);
 
-    @if $color-config != null {
-        @include button-color($color-config);
-    }
-    @if $typography-config != null {
-        @include button-typography($typography-config);
-    }
-    @include button-responsive;
-}
+    //&.mat-primary {
+    //    #{$property}: theming.get-color-from-palette($primary, $hue);
+    //    background-color: #99e5ea;
+    //    border-color: #99e5ea;
+    //    color: #1a1446;
+    //    -webkit-box-shadow: 0 3px 0 0 #06748c;
+    //    box-shadow: 0 3px 0 0 #06748c;
+    //}
+    //&.mat-accent {
+    //    #{$property}: theming.get-color-from-palette($accent, $hue);
+    //}
+    //&.mat-warn {
+    //    #{$property}: theming.get-color-from-palette($warn, $hue);
+    //}
+    //
+    //&.mat-primary,
+    //&.mat-accent,
+    //&.mat-warn,
+    //&.mat-button-disabled {
+    //    &.mat-button-disabled {
+    //        $palette: if($property == "color", $foreground, $background);
+    //        #{$property}: theming.get-color-from-palette($palette, disabled-button);
+    //    }
+    //}
 
-
-@mixin button-color($config) {
-    $primary: map.get($config, primary);
-    $accent: map.get($config, accent);
-    $warn: map.get($config, warn);
-    $background: map.get($config, background);
-    $foreground: map.get($config, foreground);
+    //button {
+    //    background: map.get($config, color);
+    //}
 
 }
 

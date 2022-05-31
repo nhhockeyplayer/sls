@@ -138,3 +138,26 @@ $themes-map: (
     }
   }
 }
+
+//$themes-map: (
+//    indigo-pink: (
+//        primary-base: theming.$mat-indigo,
+//        accent-base: theming.$mat-pink,
+//    ),
+//
+//    deeppurple-amber: (
+//        primary-base: theming.$mat-deep-purple,
+//        accent-base: theming.$mat-amber,
+//    ),
+//
+//    pink-bluegrey: (
+//        primary-base: theming.$mat-pink,
+//        accent-base: theming.$mat-blue-gray,
+//    ),
+//
+//    purple-green: (
+//        primary-base: theming.$mat-purple,
+//        accent-base: theming.$mat-green,
+//    ),
+//);
+//tg.generate-themes($themes-map: map-get($themes-map, indigo-pink))

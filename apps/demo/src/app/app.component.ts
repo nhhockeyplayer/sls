@@ -29,12 +29,10 @@ export type ThemeMode = 'light' | 'dark'
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    hello$ = this.http.get<Message>('/api/hello')
-
     brand: EBrand | Brand = EBrand.MATERIAL
     brandName: string = EBrand.MATERIAL
 
-    title = 'Angular Material DESIGN SYSTEM'
+    title = 'Sass Library DESIGN SYSTEM brand ' + this.brandName
 
     @HostBinding('class') classBinding = ''
 
@@ -79,6 +77,18 @@ export class AppComponent implements OnInit {
 
             this.applyTheme(this.currentTheme)
         })
+    }
+
+    onClick() {
+        if ( this.overlay.getContainerElement().classList.contains('light') ) {
+            this.currentTheme = 'light'
+        } else {
+            if ( this.overlay.getContainerElement().classList.contains('dark') ) {
+                this.currentTheme = 'dark'
+            }
+        }
+
+        this.applyTheme(this.currentTheme)
     }
 
     applyTheme(currentThemeMode: ThemeMode) {

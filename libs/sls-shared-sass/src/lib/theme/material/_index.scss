@@ -1,0 +1,9 @@
+@forward './_button' as button-* show button-color, button-theme, button-typography;
+@forward './_checkbox' as checkbox-* show checkbox-color, checkbox-typography, checkbox-theme;
+@forward './_datepicker' as datepicker-* show datepicker-color, datepicker-typography, datepicker-theme;
+@forward './_input' as input-* show input-color, input-typography, input-theme;
+@forward './_page' as page-* show page-color, page-typography, page-theme;
+@forward './_radio' as radio-* show radio-color, radio-typography, radio-theme;
+@forward './_select' as select-* show select-color, select-typography, select-theme;
+@forward './_toggle' as toggle-* show toggle-color, toggle-typography, toggle-theme;
+@forward './_tooltip' as tooltip-* show tooltip-color, tooltip-typography, tooltip-theme;

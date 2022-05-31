@@ -6,12 +6,14 @@
 @use '@angular/material';
 @use '@angular/material/_theming';
 
+@use '../utility/_mixins' as mix;
+
 @each $class-name, $props in $typography {
   .#{$class-name} {
     @each $prop, $value in $props {
       // output font-family properties
       @if ($prop == 'font-family') {
-        @include font-props($value);
+        @include mix.font-props($value);
 
         // Photoshop uses "tracking" to measure letter spacing so we need to convert it
       } @else if ($prop == 'tracking') {
@@ -21,7 +23,7 @@
       } @else {
         // convert to rem if in px
         @if (endsWith('#{$value}', 'px')) {
-          $value: getRem($value);
+          $value: mix.getRem($value);
         }
 
         // if no other processing is needed, print the final property

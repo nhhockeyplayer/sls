@@ -1,48 +1,16 @@
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:meta';
-@use 'sass:math';
-@use 'sass:string';
 
-/**
- *  As a sass developer you should be acclimated to
- *      o   run loops to generate sets of classes
- *      o   create maps & variables & mixins
- *      o   project API from @forward sass libraries to show/hide private/public interfaces
- */
 
-/* partials mechamics GRM Global Retail Mgt Design System */
-@forward 'theme/mechanics/_brand';
-@forward 'theme/mechanics/_reset';
-@forward 'theme/mechanics/_breakpoint';
-@forward 'theme/mechanics/_colors';
-@forward 'theme/mechanics/_constant';
-@forward 'theme/mechanics/_functions';
-@forward 'theme/mechanics/_grid';
-@forward 'theme/mechanics/_theme-generator';
-@forward 'theme/mechanics/_layout';
-@forward 'theme/mechanics/_mixin';
-@forward 'theme/mechanics/_partial';
-@forward 'theme/mechanics/_placeholder';
+/* Bundles */
+@forward 'theme';
 
-/* component theming */
-@forward 'theme/material/_button' as button-* show button-color, button-theme, button-typography;
-@forward 'theme/material/_checkbox' as checkbox-* show checkbox-color, checkbox-typography, checkbox-theme;
-@forward 'theme/material/_datepicker' as datepicker-* show datepicker-color, datepicker-typography, datepicker-theme;
-@forward 'theme/material/_input' as input-* show input-color, input-typography, input-theme;
-@forward 'theme/material/_page' as page-* show page-color, page-typography, page-theme;
-@forward 'theme/material/_radio' as radio-* show radio-color, radio-typography, radio-theme;
-@forward 'theme/material/_select' as select-* show select-color, select-typography, select-theme;
-@forward 'theme/material/_toggle' as toggle-* show toggle-color, toggle-typography, toggle-theme;
-@forward 'theme/material/_tooltip' as tooltip-* show tooltip-color, tooltip-typography, tooltip-theme;
+/* Mechanics */
+@forward 'theme/mechanics';
 
-/* Theme bundles */
-@forward 'theme/_all-theme' as theme-* show all-theme;
-@forward 'theme/_all-color' as color-* show all-color;
-@forward 'theme/_all-typography' as typography-* show all-typography;
-@forward 'theme/_palettes-grades-fonts' as shared-*;
+/* Theming */
+@forward 'theme/material';
 
-/* Theme API */
+
+/* API */
 @forward 'theme/_theme' as lib-* show $light-theme, $dark-theme, $font-config, $mobile-font-config;
 
 

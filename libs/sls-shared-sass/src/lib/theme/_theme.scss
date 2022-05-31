@@ -15,19 +15,6 @@
 
 @use 'mechanics/_theme-generator' as tg;
 
-
-//$light-primary-palette: material.define-palette(pgNf.$gray-color-grades);
-//$light-accent-palette: material.define-palette(pgNf.$red-palette);
-//$dark-primary-palette: material.define-palette(pgNf.$red-palette);
-//$dark-accent-palette: material.define-palette(pgNf.$teal-color-grades);
-//$warn-palette: material.define-palette(pgNf.$red-color-grades);
-
-//$app-primary: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
-//$app-accent: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
-//$app-warn: material.define-palette(theming.$mat-red, A200, A100, A400, 500);
-//$light-theme: theming.mat-light-theme($app-primary, $app-accent, $app-warn);
-//$dark-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
-
 $light-primary-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
 $light-accent-palette: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
 $dark-primary-palette: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
@@ -53,28 +40,7 @@ $dark-theme: material.define-light-theme((color: (
     typography: pgNf.$font-config
 ));
 
-//$themes-map: (
-//    indigo-pink: (
-//        primary-base: theming.$mat-indigo,
-//        accent-base: theming.$mat-pink,
-//    ),
-//
-//    deeppurple-amber: (
-//        primary-base: theming.$mat-deep-purple,
-//        accent-base: theming.$mat-amber,
-//    ),
-//
-//    pink-bluegrey: (
-//        primary-base: theming.$mat-pink,
-//        accent-base: theming.$mat-blue-gray,
-//    ),
-//
-//    purple-green: (
-//        primary-base: theming.$mat-purple,
-//        accent-base: theming.$mat-green,
-//    ),
-//);
-//tg.generate-themes($themes-map: map-get($themes-map, indigo-pink))
+
 
 //$success-colors: material.define-palette(theming.$mat-green, 700, 300, 900, 500);
 //$warning-colors: material.define-palette(theming.$mat-amber, 400, 300, 900, 500);
@@ -88,11 +54,7 @@ $dark-theme: material.define-light-theme((color: (
 //$app-accent: material.define-palette(pgNf.$grey-palette, A200, A100, A400);
 //$app-warn: material.define-palette(pgNf.$mat-red);
 //
-///* spacing */
-//$default-padding: 1.5rem;
-//$default-margin: 1.5rem;
-//$default-radius: 0.2rem;
-//$default-border: 1px;
+
 //
 //$primary: var(--ion-color-primary);
 //$secondary: var(--ion-color-primary);

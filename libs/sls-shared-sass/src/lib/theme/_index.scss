@@ -1,29 +1,12 @@
-@use 'mechanics/_reset';
-@use 'mechanics/_brand';
-@use 'mechanics/_breakpoint';
-@use 'mechanics/_colors';
-@use 'mechanics/_constant';
-@use 'mechanics/_functions';
-@use 'mechanics/_theme-generator';
-@use 'mechanics/_grid';
-@use 'mechanics/_layout';
-@use 'mechanics/_mixin';
-@use 'mechanics/_partial';
-@use 'mechanics/_placeholder';
 
-@use '_all-color';
-@use '_all-density';
-@use '_all-theme';
-@use '_all-typography';
-@use '_palettes-grades-fonts';
+@forward './all-color';
+@forward './all-theme';
+@forward './all-density';
+@forward './all-typography';
+@forward './palettes-grades-fonts';
 
-@use 'material/_button';
-@use 'material/_checkbox';
-@use 'material/_datepicker';
-@use 'material/_input';
-@use 'material/_page';
-@use 'material/_radio';
-@use 'material/_select';
-@use 'material/_toggle';
-@use 'material/_tooltip';
-
+//@forward './theme';
+@forward 'theme/_all-theme' as theme-* show all-theme;
+@forward 'theme/_all-color' as color-* show all-color;
+@forward 'theme/_all-typography' as typography-* show all-typography;
+@forward 'theme/_palettes-grades-fonts' as shared-*;

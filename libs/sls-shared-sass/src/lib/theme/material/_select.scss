@@ -28,6 +28,47 @@
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 
+
+    .mat-select-value {
+        color: foreground;
+    }
+
+    .mat-select-placeholder {
+
+    }
+
+    .mat-select-disabled .mat-select-value {
+        color: foreground;
+    }
+
+    .mat-select-arrow {
+        color: foreground;
+    }
+
+    .mat-form-field {
+        &.mat-focused {
+            &.mat-primary .mat-select-arrow {
+                color: primary;
+            }
+
+            &.mat-accent .mat-select-arrow {
+                color: accent;
+            }
+
+            &.mat-warn .mat-select-arrow {
+                color: warn;
+            }
+        }
+
+        .mat-select.mat-select-invalid .mat-select-arrow {
+            color: warn;
+        }
+
+        .mat-select.mat-select-disabled .mat-select-arrow {
+            color: foreground;
+        }
+    }
+
 }
 
 @mixin select-typography($config) {
@@ -36,6 +77,17 @@
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
+
+    // The unit-less line-height from the font config.
+    $line-height: input;
+
+    //.mat-select {
+    //    font-family: $config;
+    //}
+    //
+    //.mat-select-trigger {
+    //    height: $line-height;
+    //}
 
 }
 
