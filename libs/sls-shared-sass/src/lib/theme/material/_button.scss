@@ -33,7 +33,9 @@
     $caution: map.get($config, caution);
     $danger: map.get($config, danger);
 
+    .button,
     .sls-button,
+    .mat-button,
     .mat-fab,
     .mat-mini-fab,
     .mat-raised-button {
@@ -81,8 +83,12 @@
     //
 
 
+    .button,
     .sls-button,
-    button {
+    .mat-button,
+    .mat-fab,
+    .mat-mini-fab,
+    .mat-raised-button {
         &.mat-primary,
         &.mat-accent,
         &.mat-warn,
