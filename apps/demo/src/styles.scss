@@ -22,7 +22,7 @@ body {
     flex: 1 1 auto;
 }
 
-body, body.light {
+body.light {
     $color-config: mat.get-color-config(theme.$lib-light-theme);
     $typography-config: mat.get-color-config(theme.$lib-light-theme);
     @include mat.all-component-themes(theme.$lib-light-theme);          // material base styles dark/light

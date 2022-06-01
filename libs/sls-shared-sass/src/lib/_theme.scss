@@ -180,6 +180,7 @@ $dark-theme: material.define-dark-theme(
     $primary-palette: map.get($config, 'primary');
     $caption-color: material.get-color-from-palette($primary-palette, text);
     @include lib-color.all-color($config);
+
 }
 
 @mixin apply-library-typography($config) {

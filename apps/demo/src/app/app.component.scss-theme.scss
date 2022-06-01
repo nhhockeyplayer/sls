@@ -34,8 +34,9 @@
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 
-    app-root {
-        background-color: theming.mat-color($background, background);
+    .app-root {
+        background-color: primary;
+        color: accent;
 
         h1 {
             color: theming.mat-color($foreground, text);
@@ -47,65 +48,41 @@
     app-root {
         h1 {
             @include theming.mat-typography-level-to-styles($config, title);
-
-
-                @include breakpoint.xs;
-                @include breakpoint.sm;
-                @include breakpoint.md;
-                @include breakpoint.lg;
-                @include breakpoint.xl;
-                @include breakpoint.xxl;
-
-                @breakpoint.xs {
-                    color: #1a468c;
-                    background-color: #050f0f;
-                }
-                @sm {
-                    color: #ff18e9;
-                    background-color: #7caaaa;
-                }
-                @md {
-                    color: #07155b;
-                    background-color: #911e55;
-                }
-                @lg {
-                    color: #dcc125;
-                    background-color: #4458a8;
-                }
-                @xl {
-                    color: red;
-                    background-color: cyan;
-                }
-                @xxl {
-                    color: #a3441f;
-                    background-color: #2ee533;
-                }
-
-
-            //@xs {
-            //    color: #1a468c;
-            //    background-color: #050f0f;
-            //}
-            //@sm {
-            //    color: #ff18e9;
-            //    background-color: #7caaaa;
-            //}
-            //@md {
-            //    color: #07155b;
-            //    background-color: #911e55;
-            //}
-            //@lg {
-            //    color: #dcc125;
-            //    background-color: #4458a8;
-            //}
-            //@xl {
-            //    color: red;
-            //    background-color: cyan;
-            //}
-            //@xxl {
-            //    color: #a3441f;
-            //    background-color: #2ee533;
-            //}
         }
     }
+
+
+
+
+    @media (min-width: 0) {
+        .responsive-test {
+            color: red;
+        }
+    }
+    @media (min-width: 480px) {
+        .responsive-test {
+            color: blue;
+        }
+    }
+    @media (min-width: 720px) {
+        .responsive-test {
+            color: green;
+        }
+    }
+    @media (min-width: 960px) {
+        .responsive-test {
+            color: purple;
+        }
+    }
+    @media (min-width: 1200px) {
+        .responsive-test {
+            color: orange;
+        }
+    }
+    @media (min-width: 1400px) {
+        .responsive-test {
+            color: pink;
+        }
+    }
+
 }
