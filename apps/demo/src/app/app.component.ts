@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
     }
 
-    private currentTheme: ThemeMode = 'light'
+    private currentTheme!: ThemeMode
 
     ngOnInit(): void {
         this.elementRef.nativeElement.style.setProperty('--theme-brand', environment.brand)
@@ -64,8 +64,29 @@ export class AppComponent implements OnInit {
         this.elementRef.nativeElement.style.setProperty('--theme-brand-material', EBrand.MATERIAL)
         this.elementRef.nativeElement.style.setProperty('--theme-brand-bootstrap', EBrand.BOOTSTRAP)
 
+        // 1st pass read whats persisted and set that
         this.currentTheme = localStorage.getItem('activeTheme')  as ThemeMode || 'light' as ThemeMode
-        this.applyTheme(this.currentTheme)
+        switch (this.currentTheme) {
+            case 'light': {
+                this.overlay.getContainerElement().classList.remove('dark')
+                this.overlay.getContainerElement().classList.add('light')
+                this.renderer.setAttribute(this.document.body, 'class', 'light')
+            }
+                break
+            case 'dark': {
+                this.overlay.getContainerElement().classList.remove('light')
+                this.overlay.getContainerElement().classList.add('dark')
+                this.renderer.setAttribute(this.document.body, 'class', 'dark')
+            }
+                break
+            default: {
+                this.overlay.getContainerElement().classList.remove('light')
+                this.overlay.getContainerElement().classList.remove('dark')
+                this.overlay.getContainerElement().classList.add('light')
+                this.renderer.setAttribute(this.document.body, 'class', 'light')
+                this.currentTheme = 'light'
+            }
+        }
         this.toggleForm.valueChanges.subscribe(() => {
             if ( this.overlay.getContainerElement().classList.contains('light') ) {
                 this.currentTheme = 'light'
@@ -74,35 +95,38 @@ export class AppComponent implements OnInit {
                     this.currentTheme = 'dark'
                 }
             }
-            this.applyTheme(this.currentTheme)
+            this.toggleTheme()
         })
     }
 
     onClick() {
-        if ( this.overlay.getContainerElement().classList.contains('light') ) {
-            this.currentTheme = 'light'
-        } else {
-            if ( this.overlay.getContainerElement().classList.contains('dark') ) {
-                this.currentTheme = 'dark'
-            }
-        }
-        this.applyTheme(this.currentTheme)
+        // if ( this.overlay.getContainerElement().classList.contains('light') ) {
+        //     this.currentTheme = 'dark'
+        // } else {
+        //     if ( this.overlay.getContainerElement().classList.contains('dark') ) {
+        //         this.currentTheme = 'light'
+        //     }
+        // }
+        // just toggle to/from
+        this.toggleTheme()
     }
 
-    applyTheme(currentThemeMode: ThemeMode) {
+    toggleTheme() {
         this.renderer.removeAttribute(this.document.body, 'class', 'light')
         this.renderer.removeAttribute(this.document.body, 'class', 'dark')
-        switch (currentThemeMode) {
+        switch (this.currentTheme) {
             case 'light': {
                 this.overlay.getContainerElement().classList.remove('light')
                 this.overlay.getContainerElement().classList.add('dark')
                 this.renderer.setAttribute(this.document.body, 'class', 'dark')
+                this.currentTheme = 'dark'
             }
                 break
             case 'dark': {
                 this.overlay.getContainerElement().classList.remove('dark')
                 this.overlay.getContainerElement().classList.add('light')
                 this.renderer.setAttribute(this.document.body, 'class', 'light')
+                this.currentTheme = 'light'
             }
                 break
             default: {
@@ -110,13 +134,9 @@ export class AppComponent implements OnInit {
                 this.overlay.getContainerElement().classList.remove('dark')
                 this.overlay.getContainerElement().classList.add('light')
                 this.renderer.setAttribute(this.document.body, 'class', 'light')
+                this.currentTheme = 'light'
             }
         }
-    }
-
-    switchMode(isDarkMode: boolean) {
-        this.currentTheme = isDarkMode ? 'dark' : 'light'
-        this.renderer.setAttribute(this.document.body, 'class', this.currentTheme)
         localStorage.setItem('activeTheme', this.currentTheme)
     }
 

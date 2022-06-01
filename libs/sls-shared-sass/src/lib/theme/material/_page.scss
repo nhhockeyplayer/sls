@@ -33,40 +33,58 @@
 @mixin page-typography($config) {
     $primary: map.get($config, primary);
     $accent: map.get($config, accent);
-    $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 
+    $warn: map.get($config, warn);
+    $success: map.get($config, success);
+    $caution: map.get($config, caution);
+    $danger: map.get($config, danger);
+
     h1 {
         @include material.typography-level($config, 'headline');
+        background: danger;
     }
 
     h2 {
         @include material.typography-level($config, 'title');
+        background: danger;
     }
 
     h3 {
         @include material.typography-level($config, 'subheading-2');
+        background: danger;
     }
 
     h4 {
         @include material.typography-level($config, 'subheading-1');
+        background: danger;
     }
 
     body {
         @include material.typography-level($config, 'body-1');
+        background: danger;
     }
 
     .article {
         @include material.typography-level($config, 'body-2');
+        background: danger;
     }
 
     .caption {
         @include material.typography-level($config, 'caption');
+        background: danger;
     }
 
     mat-card {
         margin: 2em;
+        background: danger;
+    }
+
+    .mat-dialog-container,
+    .mat-dialog-content {
+        margin: 2em;
+        background: danger;
     }
 }
 
