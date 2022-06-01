@@ -16,37 +16,37 @@ $grid-breakpoint: (
 );
 
 @mixin xs {
-    @media (min-width: map-get($grid-breakpoint, 'xs')) {
+    @media (min-width: map.get($grid-breakpoint, 'xs')) {
         @content;
     }
 }
 
 @mixin sm {
-    @media (min-width: map-get($grid-breakpoint, 'sm')) {
+    @media (min-width: map.get($grid-breakpoint, 'sm')) {
         @content;
     }
 }
 
 @mixin md {
-    @media (min-width: map-get($grid-breakpoint, 'md')) {
+    @media (min-width: map.get($grid-breakpoint, 'md')) {
         @content;
     }
 }
 
 @mixin lg {
-    @media (min-width: map-get($grid-breakpoint, 'lg')) {
+    @media (min-width: map.get($grid-breakpoint, 'lg')) {
         @content;
     }
 }
 
 @mixin xl {
-    @media (min-width: map-get($grid-breakpoint, 'xl')) {
+    @media (min-width: map.get($grid-breakpoint, 'xl')) {
         @content;
     }
 }
 
 @mixin xxl {
-    @media (min-width: map-get($grid-breakpoint, 'xxl')) {
+    @media (min-width: map.get($grid-breakpoint, 'xxl')) {
         @content;
     }
 }

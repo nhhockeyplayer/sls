@@ -13,7 +13,7 @@ $grid-columns: 12;
 /* bring content container to bring congtent to central columnb on the page with max-width */
 .container {
     width: 100%;
-    max-width: map-get(breakpoint.$grid-breakpoint, 'xxl');
+    max-width: map.get(breakpoint.$grid-breakpoint, 'xxl');
     margin: 0 auto;     // 0 top/bottom auto left/right, centralizes our content to central column on page
     padding: 0 20px;    // 0 top/bottom 20px left/right
     box-sizing: border-box; // padding + border (if we have one) is incorporated into the total width

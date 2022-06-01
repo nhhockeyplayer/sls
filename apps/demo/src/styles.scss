@@ -36,9 +36,9 @@ body.light {
         $color-config: material.get-color-config(theme.$lib-light-theme);
         $typography-config: material.get-color-config(theme.$lib-light-theme);
 
-        $primary: map-get($color-config, primary);
-        $accent: map-get($color-config, accent);
-        $warn: map-get($color-config, warn);
+        $primary: map.get($color-config, primary);
+        $accent: map.get($color-config, accent);
+        $warn: map.get($color-config, warn);
 
         background: primary;
     }
@@ -58,9 +58,9 @@ body.dark {
         $color-config: material.get-color-config(theme.$lib-dark-theme);
         $typography-config: material.get-color-config(theme.$lib-dark-theme);
 
-        $primary: map-get($color-config, primary);
-        $accent: map-get($color-config, accent);
-        $warn: map-get($color-config, warn);
+        $primary: map.get($color-config, primary);
+        $accent: map.get($color-config, accent);
+        $warn: map.get($color-config, warn);
 
         background: accent;
     }
@@ -81,9 +81,9 @@ body.dark {
     $color-config: material.get-color-config(theme.$lib-light-theme);
     $typography-config: material.get-color-config(theme.$lib-light-theme);
 
-    $primary: map-get($color-config, primary);
-    $accent: map-get($color-config, accent);
-    $warn: map-get($color-config, warn);
+    $primary: map.get($color-config, primary);
+    $accent: map.get($color-config, accent);
+    $warn: map.get($color-config, warn);
 
     background: primary;
 }
@@ -92,9 +92,25 @@ body.dark {
     $color-config: material.get-color-config(theme.$lib-dark-theme);
     $typography-config: material.get-color-config(theme.$lib-dark-theme);
 
-    $primary: map-get($color-config, primary);
-    $accent: map-get($color-config, accent);
-    $warn: map-get($color-config, warn);
+    $primary: map.get($color-config, primary);
+    $accent: map.get($color-config, accent);
+    $warn: map.get($color-config, warn);
 
     background: accent;
+}
+
+
+$mycolors: ('primary': black, 'secondary': white);
+@function DoesntWorkColor($color) {
+    @return map.get($mycolors, $color);
+}
+@function DoesWorkColor($color) {
+    @return map-get($mycolors, $color);
+}
+
+.test-selector {
+    @debug ('DoesntWorkColorDoesntWorkColorDoesntWorkColorDoesntWorkColor color --> ', DoesntWorkColor(primary));
+    @debug ('DoesntWorkColorDoesntWorkColorDoesntWorkColorDoesntWorkColor color --> ', DoesntWorkColor(secondary));
+    @debug ('DoesWorkColorDoesWorkColorDoesWorkColorDoesWorkColorcolor --> ', DoesWorkColor(primary));
+    @debug ('DoesWorkColorDoesWorkColorDoesWorkColorDoesWorkColorcolor --> ', DoesWorkColor(secondary));
 }

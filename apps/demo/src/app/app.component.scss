@@ -27,9 +27,9 @@ $theme: var(--theme) !default;
     $color-config: material.get-color-config(theme.$lib-light-theme);
     $typography-config: material.get-color-config(theme.$lib-light-theme);
 
-    $primary: map-get($color-config, primary);
-    $accent: map-get($color-config, accent);
-    $warn: map-get($color-config, warn);
+    $primary: map.get($color-config, primary);
+    $accent: map.get($color-config, accent);
+    $warn: map.get($color-config, warn);
 
     background: $primary;
 }
@@ -38,9 +38,9 @@ $theme: var(--theme) !default;
     $color-config: material.get-color-config(theme.$lib-dark-theme);
     $typography-config: material.get-color-config(theme.$lib-dark-theme);
 
-    $primary: map-get($color-config, primary);
-    $accent: map-get($color-config, accent);
-    $warn: map-get($color-config, warn);
+    $primary: map.get($color-config, primary);
+    $accent: map.get($color-config, accent);
+    $warn: map.get($color-config, warn);
 
     background: $accent;
 }

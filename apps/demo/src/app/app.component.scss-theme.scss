@@ -15,9 +15,9 @@ $theme: var(--theme) !default;
     @if $theme == 'dark' {
         $theme: material.get-color-config(theme.$lib-dark-theme);
         $color-config: material.get-color-config($theme);
-        $primary: map-get($color-config, primary);
-        $accent: map-get($color-config, accent);
-        $warn: map-get($color-config, warn);
+        $primary: map.get($color-config, primary);
+        $accent: map.get($color-config, accent);
+        $warn: map.get($color-config, warn);
 
         $primary-color: mat-color($primary);
         $accent-color: mat-color($accent);
@@ -36,9 +36,9 @@ $theme: var(--theme) !default;
     @if $theme == 'light' {
         $theme: material.get-color-config(theme.$lib-light-theme);
         $color-config: material.get-color-config($theme);
-        $primary: map-get($color-config, primary);
-        $accent: map-get($color-config, accent);
-        $warn: map-get($color-config, warn);
+        $primary: map.get($color-config, primary);
+        $accent: map.get($color-config, accent);
+        $warn: map.get($color-config, warn);
 
         $primary-color: mat-color($primary);
         $accent-color: mat-color($accent);
@@ -57,14 +57,14 @@ $theme: var(--theme) !default;
 
 
 @mixin app-component-theme($theme) {
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
+    $background: map.get($theme, background);
+    $foreground: map.get($theme, foreground);
 
     $color-config: material.get-color-config($theme);
-    $primary: map-get($color-config, primary);
-    $accent: map-get($color-config, accent);
-    $warn: map-get($color-config, warn);
-    $is-dark-theme: map-get($color-config, is-dark);
+    $primary: map.get($color-config, primary);
+    $accent: map.get($color-config, accent);
+    $warn: map.get($color-config, warn);
+    $is-dark-theme: map.get($color-config, is-dark);
 
     $color-config: material.get-color-config($theme);
     $typography-config: material.get-typography-config($theme);
@@ -78,7 +78,7 @@ $theme: var(--theme) !default;
 
 
     //.root-main {
-    //    background: map-get($color-config, background);
+    //    background: map.get($color-config, background);
     //    color: accent;
     //}
     //$primary-color: mat-color($primary);
@@ -96,7 +96,9 @@ $theme: var(--theme) !default;
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
-
+    //.root-main {
+    //    background-color: warn;
+    //}
     @debug ('shiiit', $primary);
     @debug ('shiiit', $accent);
     @debug ('shiiit', $warn);
@@ -105,19 +107,19 @@ $theme: var(--theme) !default;
     @debug ('shiiit', background);
     @debug ('shiiit', foreground);
 
-    root-main {
+    .root-main {
         display: flex;
         flex-direction: row;
-
+        background: warn;
         %overlay-light {
             $color-config: material.get-color-config(theme.$lib-light-theme);
             $typography-config: material.get-color-config(theme.$lib-light-theme);
 
-            $primary: map-get($color-config, primary);
-            $accent: map-get($color-config, accent);
-            $warn: map-get($color-config, warn);
+            $primary: map.get($color-config, primary);
+            $accent: map.get($color-config, accent);
+            $warn: map.get($color-config, warn);
 
-            background: $primary;
+            background: $warn;
 
             @debug ('light', $primary);
             @debug ('light', $accent);
@@ -132,11 +134,11 @@ $theme: var(--theme) !default;
             $color-config: material.get-color-config(theme.$lib-dark-theme);
             $typography-config: material.get-color-config(theme.$lib-dark-theme);
 
-            $primary: map-get($color-config, primary);
-            $accent: map-get($color-config, accent);
-            $warn: map-get($color-config, warn);
+            $primary: map.get($color-config, primary);
+            $accent: map.get($color-config, accent);
+            $warn: map.get($color-config, warn);
 
-            background-color: accent;
+            //background-color: $warn;
 
             @debug ('dark', $primary);
             @debug ('dark', $accent);
@@ -150,16 +152,27 @@ $theme: var(--theme) !default;
             @extend %overlay-dark !optional;
             display: flex;
             flex-direction: row;
-
+            //background: $warn;
             @if $theme == 'dark' {
                 @extend %overlay-dark !optional;
             }
             @if $theme == 'light' {
                 @extend %overlay-light !optional;
             }
+            @debug ('dark', $primary);
+            @debug ('dark', $accent);
+            @debug ('dark', $warn);
+            @debug ('dark', primary);
+            @debug ('dark', accent);
+            @debug ('dark', warn);
         }
 
-
+        @debug ('dark', $primary);
+        @debug ('dark', $accent);
+        @debug ('dark', $warn);
+        @debug ('dark', primary);
+        @debug ('dark', accent);
+        @debug ('dark', warn);
     }
 
 }

@@ -1,3 +1,8 @@
+@use 'sass:map';
+@use '@angular/material';
+@use '@angular/material/theming';
+
+
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
@@ -142,7 +147,7 @@ $black: #000;
 
 
 $background-colors: (
-    map-get($theme-names, 'dark'): (
+    map.get($theme-names, 'dark'): (
         1: $gray-900,
         // header, card, table backgrounds
         2: $gray-800,
@@ -155,7 +160,7 @@ $background-colors: (
         // Dropdowns
         6: $gray-500,
     ),
-    map-get($theme-names, 'light'): (
+    map.get($theme-names, 'light'): (
         1: $white,
         // header, card / table backgrounds
         2: $gray-100,
@@ -191,7 +196,7 @@ $text-colors: (
 );
 // Specific to border changes for theme
 $border-colors: (
-    map-get($theme-names, 'dark'): (
+    map.get($theme-names, 'dark'): (
         1: $gray-900,
         // header, card, table backgrounds
         2: $gray-800,
@@ -202,7 +207,7 @@ $border-colors: (
         // divider rules, borders
         5: $gray-400,
     ),
-    map-get($theme-names, 'light'): (
+    map.get($theme-names, 'light'): (
         1: $white,
         // header, card / table backgrounds
         2: $gray-100,

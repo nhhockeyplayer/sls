@@ -7,7 +7,7 @@
 @use '@angular/material/_theming';
 
 @mixin font-props($name) {
-  @each $prop, $value in map-get($fonts, $name) {
+  @each $prop, $value in map.get($fonts, $name) {
     #{$prop}: #{$value} !important;
   }
 }
@@ -18,7 +18,7 @@
 @mixin theme-bg-color($selector, $color-number) {
   @each $theme, $colors in $background-colors {
     :host-context(.#{$theme}) #{$selector} {
-      background-color: map-get($colors, $color-number) !important;
+      background-color: map.get($colors, $color-number) !important;
     }
   }
 }
@@ -26,7 +26,7 @@
 @mixin theme-txt-color($selector, $color-number) {
   @each $theme, $colors in $text-colors {
     :host-context(.#{$theme}) #{$selector} {
-      color: map-get($colors, $color-number) !important;
+      color: map.get($colors, $color-number) !important;
     }
   }
 }
@@ -34,7 +34,7 @@
 @mixin theme-border-color($selector, $color-number) {
   @each $theme, $colors in $border-colors {
     :host-context(.#{$theme}) #{$selector} {
-      border-color: map-get($colors, $color-number) !important;
+      border-color: map.get($colors, $color-number) !important;
     }
   }
 }
@@ -45,7 +45,7 @@
 @mixin global-theme-bg-color($selector, $color-number) {
   @each $theme, $colors in $background-colors {
     .#{$theme} #{$selector} {
-      background-color: map-get($colors, $color-number) !important;
+      background-color: map.get($colors, $color-number) !important;
     }
   }
 }
@@ -53,7 +53,7 @@
 @mixin global-theme-txt-color($selector, $color-number) {
   @each $theme, $colors in $text-colors {
     .#{$theme} #{$selector} {
-      color: map-get($colors, $color-number) !important;
+      color: map.get($colors, $color-number) !important;
     }
   }
 }
@@ -61,7 +61,7 @@
 @mixin global-theme-border-color($selector, $color-number) {
   @each $theme, $colors in $border-colors {
     .#{$theme} #{$selector} {
-      border-color: map-get($colors, $color-number) !important;
+      border-color: map.get($colors, $color-number) !important;
     }
   }
 }

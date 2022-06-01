@@ -201,7 +201,7 @@ $dark-theme: material.define-dark-theme(
 //$color-config: material.get-color-config($light-theme);
 //$typography-config: material.get-typography-config($light-theme);
 //
-//$is-dark-theme: map-get($color-config, is-dark);
+//$is-dark-theme: map.get($color-config, is-dark);
 //@debug (' is dark ===> ', $is-dark-theme);
 
 
