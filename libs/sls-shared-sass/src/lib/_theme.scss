@@ -74,6 +74,14 @@ $danger-palette: material.define-palette(theming.$mat-indigo, 400, 300, 900, 500
 $angular-primary: material.define-palette(pgNf.$gray-color-grades);
 $angular-accent: material.define-palette(pgNf.$teal-color-grades);
 $angular-warn: material.define-palette(pgNf.$mat-red);
+
+//$success-colors: theming.define-palette(theming.$green-palette, 400);
+//$warning-colors: theming.define-palette(theming.$amber-palette, 400);
+$success-colors: material.define-palette(material.$green-palette, 900);
+$caution-colors: material.define-palette(material.$amber-palette, 900);
+$danger-colors: material.define-palette(material.$red-palette, 900);
+$info-colors: material.define-palette(material.$blue-palette, 900);
+
 //
 
 //
@@ -140,6 +148,10 @@ $light-theme: material.define-light-theme(
             primary: $angular-primary,
             accent: $angular-accent,
             warn: $angular-warn,
+            success: $success-colors,
+            caution: $caution-colors,
+            danger: $danger-colors,
+            info: $info-colors,
         ),
             typography: pgNf.$font-config
         )
@@ -150,6 +162,10 @@ $dark-theme: material.define-dark-theme(
             primary: $angular-primary,
             accent: $angular-accent,
             warn: $angular-warn,
+            success: $success-colors,
+            caution: $caution-colors,
+            danger: $danger-colors,
+            info: $info-colors,
         ),
             typography: pgNf.$font-config
         )

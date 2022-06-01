@@ -9,12 +9,12 @@
 
 @include material.core();
 
-html, body {
+html, body, body.light, body.dark {
     height: 100vh;
     padding: 0;
 }
 
-body {
+body, body.light, body.dark {
     margin: 0;
 }
 
@@ -22,6 +22,7 @@ body {
     flex: 1 1 auto;
 }
 
+body,
 body.light {
     $color-config: material.get-color-config(theme.$lib-light-theme);
     $typography-config: material.get-color-config(theme.$lib-light-theme);

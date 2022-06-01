@@ -96,9 +96,10 @@ $theme: var(--theme) !default;
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
-    //.root-main {
-    //    background-color: warn;
-    //}
+    .root-main, main {
+        background: map.get($config, caution);
+        background-color: map.get($config, caution);
+    }
     @debug ('shiiit', $primary);
     @debug ('shiiit', $accent);
     @debug ('shiiit', $warn);
