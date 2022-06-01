@@ -18,41 +18,46 @@
 //$dark-primary-palette: material.define-palette(theming.$brown-palette, A200, A100, A400, 500);
 //$dark-accent-palette: material.define-palette(theming.$amber-palette, A200, A100, A400, 500);
 //$warn-palette: material.define-palette(theming.$mat-red, A200, A100, A400, 500);
-$light-primary-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
-$light-accent-palette: material.define-palette(material.$red-palette, A200, A100, A400, 500);
-$dark-primary-palette: material.define-palette(theming.$mat-gray, A200, A100, A400, 500);
-$dark-accent-palette: material.define-palette(theming.$mat-gray, A200, A100, A400, 500);
+//$light-primary-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
+//$light-accent-palette: material.define-palette(material.$red-palette, A200, A100, A400, 500);
+//$dark-primary-palette: material.define-palette(pgNf.$gray-color-grades, A200, A100, A400, 900);
+//$dark-accent-palette: material.define-palette(pgNf.$grey-palette, A200, A100, A400, 900);
+$light-primary-palette: material.define-palette(pgNf.$gray-color-grades);
+$light-accent-palette: material.define-palette(pgNf.$teal-color-grades);
+$dark-primary-palette: material.define-palette(pgNf.$gray-color-grades);
+$dark-accent-palette: material.define-palette(pgNf.$teal-color-grades);
+
 
 $warn-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
 $success-palette: material.define-palette(theming.$mat-gray, 700, 300, 900, 500);
 $caution-palette: material.define-palette(theming.$mat-indigo, 400, 300, 900, 500);
 $danger-palette: material.define-palette(theming.$mat-indigo, 400, 300, 900, 500);
 
-$light-theme: material.define-light-theme(
-        (color: (
-            primary: $light-primary-palette,
-            accent: $light-accent-palette,
-            warn: $warn-palette,
-            success: $success-palette,
-            caution: $caution-palette,
-            danger: $danger-palette,
-            is-dark: false,
-        ),
-            typography: pgNf.$font-config
-        ));
-
-$dark-theme: material.define-light-theme(
-        (color: (
-            primary: $dark-primary-palette,
-            accent: $dark-accent-palette,
-            warn: $warn-palette,
-            success: $success-palette,
-            caution: $caution-palette,
-            danger: $danger-palette,
-            is-dark: true,
-        ),
-            typography: pgNf.$font-config
-        ));
+//$light-theme: material.define-light-theme(
+//        (color: (
+//            primary: $light-primary-palette,
+//            accent: $light-accent-palette,
+//            warn: $warn-palette,
+//            success: $success-palette,
+//            caution: $caution-palette,
+//            danger: $danger-palette,
+//            is-dark: false,
+//        ),
+//            typography: pgNf.$font-config
+//        ));
+//
+//$dark-theme: material.define-light-theme(
+//        (color: (
+//            primary: $dark-primary-palette,
+//            accent: $dark-accent-palette,
+//            warn: $warn-palette,
+//            success: $success-palette,
+//            caution: $caution-palette,
+//            danger: $danger-palette,
+//            is-dark: true,
+//        ),
+//            typography: pgNf.$font-config
+//        ));
 
 
 //$success-colors: material.define-palette(theming.$mat-green, 700, 300, 900, 500);
@@ -63,9 +68,9 @@ $dark-theme: material.define-light-theme(
 //$primary: material.get-color-from-palette($app-primary, 700, 300);
 //$accent: material.get-color-from-palette($app-accent, 700, 300);
 //$warn: material.get-color-from-palette($app-warn, 700, 300);
-//$app-primary: material.define-palette(pgNf.$red-palette);
-//$app-accent: material.define-palette(pgNf.$grey-palette, A200, A100, A400);
-//$app-warn: material.define-palette(pgNf.$mat-red);
+$angular-primary: material.define-palette(pgNf.$red-palette);
+$angular-accent: material.define-palette(pgNf.$grey-palette, A200, A100, A400);
+$angular-warn: material.define-palette(pgNf.$mat-red);
 //
 
 //
@@ -127,25 +132,25 @@ $mobile-font-config: material.define-typography-config(
     $input: material.define-typography-level(inherit, 1.125, 400, $font-family, 1.5px)
 );
 
-//$light-theme: material.define-light-theme(
-//        (color: (
-//            primary: $angular-primary,
-//            accent: $angular-accent,
-//            warn: $angular-warn,
-//        ),
-//            typography: $font-config
-//        )
-//);
-//
-//$dark-theme: material.define-dark-theme(
-//        (color: (
-//            primary: $angular-primary,
-//            accent: $angular-accent,
-//            warn: $angular-warn,
-//        ),
-//            typography: $font-config
-//        )
-//);
+$light-theme: material.define-light-theme(
+        (color: (
+            primary: $angular-primary,
+            accent: $angular-accent,
+            warn: $angular-warn,
+        ),
+            typography: pgNf.$font-config
+        )
+);
+
+$dark-theme: material.define-dark-theme(
+        (color: (
+            primary: $angular-primary,
+            accent: $angular-accent,
+            warn: $angular-warn,
+        ),
+            typography: pgNf.$font-config
+        )
+);
 
 /* order important, must be before actual usage below !!! */
 @mixin apply-library-theme($theme) {

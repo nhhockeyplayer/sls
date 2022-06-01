@@ -1,9 +1,12 @@
-
-//@forward './_all-color';
-//@forward './_all-theme';
-//@forward './_all-density';
-//@forward './_all-typography';
-//@forward './_palettes-grades-fonts';
+/**
+ *  !!! If nothing is applying, nothign changing, nothing theming on click actions?
+ *  Its highly likely you forgot to @forward the actual logic to carry it all thru
+ *  Like the first 4 lines here !!! This is why it was not changing to dark on everything
+ */
+@forward './_all-color';
+@forward './_all-theme';
+@forward './_all-density';
+@forward './_all-typography';
 
 @forward '../theme';
 @forward './mechanics';

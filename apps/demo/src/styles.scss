@@ -9,11 +9,6 @@
 
 @include mat.core();
 
-//@include theme.lib-theme-all-theme(theme);                          // extra grm base widget styles dark/light
-
-//@include theme.lib-apply-library-theme(theme.$lib-light-theme);     // extra grm base widget styles dark/light
-//@include app-theme.cascade(theme.$lib-light-theme);                 // app feature styles dark/light
-
 html, body {
     height: 100vh;
     padding: 0;
@@ -27,25 +22,26 @@ body {
     flex: 1 1 auto;
 }
 
+body, body.light {
+    $color-config: mat.get-color-config(theme.$lib-light-theme);
+    $typography-config: mat.get-color-config(theme.$lib-light-theme);
+    @include mat.all-component-themes(theme.$lib-light-theme);          // material base styles dark/light
+    @include mat.all-component-colors($color-config);
+    @include mat.all-component-typographies($typography-config);
 
-//@include mat.all-component-themes(theme.$lib-light-theme);          // material base styles dark/light
-//@include theme.lib-apply-library-theme(theme.$lib-light-theme);     // extra grm base widget styles dark/light
-//@include app-theme.cascade(theme.$lib-light-theme);                 // app feature styles dark/light
-
-body.light {
-    @include mat.all-component-themes(theme.$lib-light-theme);  // material base styles dark/light
-    @include mat.all-component-colors(theme.$lib-light-theme);  // material base styles dark/light
-    @include mat.all-component-typographies(theme.$lib-light-theme);  // material base styles dark/light
     @include theme.lib-apply-library-theme(theme.$lib-light-theme);      // extra grm base widget styles dark/light
-    @include app-theme.cascade(theme.$lib-light-theme);              // app feature styles dark/light
+    @include app-theme.cascade(theme.$lib-light-theme);                  // app feature styles dark/light
 }
 
 body.dark {
-    @include mat.all-component-themes(theme.$lib-dark-theme);  // material base styles dark/light
-    @include mat.all-component-colors(theme.$lib-dark-theme);  // material base styles dark/light
-    @include mat.all-component-typographies(theme.$lib-dark-theme);  // material base styles dark/light
+    $color-config: mat.get-color-config(theme.$lib-dark-theme);
+    $typography-config: mat.get-color-config(theme.$lib-dark-theme);
+    @include mat.all-component-themes(theme.$lib-dark-theme);           // material base styles dark/light
+    @include mat.all-component-colors($color-config);
+    @include mat.all-component-typographies($typography-config);
+
     @include theme.lib-apply-library-theme(theme.$lib-dark-theme);      // extra grm base widget styles dark/light
-    @include app-theme.cascade(theme.$lib-dark-theme);              // app feature styles dark/light
+    @include app-theme.cascade(theme.$lib-dark-theme);                  // app feature styles dark/light
 }
 
 @media screen and (max-width: 479px) {
