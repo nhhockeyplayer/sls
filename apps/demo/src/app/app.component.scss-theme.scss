@@ -8,7 +8,7 @@
 $theme: var(--theme) !default;
 
 
-.root-main {
+.rroot-main {
     display: flex;
     flex-direction: row;
 
@@ -28,9 +28,6 @@ $theme: var(--theme) !default;
             background: $primary-color;
             color: $accent-color;
         }
-
-
-
 
 
         //background: black;
@@ -93,70 +90,75 @@ $theme: var(--theme) !default;
 }
 
 @mixin app-component-color($config) {
+    @debug ('shiiit');
     $primary: map.get($config, primary);
     $accent: map.get($config, accent);
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 
+    @debug ('shiiit', $primary);
+    @debug ('shiiit', $accent);
+    @debug ('shiiit', $warn);
+    @debug ('shiiit', $background);
+    @debug ('shiiit', $foreground);
+    @debug ('shiiit', background);
+    @debug ('shiiit', foreground);
 
-    .root-main {
+    root-main {
         display: flex;
         flex-direction: row;
-        //background: warn;
 
-        //background: black;
+        %overlay-light {
+            $color-config: material.get-color-config(theme.$lib-light-theme);
+            $typography-config: material.get-color-config(theme.$lib-light-theme);
 
-        //$background: map-get($theme, background);
-        //background: mat-color($background, root-main);
-        //background: map.get($config, background);
-
-        @if $theme == 'dark' {
-            $theme: material.get-color-config(theme.$lib-dark-theme);
-            $color-config: material.get-color-config($theme);
             $primary: map-get($color-config, primary);
             $accent: map-get($color-config, accent);
             $warn: map-get($color-config, warn);
 
+            background: $primary;
 
-            //$primary-color: mat-color($primary);
-            //$accent-color: mat-color($accent);
-            //.root-main {
-            //    background: $primary-color;
-            //    color: $accent-color;
-            //}
+            @debug ('light', $primary);
+            @debug ('light', $accent);
+            @debug ('light', $warn);
+            @debug ('light', primary);
+            @debug ('light', accent);
+            @debug ('light', warn);
 
-            //background: background;
-
-            //$background: map-get($theme, background);
-            //background: mat-color($background, root-main);
-
-            //background-color: black;
-            //background: black;
-            //color: black;
         }
-        @if $theme == 'light' {
-            $theme: material.get-color-config(theme.$lib-light-theme);
-            $color-config: material.get-color-config($theme);
+
+        %overlay-dark {
+            $color-config: material.get-color-config(theme.$lib-dark-theme);
+            $typography-config: material.get-color-config(theme.$lib-dark-theme);
+
             $primary: map-get($color-config, primary);
             $accent: map-get($color-config, accent);
             $warn: map-get($color-config, warn);
 
-            //$primary-color: mat-color($primary);
-            //$accent-color: mat-color($accent);
-            //.root-main {
-            //    background: $primary-color;
-            //    color: $accent-color;
-            //}
+            background-color: accent;
 
-            //background: background;
-            //$background: map-get($theme, background);
-            //background: mat-color($background, root-main);
-
-            //background-color: black;
-            //background: black;
-            //color: black;
+            @debug ('dark', $primary);
+            @debug ('dark', $accent);
+            @debug ('dark', $warn);
+            @debug ('dark', primary);
+            @debug ('dark', accent);
+            @debug ('dark', warn);
         }
+
+        .root-main {
+            @extend %overlay-dark !optional;
+            display: flex;
+            flex-direction: row;
+
+            @if $theme == 'dark' {
+                @extend %overlay-dark !optional;
+            }
+            @if $theme == 'light' {
+                @extend %overlay-light !optional;
+            }
+        }
+
 
     }
 
@@ -174,8 +176,6 @@ $theme: var(--theme) !default;
     //        @include theming.mat-typography-level-to-styles($config, title);
     //    }
     //}
-
-
 
 
     @media (min-width: 0) {

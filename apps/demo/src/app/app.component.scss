@@ -31,7 +31,7 @@ $theme: var(--theme) !default;
     $accent: map-get($color-config, accent);
     $warn: map-get($color-config, warn);
 
-    background: primary;
+    background: $primary;
 }
 
 %overlay-dark {
@@ -42,7 +42,7 @@ $theme: var(--theme) !default;
     $accent: map-get($color-config, accent);
     $warn: map-get($color-config, warn);
 
-    background: accent;
+    background: $accent;
 }
 
 .root-main {
