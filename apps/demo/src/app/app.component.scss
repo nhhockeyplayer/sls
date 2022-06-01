@@ -2,9 +2,12 @@
 @use '@angular/material';
 @use '@angular/material/theming';
 
-//@use 'libs/sls-shared-sass/src/lib/theme/theme';
-//@use 'libs/sls-shared-sass/src/lib/theme/mechanics/breakpoint';
+@use 'libs/sls-shared-sass/src/lib' as theme;
 
+$theme: var(--theme) !default;
+
+:host {
+}
 .app-root {
     display: flex;
     flex-direction: column;
@@ -14,15 +17,42 @@
     border-color: accent;
 }
 
-.root-main {
-    display: flex;
-    flex-direction: row;
-    background: accent;
-    color: primary;
-}
-
 .theme-toggle {
     position: fixed;
     top: 1rem;
     right: 1rem;
+}
+
+%overlay-light {
+    $color-config: material.get-color-config(theme.$lib-light-theme);
+    $typography-config: material.get-color-config(theme.$lib-light-theme);
+
+    $primary: map-get($color-config, primary);
+    $accent: map-get($color-config, accent);
+    $warn: map-get($color-config, warn);
+
+    background: primary;
+}
+
+%overlay-dark {
+    $color-config: material.get-color-config(theme.$lib-dark-theme);
+    $typography-config: material.get-color-config(theme.$lib-dark-theme);
+
+    $primary: map-get($color-config, primary);
+    $accent: map-get($color-config, accent);
+    $warn: map-get($color-config, warn);
+
+    background: accent;
+}
+
+.root-main {
+    display: flex;
+    flex-direction: row;
+
+    @if $theme == 'dark' {
+        @extend %overlay-dark !optional;
+    }
+    @if $theme == 'light' {
+        @extend %overlay-light !optional;
+    }
 }

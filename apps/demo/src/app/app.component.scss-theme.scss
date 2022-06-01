@@ -2,8 +2,62 @@
 @use '@angular/material';
 @use '@angular/material/theming';
 
-//@use 'libs/sls-shared-sass/src/lib/theme/theme';
 @use 'libs/sls-shared-sass/src/lib/theme/mechanics/breakpoint';
+@use 'libs/sls-shared-sass/src/lib' as theme;
+
+$theme: var(--theme) !default;
+
+
+.root-main {
+    display: flex;
+    flex-direction: row;
+
+    @if $theme == 'dark' {
+        $theme: material.get-color-config(theme.$lib-dark-theme);
+        $color-config: material.get-color-config($theme);
+        $primary: map-get($color-config, primary);
+        $accent: map-get($color-config, accent);
+        $warn: map-get($color-config, warn);
+
+        $primary-color: mat-color($primary);
+        $accent-color: mat-color($accent);
+        background: $primary-color;
+        color: $accent-color;
+
+        .root-main {
+            background: $primary-color;
+            color: $accent-color;
+        }
+
+
+
+
+
+        //background: black;
+        //color: black;
+    }
+    @if $theme == 'light' {
+        $theme: material.get-color-config(theme.$lib-light-theme);
+        $color-config: material.get-color-config($theme);
+        $primary: map-get($color-config, primary);
+        $accent: map-get($color-config, accent);
+        $warn: map-get($color-config, warn);
+
+        $primary-color: mat-color($primary);
+        $accent-color: mat-color($accent);
+
+        .root-main {
+            background: $primary-color;
+            color: $accent-color;
+        }
+        background: $primary-color;
+        color: $accent-color;
+
+        //background: black;
+        //color: black;
+    }
+}
+
 
 @mixin app-component-theme($theme) {
     $background: map-get($theme, background);
@@ -14,7 +68,6 @@
     $accent: map-get($color-config, accent);
     $warn: map-get($color-config, warn);
     $is-dark-theme: map-get($color-config, is-dark);
-    @debug (' is dark ===> ', $is-dark-theme);
 
     $color-config: material.get-color-config($theme);
     $typography-config: material.get-typography-config($theme);
@@ -25,6 +78,18 @@
     @if $typography-config != null {
         @include app-component-typography($typography-config);
     }
+
+
+    //.root-main {
+    //    background: map-get($color-config, background);
+    //    color: accent;
+    //}
+    //$primary-color: mat-color($primary);
+    //$accent-color: mat-color($accent);
+    //.root-main {
+    //    background: $primary-color;
+    //    color: $accent-color;
+    //}
 }
 
 @mixin app-component-color($config) {
@@ -34,22 +99,81 @@
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 
-    .app-root {
-        background-color: primary;
-        color: accent;
 
-        h1 {
-            color: theming.mat-color($foreground, text);
+    .root-main {
+        display: flex;
+        flex-direction: row;
+        //background: warn;
+
+        //background: black;
+
+        //$background: map-get($theme, background);
+        //background: mat-color($background, root-main);
+        //background: map.get($config, background);
+
+        @if $theme == 'dark' {
+            $theme: material.get-color-config(theme.$lib-dark-theme);
+            $color-config: material.get-color-config($theme);
+            $primary: map-get($color-config, primary);
+            $accent: map-get($color-config, accent);
+            $warn: map-get($color-config, warn);
+
+
+            //$primary-color: mat-color($primary);
+            //$accent-color: mat-color($accent);
+            //.root-main {
+            //    background: $primary-color;
+            //    color: $accent-color;
+            //}
+
+            //background: background;
+
+            //$background: map-get($theme, background);
+            //background: mat-color($background, root-main);
+
+            //background-color: black;
+            //background: black;
+            //color: black;
         }
+        @if $theme == 'light' {
+            $theme: material.get-color-config(theme.$lib-light-theme);
+            $color-config: material.get-color-config($theme);
+            $primary: map-get($color-config, primary);
+            $accent: map-get($color-config, accent);
+            $warn: map-get($color-config, warn);
+
+            //$primary-color: mat-color($primary);
+            //$accent-color: mat-color($accent);
+            //.root-main {
+            //    background: $primary-color;
+            //    color: $accent-color;
+            //}
+
+            //background: background;
+            //$background: map-get($theme, background);
+            //background: mat-color($background, root-main);
+
+            //background-color: black;
+            //background: black;
+            //color: black;
+        }
+
     }
+
 }
 
 @mixin app-component-typography($config) {
-    app-root {
-        h1 {
-            @include theming.mat-typography-level-to-styles($config, title);
-        }
-    }
+    //@include theming.mat-base-typography($typography);
+    //@include mat-card-typography($typography);
+    //@include mat-select-typography($typography);
+    //@include mat-form-field-typography($typography);
+    //@include mat-slide-toggle-typography($typography);
+    //@include mat-toolbar-typography($typography);
+    //app-root {
+    //    h1 {
+    //        @include theming.mat-typography-level-to-styles($config, title);
+    //    }
+    //}
 
 
 

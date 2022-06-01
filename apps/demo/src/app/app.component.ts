@@ -97,18 +97,7 @@ export class AppComponent implements OnInit {
             }
             this.toggleTheme()
         })
-    }
-
-    onClick() {
-        // if ( this.overlay.getContainerElement().classList.contains('light') ) {
-        //     this.currentTheme = 'dark'
-        // } else {
-        //     if ( this.overlay.getContainerElement().classList.contains('dark') ) {
-        //         this.currentTheme = 'light'
-        //     }
-        // }
-        // just toggle to/from
-        this.toggleTheme()
+        this.elementRef.nativeElement.style.setProperty('--theme', this.currentTheme)
     }
 
     toggleTheme() {
@@ -138,6 +127,7 @@ export class AppComponent implements OnInit {
             }
         }
         localStorage.setItem('activeTheme', this.currentTheme)
+        this.elementRef.nativeElement.style.setProperty('--theme', this.currentTheme)
     }
 
     showDialog(): void {

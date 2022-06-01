@@ -11,7 +11,8 @@
 @use 'theme/all-typography' as lib-typography;
 
 @use 'theme/palettes-grades-fonts' as pgNf;
-@use 'theme/mechanics/reset' as reset;
+@use 'theme/mechanics/_reset' as reset;
+@use 'theme/material/_page' as page;
 
 //$light-primary-palette: material.define-palette(theming.$amber-palette, A200, A100, A400, 500);
 //$light-accent-palette: material.define-palette(theming.$gray-palette, A200, A100, A400, 500);
@@ -156,7 +157,8 @@ $dark-theme: material.define-dark-theme(
 
 /* order important, must be before actual usage below !!! */
 @mixin apply-library-theme($theme) {
-    @include reset.reset;
+    @include reset.reset($theme);
+    @include page.page-responsive($theme);
 
     @include lib-theme.all-theme($theme);
 

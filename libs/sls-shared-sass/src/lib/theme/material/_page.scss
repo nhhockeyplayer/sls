@@ -17,17 +17,63 @@
     @if $typography-config != null {
         @include page-typography($typography-config);
     }
-    @include page-responsive;
+    @include page-responsive($theme);
 }
 
 
 @mixin page-color($config) {
     $primary: map.get($config, primary);
     $accent: map.get($config, accent);
-    $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
 
+    $warn: map.get($config, warn);
+    $success: map.get($config, success);
+    $caution: map.get($config, caution);
+    $danger: map.get($config, danger);
+
+    h1 {
+        background: primary;
+    }
+
+    h2 {
+        background: primary;
+    }
+
+    h3 {
+        background: primary;
+    }
+
+    h4 {
+        background: primary;
+    }
+
+    body {
+        background: primary;
+    }
+
+    section {
+        background: primary;
+    }
+
+    article {
+        background: primary;
+    }
+
+    caption {
+        background: primary;
+    }
+
+    mat-card {
+        margin: 2em;
+        background: primary;
+    }
+
+    mat-dialog-container,
+    mat-dialog-content {
+        margin: 2em;
+        background: primary;
+    }
 }
 
 @mixin page-typography($config) {
@@ -43,52 +89,47 @@
 
     h1 {
         @include material.typography-level($config, 'headline');
-        background: danger;
     }
 
     h2 {
         @include material.typography-level($config, 'title');
-        background: danger;
     }
 
     h3 {
         @include material.typography-level($config, 'subheading-2');
-        background: danger;
     }
 
     h4 {
         @include material.typography-level($config, 'subheading-1');
-        background: danger;
     }
 
     body {
         @include material.typography-level($config, 'body-1');
-        background: danger;
+    }
+
+    .section {
+        @include material.typography-level($config, 'body-1');
     }
 
     .article {
         @include material.typography-level($config, 'body-2');
-        background: danger;
     }
 
     .caption {
         @include material.typography-level($config, 'caption');
-        background: danger;
     }
 
-    mat-card {
+    .mat-card {
         margin: 2em;
-        background: danger;
     }
 
     .mat-dialog-container,
     .mat-dialog-content {
         margin: 2em;
-        background: danger;
     }
 }
 
-@mixin page-responsive() {
+@mixin page-responsive($theme) {
 
     @xs {
         color: #1a468c;
@@ -107,7 +148,7 @@
         background-color: #4458a8;
     }
     @xl {
-        color: red;
+        color: primary;
         background-color: cyan;
     }
     @xxl {

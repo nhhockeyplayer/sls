@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
     <mat-form-field>
         <mat-label>Theme Color</mat-label>
         <mat-select ngDefaultControl
@@ -19,19 +19,19 @@
         mat-icon-button
         ngDefaultControl
         [formControl]="toggleForm"
-        (click)="onClick()"
+        (click)="toggleTheme()"
         class="theme-toggle"
         aria-label="Toggle Dark Theme">
-        <mat-icon color="accent">{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        <mat-icon>{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
     </button>
 </ng-template>
 
-<h1 slsHeading>Component heading</h1>
+<h2 slsHeading>Component heading</h2>
 
 <main class="root-main">
     <mat-card>
         <mat-card-header>
-            <mat-toolbar color="primary"><p>Card Header</p></mat-toolbar>
+            <mat-toolbar><p>Card Header</p></mat-toolbar>
         </mat-card-header>
         <mat-card-content>
 

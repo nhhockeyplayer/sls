@@ -1,92 +1,71 @@
 {
-  "projectType": "library",
-  "sourceRoot": "libs/sls-shared-widgets/src",
-  "prefix": "sls",
-  "targets": {
-    "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/sls-shared-widgets"
-      ],
-      "options": {
-        "project": "libs/sls-shared-widgets/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/sls-shared-widgets/tsconfig.lib.prod.json"
+    "projectType": "library",
+    "sourceRoot": "libs/sls-shared-widgets/src",
+    "prefix": "sls",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/angular:package",
+            "outputs": ["dist/libs/sls-shared-widgets"],
+            "options": {
+                "project": "libs/sls-shared-widgets/ng-package.json"
+            },
+            "configurations": {
+                "production": {
+                    "tsConfig": "libs/sls-shared-widgets/tsconfig.lib.prod.json"
+                },
+                "development": {
+                    "tsConfig": "libs/sls-shared-widgets/tsconfig.lib.json"
+                }
+            },
+            "defaultConfiguration": "production"
         },
-        "development": {
-          "tsConfig": "libs/sls-shared-widgets/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/sls-shared-widgets"
-      ],
-      "options": {
-        "jestConfig": "libs/sls-shared-widgets/jest.config.ts",
-        "passWithNoTests": true
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/sls-shared-widgets/src/**/*.ts",
-          "libs/sls-shared-widgets/src/**/*.html"
-        ]
-      }
-    },
-    "storybook": {
-      "executor": "@nrwl/storybook:storybook",
-      "options": {
-        "uiFramework": "@storybook/angular",
-        "port": 4400,
-        "config": {
-          "configFolder": "libs/sls-shared-widgets/.storybook"
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sls-shared-widgets"],
+            "options": {
+                "jestConfig": "libs/sls-shared-widgets/jest.config.ts",
+                "passWithNoTests": true
+            }
         },
-        "projectBuildConfig": "sls-shared-widgets:build-storybook"
-      },
-      "configurations": {
-        "ci": {
-          "quiet": true
-        }
-      }
-    },
-    "build-storybook": {
-      "executor": "@nrwl/storybook:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "options": {
-        "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/sls-shared-widgets",
-        "config": {
-          "configFolder": "libs/sls-shared-widgets/.storybook"
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["libs/sls-shared-widgets/src/**/*.ts", "libs/sls-shared-widgets/src/**/*.html"]
+            }
         },
-        "projectBuildConfig": "sls-shared-widgets:build-storybook",
-        "styles": [
-          "libs/sls-shared-sass/src/lib/_index.scss"
-        ],
-        "stylePreprocessorOptions": {
-          "includePaths": [
-            "libs/sls-shared-sass/src/lib"
-          ]
+        "storybook": {
+            "executor": "@storybook/angular:start-storybook",
+            "options": {
+                "port": 4400,
+                "configDir": "libs/sls-shared-widgets/.storybook",
+                "browserTarget": "sls-shared-widgets:build-storybook",
+                "compodoc": false
+            },
+            "configurations": {
+                "ci": {
+                    "quiet": true
+                }
+            }
+        },
+        "build-storybook": {
+            "executor": "@storybook/angular:build-storybook",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "styles": ["libs/sls-shared-sass/src/lib/_index.scss"],
+                "stylePreprocessorOptions": {
+                    "includePaths": ["libs/sls-shared-sass/src/lib"]
+                },
+                "outputDir": "dist/storybook/sls-shared-widgets",
+                "configDir": "libs/sls-shared-widgets/.storybook",
+                "browserTarget": "sls-shared-widgets:build-storybook",
+                "compodoc": false
+            },
+            "configurations": {
+                "ci": {
+                    "quiet": true
+                }
+            }
         }
-      },
-      "configurations": {
-        "ci": {
-          "quiet": true
-        }
-      }
-    }
-  },
-  "tags": [
-    "scope:public",
-    "type:ui",
-    "target:all"
-  ]
+    },
+    "tags": ["scope:public", "type:ui", "target:all"]
 }

@@ -1,6 +1,6 @@
 {
     "projectType": "application",
-    "schematics": {
+    "generators": {
         "@nrwl/workspace:component": {
             "style": "scss"
         }
@@ -10,9 +10,7 @@
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:browser",
-            "outputs": [
-                "{options.outputPath}"
-            ],
+            "outputs": ["{options.outputPath}"],
             "options": {
                 "outputPath": "dist/apps/demo",
                 "index": "apps/demo/src/index.html",
@@ -32,12 +30,11 @@
                 ],
                 "styles": [
                     "apps/demo/src/styles.scss",
-                    "libs/sls-shared-sass/src/lib/_index.scss"
+                    "libs/sls-shared-sass/src/lib/_index.scss",
+                    "libs/sls-shared-sass/src/lib/_theme.scss"
                 ],
                 "stylePreprocessorOptions": {
-                    "includePaths": [
-                        "libs/sls-shared-sass/src/lib"
-                    ]
+                    "includePaths": ["libs/sls-shared-sass/src/lib"]
                 }
             },
             "configurations": {
@@ -97,31 +94,24 @@
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "options": {
-                "lintFilePatterns": [
-                    "apps/demo/src/**/*.ts",
-                    "apps/demo/src/**/*.html"
-                ]
+                "lintFilePatterns": ["apps/demo/src/**/*.ts", "apps/demo/src/**/*.html"]
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": [
-                "coverage/apps/demo"
-            ],
+            "outputs": ["coverage/apps/demo"],
             "options": {
                 "jestConfig": "apps/demo/jest.config.ts",
                 "passWithNoTests": true
             }
         },
         "storybook": {
-            "executor": "@nrwl/storybook:storybook",
+            "executor": "@storybook/angular:start-storybook",
             "options": {
-                "uiFramework": "@storybook/angular",
                 "port": 4400,
-                "config": {
-                    "configFolder": "apps/demo/.storybook"
-                },
-                "projectBuildConfig": "demo"
+                "configDir": "apps/demo/.storybook",
+                "browserTarget": "demo:build",
+                "compodoc": false
             },
             "configurations": {
                 "ci": {
@@ -130,17 +120,13 @@
             }
         },
         "build-storybook": {
-            "executor": "@nrwl/storybook:build",
-            "outputs": [
-                "{options.outputPath}"
-            ],
+            "executor": "@storybook/angular:build-storybook",
+            "outputs": ["{options.outputPath}"],
             "options": {
-                "uiFramework": "@storybook/angular",
-                "outputPath": "dist/storybook/demo",
-                "config": {
-                    "configFolder": "apps/demo/.storybook"
-                },
-                "projectBuildConfig": "demo"
+                "outputDir": "dist/storybook/demo",
+                "configDir": "apps/demo/.storybook",
+                "browserTarget": "demo:build",
+                "compodoc": false
             },
             "configurations": {
                 "ci": {

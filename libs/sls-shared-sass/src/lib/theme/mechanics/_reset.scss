@@ -1,4 +1,4 @@
-@mixin reset {
+@mixin reset($theme) {
     *::before,
     *::after {
         box-sizing: border-box;

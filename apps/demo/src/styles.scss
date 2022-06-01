@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use '@angular/material' as mat;
+@use '@angular/material';
 @use '@angular/material/theming';
 
 @use 'libs/sls-shared-sass/src/lib' as theme;
@@ -7,7 +7,7 @@
 @use 'app-theme/_all-component' as app-theme;
 @use 'app-theme/_typography' as app-typography;
 
-@include mat.core();
+@include material.core();
 
 html, body {
     height: 100vh;
@@ -23,29 +23,51 @@ body {
 }
 
 body.light {
-    $color-config: mat.get-color-config(theme.$lib-light-theme);
-    $typography-config: mat.get-color-config(theme.$lib-light-theme);
-    @include mat.all-component-themes(theme.$lib-light-theme);          // material base styles dark/light
-    @include mat.all-component-colors($color-config);
-    @include mat.all-component-typographies($typography-config);
+    $color-config: material.get-color-config(theme.$lib-light-theme);
+    $typography-config: material.get-color-config(theme.$lib-light-theme);
+    @include material.all-component-themes(theme.$lib-light-theme);          // material base styles dark/light
+    @include material.all-component-colors($color-config);
+    @include material.all-component-typographies($typography-config);
 
-    @include theme.lib-apply-library-theme(theme.$lib-light-theme);      // extra grm base widget styles dark/light
-    @include app-theme.cascade(theme.$lib-light-theme);                  // app feature styles dark/light
+    @include theme.lib-apply-library-theme(theme.$lib-light-theme);         // extra grm base widget styles dark/light
+    @include app-theme.cascade(theme.$lib-light-theme);                     // app feature styles dark/light
+
+    %overlay-light {
+        $color-config: material.get-color-config(theme.$lib-light-theme);
+        $typography-config: material.get-color-config(theme.$lib-light-theme);
+
+        $primary: map-get($color-config, primary);
+        $accent: map-get($color-config, accent);
+        $warn: map-get($color-config, warn);
+
+        background: primary;
+    }
 }
 
 body.dark {
-    $color-config: mat.get-color-config(theme.$lib-dark-theme);
-    $typography-config: mat.get-color-config(theme.$lib-dark-theme);
-    @include mat.all-component-themes(theme.$lib-dark-theme);           // material base styles dark/light
-    @include mat.all-component-colors($color-config);
-    @include mat.all-component-typographies($typography-config);
+    $color-config: material.get-color-config(theme.$lib-dark-theme);
+    $typography-config: material.get-color-config(theme.$lib-dark-theme);
+    @include material.all-component-themes(theme.$lib-dark-theme);           // material base styles dark/light
+    @include material.all-component-colors($color-config);
+    @include material.all-component-typographies($typography-config);
 
-    @include theme.lib-apply-library-theme(theme.$lib-dark-theme);      // extra grm base widget styles dark/light
-    @include app-theme.cascade(theme.$lib-dark-theme);                  // app feature styles dark/light
+    @include theme.lib-apply-library-theme(theme.$lib-dark-theme);          // extra grm base widget styles dark/light
+    @include app-theme.cascade(theme.$lib-dark-theme);                      // app feature styles dark/light
+
+    %overlay-dark {
+        $color-config: material.get-color-config(theme.$lib-dark-theme);
+        $typography-config: material.get-color-config(theme.$lib-dark-theme);
+
+        $primary: map-get($color-config, primary);
+        $accent: map-get($color-config, accent);
+        $warn: map-get($color-config, warn);
+
+        background: accent;
+    }
 }
 
 @media screen and (max-width: 479px) {
-    @include mat.all-component-typographies(theme.$lib-mobile-font-config);
+    @include material.all-component-typographies(theme.$lib-mobile-font-config);
     @include theme.lib-apply-library-typography(theme.$lib-mobile-font-config);
     @include app-typography.apply-app-typography(theme.$lib-mobile-font-config);
 }
@@ -55,146 +77,24 @@ body.dark {
     flex: 1 1 auto;
 }
 
+%overlay-light {
+    $color-config: material.get-color-config(theme.$lib-light-theme);
+    $typography-config: material.get-color-config(theme.$lib-light-theme);
 
+    $primary: map-get($color-config, primary);
+    $accent: map-get($color-config, accent);
+    $warn: map-get($color-config, warn);
 
+    background: primary;
+}
 
+%overlay-dark {
+    $color-config: material.get-color-config(theme.$lib-dark-theme);
+    $typography-config: material.get-color-config(theme.$lib-dark-theme);
 
+    $primary: map-get($color-config, primary);
+    $accent: map-get($color-config, accent);
+    $warn: map-get($color-config, warn);
 
-
-
-
-
-
-
-
-
-
-//$color-config: mat.get-color-config(theme.$dark-theme);
-//@include mat.all-component-themes(theme.$light-theme);
-//@include theme.apply-library-theme(theme.$light-theme);
-//@include app-theme.cascade(theme.$light-theme);
-
-//.darkMode {
-//    @include mat.all-component-themes(theme.$dark-theme);
-//    @include theme.theme(theme.$dark-theme);
-//    @include app-theme.cascade(theme.$dark-theme);
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//h1 {
-//    @include breakpoint.xs;
-//    @include breakpoint.sm;
-//    @include breakpoint.md;
-//    @include breakpoint.lg;
-//    @include breakpoint.xl;
-//    @include breakpoint.xxl;
-//
-//    @breakpoint.xs {
-//        color: #1a468c;
-//        background-color: #050f0f;
-//    }
-//    @sm {
-//        color: #ff18e9;
-//        background-color: #7caaaa;
-//    }
-//    @md {
-//        color: #07155b;
-//        background-color: #911e55;
-//    }
-//    @lg {
-//        color: #dcc125;
-//        background-color: #4458a8;
-//    }
-//    @xl {
-//        color: red;
-//        background-color: cyan;
-//    }
-//    @xxl {
-//        color: #a3441f;
-//        background-color: #2ee533;
-//    }
-//}
-
-
-
-// ######################################################## //
-//
-//@use 'sass:list';
-//@use 'sass:map';
-//@use 'sass:meta';
-//@use 'sass:math';
-//@use 'sass:string';
-//@use '_brand';
-//@use '_breakpoint';
-//@use '_constant';
-//@use '_default';
-//@use '@angular/material' as mat;
-//@use '@angular/material/theming' as theming;
-//@use 'theming/_root-theme' as root-theme;
-//@use 'theming/_root-color' as root-color;
-//@use 'theming/_root-typography' as root-typography;
-//
-//@import '@angular/material';
-//@import '@angular/material/theming';
-//@import 'breakpoint';
-//
-//@include mat.core();
-//
-//$angular-primary: mat.define-palette(mat.$teal-palette, 500, 100, 900);
-//$angular-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-//$angular-warn: mat.define-palette(mat.$red-palette);
-//
-//// Create the theme objects (a Sass map containing all of the palettes).
-//$light-theme: theming.mat-light-theme($angular-primary, $angular-accent, $angular-warn);
-//$dark-theme: theming.mat-dark-theme($angular-primary, $angular-accent, $angular-warn);
-//
-//// Load core styles which independent from theme
-//// It should be included once
-//@include root-theme.app-theme($light-theme);
-//
-//html, body { height: 100%; }
-//body {
-//  margin: 0;
-//}
-//
-//.theme-dark {
-//  @include root-theme.app-theme($dark-theme);
-//}
-//.theme-light {
-//  @include root-theme.app-theme($light-theme);
-//}
+    background: accent;
+}
