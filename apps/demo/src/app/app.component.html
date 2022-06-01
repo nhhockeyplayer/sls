@@ -35,62 +35,62 @@
         </mat-card-header>
         <mat-card-content>
 
-                <sls-button [size]="'lg'" [border]="'primary'" [type]="'reset'" [style]="'primary'">OK</sls-button>
-                <sls-button [border]="'secondary'" [type]="'reset'" [style]="'secondary'">RESET</sls-button>
+            <sls-button color="primary"
+                [size]="'lg'" [border]="'primary'" [type]="'reset'" [style]="'primary'">OK</sls-button>
+            <sls-button [border]="'secondary'" [type]="'reset'" [style]="'secondary'">RESET</sls-button>
 
-                <div class="mat-app-background">
-                    <h1 slsHeading>Buttons</h1>
+            <div class="mat-app-background">
+                <h1 slsHeading>Buttons</h1>
 
-                    <div fxLayout="row" fxLayoutGap="16px" color="primary">
-                        <button mat-raised-button (click)="showDialog()">
-                            Primary Button
-                        </button>
+                <div fxLayout="row" fxLayoutGap="16px" color="primary">
+                    <button mat-raised-button (click)="showDialog()">
+                        Primary Button
+                    </button>
 
-                        <button mat-raised-button color="accent">
-                            Accent button
-                        </button>
+                    <button mat-raised-button color="accent">
+                        Accent button
+                    </button>
 
-                        <button mat-raised-button color="warn">
-                            Warn button
-                        </button>
+                    <button mat-raised-button color="warn">
+                        Warn button
+                    </button>
 
-                        <button mat-raised-button color="warn" disabled>
-                            Disabled button
-                        </button>
-                    </div>
-
-                    <mat-divider></mat-divider>
-
-                    <h1 slsHeading>Input</h1>
-
-                    <mat-form-field>
-                        <input matInput placeholder="Enter some information">
-                    </mat-form-field>
-
-                    <mat-divider></mat-divider>
-
-                    <h1 slsHeading>Checkbox</h1>
-
-                    <mat-checkbox>Check this box!</mat-checkbox>
-
-                    <mat-divider></mat-divider>
-
-                    <h1 slsHeading>Expansion panel</h1>
-
-                    <mat-expansion-panel hideToggle>
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                This is the expansion title
-                            </mat-panel-title>
-                            <mat-panel-description>
-                                This is a summary of the content
-                            </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
-                    <br><br>
+                    <button mat-raised-button color="warn" disabled>
+                        Disabled button
+                    </button>
                 </div>
 
+                <mat-divider></mat-divider>
+
+                <h1 slsHeading>Input</h1>
+
+                <mat-form-field>
+                    <input matInput placeholder="Enter some information">
+                </mat-form-field>
+
+                <mat-divider></mat-divider>
+
+                <h1 slsHeading>Checkbox</h1>
+
+                <mat-checkbox>Check this box!</mat-checkbox>
+
+                <mat-divider></mat-divider>
+
+                <h1 slsHeading>Expansion panel</h1>
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            This is the expansion title
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            This is a summary of the content
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>This is the primary content of the panel.</p>
+                </mat-expansion-panel>
+                <br><br>
+            </div>
 
             <button mat-raised-button color="primary">Raised</button>
             <button mat-raised-button color="accent">Accent</button>
@@ -130,6 +130,28 @@
             <mat-toolbar color="primary"><p>Card Header</p></mat-toolbar>
         </mat-card-header>
         <mat-card-content>
+
+            <mat-divider></mat-divider>
+            <div fxLayout="row" fxLayoutGap="16px" color="primary">
+                <h3 slsHeading>SLS Buttons (w/slsHeading)</h3>
+                <sls-button (click)="showDialog()">
+                    Primary Button
+                </sls-button>
+
+                <sls-button color="accent">
+                    Accent button
+                </sls-button>
+
+                <sls-button color="warn">
+                    Warn button
+                </sls-button>
+
+                <sls-button color="warn" [disabled]="true">
+                    Disabled button
+                </sls-button>
+            </div>
+            <mat-divider></mat-divider>
+
             <mat-form-field>
                 <mat-label>Select access</mat-label>
                 <mat-select>

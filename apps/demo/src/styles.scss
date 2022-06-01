@@ -27,9 +27,9 @@ body {
     flex: 1 1 auto;
 }
 
-//@include material.all-component-themes(theme.$lib-light-theme); // material base styles dark/light
-//@include theme.lib-apply-library-theme(theme.$lib-light-theme);      // extra grm base widget styles dark/light
-//@include app-theme.cascade(theme.$lib-light-theme);              // app feature styles dark/light
+@include material.all-component-themes(theme.$lib-light-theme); // material base styles dark/light
+@include theme.lib-apply-library-theme(theme.$lib-light-theme);      // extra grm base widget styles dark/light
+@include app-theme.cascade(theme.$lib-light-theme);              // app feature styles dark/light
 
 body.light {
     @include material.all-component-themes(theme.$lib-light-theme);  // material base styles dark/light

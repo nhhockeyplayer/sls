@@ -33,7 +33,7 @@
     $caution: map.get($config, caution);
     $danger: map.get($config, danger);
 
-
+    .sls-button,
     .mat-fab,
     .mat-mini-fab,
     .mat-raised-button {
@@ -79,22 +79,23 @@
     //    #{$property}: theming.get-color-from-palette($warn, $hue);
     //}
     //
-    &.mat-primary,
-    &.mat-accent,
-    &.mat-warn,
-    &.mat-button-disabled {
+
+
+    .sls-button,
+    button {
+        &.mat-primary,
+        &.mat-accent,
+        &.mat-warn,
         &.mat-button-disabled {
-            background-color: accent;
-            border: 1px solid warn;
-            color: primary;
-            -webkit-box-shadow: 0 3px 0 0 success;
-            box-shadow: 0 3px 0 0 caution;
+            &.mat-button-disabled {
+                background-color: accent;
+                border: 1px solid warn;
+                color: primary;
+                -webkit-box-shadow: 0 3px 0 0 success;
+                box-shadow: 0 3px 0 0 caution;
+            }
         }
     }
-
-    //button {
-    //    background: map.get($config, color);
-    //}
 
 }
 

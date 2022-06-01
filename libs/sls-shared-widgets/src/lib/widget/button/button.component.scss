@@ -1,8 +1,15 @@
 
+:host-context(sls-button +) {
+    margin-left: 0.5em;
+}
+
+
 //@at-root sls-button {
-//  margin: $default-margin;
-//  padding: $default-margin;
+//  margin: spacing.$default-margin;
+//  padding: spacing.$default-margin;
 //}
+
+
 //
 //sls-button  {
 //

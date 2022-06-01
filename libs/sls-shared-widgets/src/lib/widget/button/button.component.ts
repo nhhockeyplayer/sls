@@ -14,7 +14,6 @@ import {TButtonColor, TButtonSize, TButtonStyle, TButtonType} from './button'
   selector: 'sls-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: ButtonComponent.defaultClassName,
@@ -23,7 +22,7 @@ import {TButtonColor, TButtonSize, TButtonStyle, TButtonType} from './button'
   }
 })
 export class ButtonComponent {
-  static defaultClassName = 'sls-button'
+  static defaultClassName = 'mat-button'
   /** Add optional ID to host
    */
   @HostBinding('attr.id') @Input() id?: string
@@ -72,9 +71,9 @@ export class ButtonComponent {
     const classBinding = [
       this.extraClasses,
       ButtonComponent.defaultClassName,
-      'btn',
-      this.size && 'btn-' + this.size,
-      this.style && 'btn-' + this.style,
+      'mat-raised-button',
+      this.size && 'button-' + this.size,
+      this.style && 'mat-' + this.style,
       this.border && 'btn-' + this.border,
     ].filter(Boolean).join(' ')
     return classBinding
