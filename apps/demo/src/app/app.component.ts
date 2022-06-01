@@ -74,7 +74,6 @@ export class AppComponent implements OnInit {
                     this.currentTheme = 'dark'
                 }
             }
-
             this.applyTheme(this.currentTheme)
         })
     }
@@ -87,7 +86,6 @@ export class AppComponent implements OnInit {
                 this.currentTheme = 'dark'
             }
         }
-
         this.applyTheme(this.currentTheme)
     }
 

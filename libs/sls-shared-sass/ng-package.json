@@ -4,10 +4,7 @@
   "lib": {
     "entryFile": "src/index.ts",
     "styleIncludePaths": [
-      "../../../node_modules",
-      "../../../node_modules/@angular/material",
-      "src/lib",
-      "src/lib/theme"
+      "src/lib"
     ]
   }
 }

@@ -115,18 +115,26 @@
 @mixin checkbox-color($config) {
     $primary: map.get($config, primary);
     $accent: map.get($config, accent);
-    $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
+
+    $warn: map.get($config, warn);
+    $success: map.get($config, success);
+    $caution: map.get($config, caution);
+    $danger: map.get($config, danger);
 
 }
 
 @mixin checkbox-typography($config) {
     $primary: map.get($config, primary);
     $accent: map.get($config, accent);
-    $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
+
+    $warn: map.get($config, warn);
+    $success: map.get($config, success);
+    $caution: map.get($config, caution);
+    $danger: map.get($config, danger);
 }
 
 

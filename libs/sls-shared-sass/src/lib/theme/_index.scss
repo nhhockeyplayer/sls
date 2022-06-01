@@ -1,12 +1,17 @@
 
-@forward './all-color';
-@forward './all-theme';
-@forward './all-density';
-@forward './all-typography';
-@forward './palettes-grades-fonts';
+//@forward './_all-color';
+//@forward './_all-theme';
+//@forward './_all-density';
+//@forward './_all-typography';
+//@forward './_palettes-grades-fonts';
 
-//@forward './theme';
-@forward 'theme/_all-theme' as theme-* show all-theme;
-@forward 'theme/_all-color' as color-* show all-color;
-@forward 'theme/_all-typography' as typography-* show all-typography;
-@forward 'theme/_palettes-grades-fonts' as shared-*;
+@forward '../theme';
+@forward './mechanics';
+@forward './material';
+
+@forward './theme/_palettes-grades-fonts' as shared-*;
+@forward './theme/_all-color' as color-* show all-color;
+@forward './theme/_all-density' as density-* show all-density;
+@forward './theme/_all-theme' as theme-* show all-theme;
+@forward './theme/_all-typography' as typography-* show all-typography;
+

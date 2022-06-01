@@ -2,127 +2,132 @@
     <mat-form-field>
         <mat-label>Theme Color</mat-label>
         <mat-select ngDefaultControl
-                    [(ngModel)]="selectedColor" >
+                    [(ngModel)]="selectedColor">
             <mat-option *ngFor="let color of colors" [value]="color.value">
                 {{color.displayKey}}
             </mat-option>
         </mat-select>
     </mat-form-field>
 
-    <div class="flex-fill"></div>
     <div class="nav-item">
-<!--        <mat-icon color="accent">brightness_5</mat-icon>-->
-<!--        <mat-slide-toggle [formControl]="toggleForm"></mat-slide-toggle>-->
-<!--        <mat-icon>bedtime</mat-icon>-->
-<!--        <mat-slide-toggle-->
-<!--            [formControl]="toggleForm"-->
-<!--            class="theme-toggle"-->
-<!--            aria-label="Toggle Dark Theme">-->
-<!--            <mat-icon color="accent">{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>-->
-<!--        </mat-slide-toggle>-->
-        <button
-            mat-icon-button
-            [formControl]="toggleForm"
-            (click)="onClick()"
-            class="theme-toggle"
-            aria-label="Toggle Dark Theme">
-            <mat-icon color="accent">{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
-        </button>
-<!--        <button-->
-<!--            mat-icon-button-->
-<!--            [formControl]="toggleForm"-->
-<!--            class="theme-toggle"-->
-<!--            aria-label="Toggle Dark Theme"        >-->
-<!--            <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>-->
-<!--        </button>-->
+        <ng-container [ngTemplateOutlet]="themebutton"></ng-container>
     </div>
 </mat-toolbar>
+
+<ng-template #themebutton>
+    <button
+        mat-icon-button
+        ngDefaultControl
+        [formControl]="toggleForm"
+        (click)="onClick()"
+        class="theme-toggle"
+        aria-label="Toggle Dark Theme">
+        <mat-icon color="accent">{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </button>
+</ng-template>
 
 <h1 slsHeading>Component heading</h1>
 
 <main class="root-main">
     <mat-card>
         <mat-card-header>
-            <mat-toolbar color="primary">
-                Dark Mode
-                <mat-icon color="accent">brightness_5</mat-icon>
-                <mat-slide-toggle [formControl]="toggleForm">
-                </mat-slide-toggle>
-                <mat-icon>bedtime</mat-icon>
-            </mat-toolbar>
+            <mat-toolbar color="primary"><p>Card Header</p></mat-toolbar>
         </mat-card-header>
         <mat-card-content>
-            <div>
-                <sls-button [size]="'lg'" [border]="'primary'" [type]="'reset'"
-                            [style]="'primary'">OK
-                </sls-button>
-                <sls-button [border]="'secondary'" [type]="'reset'"
-                            [style]="'secondary'">RESET
-                </sls-button>
+
+                <sls-button [size]="'lg'" [border]="'primary'" [type]="'reset'" [style]="'primary'">OK</sls-button>
+                <sls-button [border]="'secondary'" [type]="'reset'" [style]="'secondary'">RESET</sls-button>
 
                 <div class="mat-app-background">
+                    <h1 slsHeading>Buttons</h1>
 
+                    <div fxLayout="row" fxLayoutGap="16px" color="primary">
+                        <button mat-raised-button (click)="showDialog()">
+                            Primary Button
+                        </button>
 
-                        <h1 slsHeading>Buttons</h1>
+                        <button mat-raised-button color="accent">
+                            Accent button
+                        </button>
 
-                        <div fxLayout="row" fxLayoutGap="16px" color="primary">
-                            <button mat-raised-button  (click)="showDialog()">
-                                Primary Button
-                            </button>
+                        <button mat-raised-button color="warn">
+                            Warn button
+                        </button>
 
-                            <button mat-raised-button color="accent">
-                                Accent button
-                            </button>
-
-                            <button mat-raised-button color="warn">
-                                Warn button
-                            </button>
-                        </div>
-
-                        <br><br>
-
-                        <h1 slsHeading>Input</h1>
-
-                        <mat-form-field>
-                            <input matInput placeholder="Enter some information">
-                        </mat-form-field>
-
-                        <br><br>
-
-                        <h1 slsHeading>Checkbox</h1>
-
-                        <mat-checkbox>Check this box!</mat-checkbox>
-
-                        <br><br>
-
-                        <h1 slsHeading>Expansion panel</h1>
-
-                        <mat-expansion-panel hideToggle>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    This is the expansion title
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                    This is a summary of the content
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <p>This is the primary content of the panel.</p>
-                        </mat-expansion-panel>
-                        <br><br>
+                        <button mat-raised-button color="warn" disabled>
+                            Disabled button
+                        </button>
                     </div>
+
+                    <mat-divider></mat-divider>
+
+                    <h1 slsHeading>Input</h1>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Enter some information">
+                    </mat-form-field>
+
+                    <mat-divider></mat-divider>
+
+                    <h1 slsHeading>Checkbox</h1>
+
+                    <mat-checkbox>Check this box!</mat-checkbox>
+
+                    <mat-divider></mat-divider>
+
+                    <h1 slsHeading>Expansion panel</h1>
+
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                This is the expansion title
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                This is a summary of the content
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>This is the primary content of the panel.</p>
+                    </mat-expansion-panel>
+                    <br><br>
                 </div>
 
+
+            <button mat-raised-button color="primary">Raised</button>
+            <button mat-raised-button color="accent">Accent</button>
+            <button mat-raised-button color="warn">Warn</button>
+
+            <button mat-button color="success">Success</button>
+            <button mat-stroked-button color="success">Success Stroked</button>
+            <button mat-flat-button color="success">Success Flat</button>
+            <button mat-raised-button color="success">Success Raised</button>
+            <button mat-icon-button color="success">
+                <mat-icon>check_circle</mat-icon>
+            </button>
+            <button mat-fab color="success">
+                <mat-icon>check_circle</mat-icon>
+            </button>
+            <button mat-mini-fab color="success">
+                <mat-icon>check_circle</mat-icon>
+            </button>
+
+            <button mat-button color="info">Info</button>
+            <button mat-stroked-button color="info">Info Stroked</button>
+            <button mat-flat-button color="info">Info Flat</button>
+            <button mat-raised-button color="info">Info Raised</button>
+            <button mat-icon-button color="info">
+                <mat-icon>info</mat-icon>
+            </button>
+            <button mat-fab color="info">
+                <mat-icon>info</mat-icon>
+            </button>
+            <button mat-mini-fab color="info">
+                <mat-icon>info</mat-icon>
+            </button>
         </mat-card-content>
     </mat-card>
     <mat-card>
         <mat-card-header>
-            <mat-toolbar color="primary">
-                Dark Mode
-                <mat-icon color="accent">brightness_5</mat-icon>
-                <mat-slide-toggle [formControl]="toggleForm">
-                </mat-slide-toggle>
-                <mat-icon>bedtime</mat-icon>
-            </mat-toolbar>
+            <mat-toolbar color="primary"><p>Card Header</p></mat-toolbar>
         </mat-card-header>
         <mat-card-content>
             <mat-form-field>
@@ -146,40 +151,28 @@
     </mat-card>
     <mat-card>
         <mat-card-header>
-            <mat-toolbar color="primary">
-                Dark Mode
-                <mat-icon color="accent">brightness_5</mat-icon>
-                <mat-slide-toggle [formControl]="toggleForm">
-                </mat-slide-toggle>
-                <mat-icon>bedtime</mat-icon>
-            </mat-toolbar>
+            <mat-toolbar color="primary"><p>Card Header</p></mat-toolbar>
         </mat-card-header>
         <mat-card-content>
-
-                <mat-label>Select access</mat-label>
-                <mat-select>
-                    <mat-option [value]="0">Admin</mat-option>
-                    <mat-option [value]="1">Collaborator</mat-option>
-                </mat-select>
+            <mat-label>Select access</mat-label>
+            <mat-select>
+                <mat-option [value]="0">Admin</mat-option>
+                <mat-option [value]="1">Collaborator</mat-option>
+            </mat-select>
 
             <h1 slsHeading>Sacred Light RESPONSIVE TEST</h1>
+            <h1 slsHeading>A card</h1>
 
-                    <h1 slsHeading>A card</h1>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
 
-                            <div mat-card-avatar class="example-header-image"></div>
-                            <mat-card-title>Shiba Inu</mat-card-title>
-                            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <h2 slsHeading>
+                paragraph text
+            </h2>
 
-                            <p>
-                                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                                Japan.
-                                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                                originally
-                                bred for hunting.
-                            </p>
-
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
 
 
         </mat-card-content>

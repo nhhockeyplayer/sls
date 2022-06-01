@@ -2,18 +2,17 @@
 @use '@angular/material';
 @use '@angular/material/theming';
 
-@use 'libs/sls-shared-sass/src/lib/theme/theme';
-//@use 'libs/sls-shared-sass/src/lib' as lib;
+@use 'libs/sls-shared-sass/src/lib' as theme;
 
 @use 'app-theme/_all-component' as app-theme;
 @use 'app-theme/_typography' as app-typography;
 
 @include material.core();
 
+//@include theme.lib-theme-all-theme(theme);                          // extra grm base widget styles dark/light
 
-@include theme.apply-library-theme(theme.$light-theme);     // extra grm base widget styles dark/light
-@include app-theme.cascade(theme.$light-theme);             // app feature styles dark/light
-//@import 'libs/sls-shared-sass/src/lib/theme/theme';
+//@include theme.lib-apply-library-theme(theme.$lib-light-theme);     // extra grm base widget styles dark/light
+//@include app-theme.cascade(theme.$lib-light-theme);                 // app feature styles dark/light
 
 html, body {
     height: 100vh;
@@ -28,24 +27,26 @@ body {
     flex: 1 1 auto;
 }
 
-//@include material.all-component-themes(theme.$light-theme); // material base styles dark/light
+//@include material.all-component-themes(theme.$lib-light-theme); // material base styles dark/light
+//@include theme.lib-apply-library-theme(theme.$lib-light-theme);      // extra grm base widget styles dark/light
+//@include app-theme.cascade(theme.$lib-light-theme);              // app feature styles dark/light
 
 body.light {
-    @include material.all-component-themes(theme.$light-theme);  // material base styles dark/light
-    @include theme.apply-library-theme(theme.$light-theme);      // extra grm base widget styles dark/light
-    @include app-theme.cascade(theme.$light-theme);              // app feature styles dark/light
+    @include material.all-component-themes(theme.$lib-light-theme);  // material base styles dark/light
+    @include theme.lib-apply-library-theme(theme.$lib-light-theme);      // extra grm base widget styles dark/light
+    @include app-theme.cascade(theme.$lib-light-theme);              // app feature styles dark/light
 }
 
 body.dark {
-    @include material.all-component-themes(theme.$dark-theme);  // material base styles dark/light
-    @include theme.apply-library-theme(theme.$dark-theme);      // extra grm base widget styles dark/light
-    @include app-theme.cascade(theme.$dark-theme);              // app feature styles dark/light
+    @include material.all-component-themes(theme.$lib-dark-theme);  // material base styles dark/light
+    @include theme.lib-apply-library-theme(theme.$lib-dark-theme);      // extra grm base widget styles dark/light
+    @include app-theme.cascade(theme.$lib-dark-theme);              // app feature styles dark/light
 }
 
 @media screen and (max-width: 479px) {
-    @include material.all-component-typographies(theme.$mobile-font-config);
-    @include theme.apply-library-typography(theme.$mobile-font-config);
-    @include app-typography.apply-app-typography(theme.$mobile-font-config);
+    @include material.all-component-typographies(theme.$lib-mobile-font-config);
+    @include theme.lib-apply-library-typography(theme.$lib-mobile-font-config);
+    @include app-typography.apply-app-typography(theme.$lib-mobile-font-config);
 }
 
 

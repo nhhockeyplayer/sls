@@ -25,9 +25,14 @@
 @mixin button-color($config) {
     $primary: map.get($config, primary);
     $accent: map.get($config, accent);
-    $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
+
+    $warn: map.get($config, warn);
+    $success: map.get($config, success);
+    $caution: map.get($config, caution);
+    $danger: map.get($config, danger);
+
 
     .mat-fab,
     .mat-mini-fab,
@@ -36,7 +41,6 @@
             background-color: background;
             color: foreground;
             border: 1px solid teal;
-            border-color: #ffffff;
             //color: #1a1446;
             -webkit-box-shadow: 0 3px 0 0 warn;
             box-shadow: 0 3px 0 0 warn;
@@ -44,7 +48,7 @@
 
         &.mat-accent {
             background-color: accent;
-            border: 1px solid #1a1446;
+            border: 1px solid primary;
             color: #1a1446;
             -webkit-box-shadow: 0 3px 0 0 #c0bfc0;
             box-shadow: 0 3px 0 0 #c0bfc0;
@@ -52,7 +56,7 @@
 
         &:hover {
             background-color: #06748c;
-            border: 1px solid #06748c;
+            border: 1px solid accent;
             color: #fff;
             -webkit-box-shadow: 0 3px 0 0 #1a1446;
             box-shadow: 0 3px 0 0 #1a1446;
@@ -75,15 +79,18 @@
     //    #{$property}: theming.get-color-from-palette($warn, $hue);
     //}
     //
-    //&.mat-primary,
-    //&.mat-accent,
-    //&.mat-warn,
-    //&.mat-button-disabled {
-    //    &.mat-button-disabled {
-    //        $palette: if($property == "color", $foreground, $background);
-    //        #{$property}: theming.get-color-from-palette($palette, disabled-button);
-    //    }
-    //}
+    &.mat-primary,
+    &.mat-accent,
+    &.mat-warn,
+    &.mat-button-disabled {
+        &.mat-button-disabled {
+            background-color: accent;
+            border: 1px solid warn;
+            color: primary;
+            -webkit-box-shadow: 0 3px 0 0 success;
+            box-shadow: 0 3px 0 0 caution;
+        }
+    }
 
     //button {
     //    background: map.get($config, color);

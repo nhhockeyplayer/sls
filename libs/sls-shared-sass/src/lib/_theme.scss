@@ -6,40 +6,53 @@
 @use '@angular/material';
 @use '@angular/material/theming';
 
-@use '_all-theme' as lib-theme;
-@use '_all-color' as lib-color;
-@use '_all-typography' as lib-typography;
+@use 'theme/all-theme' as lib-theme;
+@use 'theme/all-color' as lib-color;
+@use 'theme/all-typography' as lib-typography;
 
-@use '_palettes-grades-fonts' as pgNf;
-@use 'mechanics/_reset' as reset;
+@use 'theme/palettes-grades-fonts' as pgNf;
+@use 'theme/mechanics/reset' as reset;
 
-@use 'mechanics/_theme-generator' as tg;
-
+//$light-primary-palette: material.define-palette(theming.$amber-palette, A200, A100, A400, 500);
+//$light-accent-palette: material.define-palette(theming.$gray-palette, A200, A100, A400, 500);
+//$dark-primary-palette: material.define-palette(theming.$brown-palette, A200, A100, A400, 500);
+//$dark-accent-palette: material.define-palette(theming.$amber-palette, A200, A100, A400, 500);
+//$warn-palette: material.define-palette(theming.$mat-red, A200, A100, A400, 500);
 $light-primary-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
-$light-accent-palette: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
-$dark-primary-palette: material.define-palette(theming.$mat-pink, A200, A100, A400, 500);
-$dark-accent-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
-$warn-palette: material.define-palette(theming.$mat-red, A200, A100, A400, 500);
+$light-accent-palette: material.define-palette(material.$red-palette, A200, A100, A400, 500);
+$dark-primary-palette: material.define-palette(theming.$mat-gray, A200, A100, A400, 500);
+$dark-accent-palette: material.define-palette(theming.$mat-gray, A200, A100, A400, 500);
+
+$warn-palette: material.define-palette(theming.$mat-indigo, A200, A100, A400, 500);
+$success-palette: material.define-palette(theming.$mat-gray, 700, 300, 900, 500);
+$caution-palette: material.define-palette(theming.$mat-indigo, 400, 300, 900, 500);
+$danger-palette: material.define-palette(theming.$mat-indigo, 400, 300, 900, 500);
 
 $light-theme: material.define-light-theme(
         (color: (
             primary: $light-primary-palette,
             accent: $light-accent-palette,
             warn: $warn-palette,
+            success: $success-palette,
+            caution: $caution-palette,
+            danger: $danger-palette,
             is-dark: false,
         ),
             typography: pgNf.$font-config
         ));
 
-$dark-theme: material.define-light-theme((color: (
-    primary: $dark-primary-palette,
-    accent: $dark-accent-palette,
-    warn: $warn-palette,
-    is-dark: true,
-),
-    typography: pgNf.$font-config
-));
-
+$dark-theme: material.define-light-theme(
+        (color: (
+            primary: $dark-primary-palette,
+            accent: $dark-accent-palette,
+            warn: $warn-palette,
+            success: $success-palette,
+            caution: $caution-palette,
+            danger: $danger-palette,
+            is-dark: true,
+        ),
+            typography: pgNf.$font-config
+        ));
 
 
 //$success-colors: material.define-palette(theming.$mat-green, 700, 300, 900, 500);

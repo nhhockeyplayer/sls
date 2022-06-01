@@ -1,16 +1,43 @@
+//@forward './_theme' as lib-* show $light-theme, $dark-theme, $font-config, $mobile-font-config;
+
+@forward './_theme' as lib-*;
 
 
-/* Bundles */
-@forward 'theme';
 
-/* Mechanics */
-@forward 'theme/mechanics';
 
-/* Theming */
-@forward 'theme/material';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//@forward './_index';
+
+
+
+///* Mechanics */
+//@forward 'theme/mechanics';
+//
+///* Theming */
+//@forward 'theme/material';
 
 /* API */
-@forward 'theme/_theme' as lib-* show $light-theme, $dark-theme, $font-config, $mobile-font-config;
-
-
+//@forward './theme';
+///* API */
+//@forward 'theme/theme' as lib-* show $light-theme, $dark-theme, $font-config, $mobile-font-config;
+//
+//
