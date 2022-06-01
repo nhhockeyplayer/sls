@@ -68,8 +68,10 @@ $danger-palette: material.define-palette(theming.$mat-indigo, 400, 300, 900, 500
 //$primary: material.get-color-from-palette($app-primary, 700, 300);
 //$accent: material.get-color-from-palette($app-accent, 700, 300);
 //$warn: material.get-color-from-palette($app-warn, 700, 300);
-$angular-primary: material.define-palette(pgNf.$red-palette);
-$angular-accent: material.define-palette(pgNf.$grey-palette, A200, A100, A400);
+//$light-primary-palette: material.define-palette(pgNf.$gray-color-grades);
+//$light-accent-palette: material.define-palette(pgNf.$teal-color-grades);
+$angular-primary: material.define-palette(pgNf.$gray-color-grades);
+$angular-accent: material.define-palette(pgNf.$teal-color-grades);
 $angular-warn: material.define-palette(pgNf.$mat-red);
 //
 
