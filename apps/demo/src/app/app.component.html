@@ -28,7 +28,7 @@
 
 <h2 slsHeading>Component heading</h2>
 
-<main class="root-main">
+<main class="root-main" [ngStyle]="currentTheme == 'light' ? {'background-color': 'red'} : {'background-color': 'blue'}">
     <mat-card>
         <mat-card-header>
             <mat-toolbar><p>Card Header</p></mat-toolbar>

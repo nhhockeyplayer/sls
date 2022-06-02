@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
     }
 
-    private currentTheme!: ThemeMode
+    currentTheme!: ThemeMode
 
     ngOnInit(): void {
         this.elementRef.nativeElement.style.setProperty('--theme-brand', environment.brand)

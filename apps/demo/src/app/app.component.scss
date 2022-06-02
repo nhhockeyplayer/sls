@@ -2,9 +2,25 @@
 @use '@angular/material';
 @use '@angular/material/theming';
 
+@use 'libs/sls-shared-sass/src/lib/theme/mechanics/breakpoint';
 @use 'libs/sls-shared-sass/src/lib' as theme;
 
 $theme: var(--theme) !default;
+$is-light-theme: $theme == 'light';
+
+
+.root-main, main {
+    display: flex;
+    flex-direction: row;
+
+    @if $is-light-theme {
+        background-color: red !important;
+        color: black;
+    } @else {
+        background-color: black !important;
+        color: red;
+    }
+}
 
 :host {
 }
@@ -15,7 +31,6 @@ $theme: var(--theme) !default;
 
     border: 1px;
     border-color: accent;
-    background: primary;
 }
 
 .theme-toggle {

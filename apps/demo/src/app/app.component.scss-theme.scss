@@ -6,11 +6,20 @@
 @use 'libs/sls-shared-sass/src/lib' as theme;
 
 $theme: var(--theme) !default;
+$is-light-theme: $theme == 'light';
 
 
-.rroot-main {
+.root-main, main {
     display: flex;
     flex-direction: row;
+
+    //@if $is-light-theme {
+    //    background-color: red !important;
+    //    color: white;
+    //} @else {
+    //    background-color: white !important;
+    //    color: red;
+    //}
 
     @if $theme == 'dark' {
         $theme: material.get-color-config(theme.$lib-dark-theme);
@@ -24,14 +33,8 @@ $theme: var(--theme) !default;
         background: $primary-color;
         color: $accent-color;
 
-        .root-main {
-            background: $primary-color;
-            color: $accent-color;
-        }
-
-
-        //background: black;
-        //color: black;
+        background: $primary-color;
+        color: $accent-color;
     }
     @if $theme == 'light' {
         $theme: material.get-color-config(theme.$lib-light-theme);
@@ -43,15 +46,8 @@ $theme: var(--theme) !default;
         $primary-color: mat-color($primary);
         $accent-color: mat-color($accent);
 
-        .root-main {
-            background: $primary-color;
-            color: $accent-color;
-        }
         background: $primary-color;
         color: $accent-color;
-
-        //background: black;
-        //color: black;
     }
 }
 
@@ -75,18 +71,6 @@ $theme: var(--theme) !default;
     @if $typography-config != null {
         @include app-component-typography($typography-config);
     }
-
-
-    //.root-main {
-    //    background: map.get($color-config, background);
-    //    color: accent;
-    //}
-    //$primary-color: mat-color($primary);
-    //$accent-color: mat-color($accent);
-    //.root-main {
-    //    background: $primary-color;
-    //    color: $accent-color;
-    //}
 }
 
 @mixin app-component-color($config) {
@@ -96,102 +80,15 @@ $theme: var(--theme) !default;
     $warn: map.get($config, warn);
     $background: map.get($config, background);
     $foreground: map.get($config, foreground);
-    .root-main, main {
+    .root-main, .main {
         background: map.get($config, caution);
         background-color: map.get($config, caution);
     }
-    @debug ('shiiit', $primary);
-    @debug ('shiiit', $accent);
-    @debug ('shiiit', $warn);
-    @debug ('shiiit', $background);
-    @debug ('shiiit', $foreground);
-    @debug ('shiiit', background);
-    @debug ('shiiit', foreground);
 
-    .root-main {
-        display: flex;
-        flex-direction: row;
-        background: warn;
-        %overlay-light {
-            $color-config: material.get-color-config(theme.$lib-light-theme);
-            $typography-config: material.get-color-config(theme.$lib-light-theme);
-
-            $primary: map.get($color-config, primary);
-            $accent: map.get($color-config, accent);
-            $warn: map.get($color-config, warn);
-
-            background: $warn;
-
-            @debug ('light', $primary);
-            @debug ('light', $accent);
-            @debug ('light', $warn);
-            @debug ('light', primary);
-            @debug ('light', accent);
-            @debug ('light', warn);
-
-        }
-
-        %overlay-dark {
-            $color-config: material.get-color-config(theme.$lib-dark-theme);
-            $typography-config: material.get-color-config(theme.$lib-dark-theme);
-
-            $primary: map.get($color-config, primary);
-            $accent: map.get($color-config, accent);
-            $warn: map.get($color-config, warn);
-
-            //background-color: $warn;
-
-            @debug ('dark', $primary);
-            @debug ('dark', $accent);
-            @debug ('dark', $warn);
-            @debug ('dark', primary);
-            @debug ('dark', accent);
-            @debug ('dark', warn);
-        }
-
-        .root-main {
-            @extend %overlay-dark !optional;
-            display: flex;
-            flex-direction: row;
-            //background: $warn;
-            @if $theme == 'dark' {
-                @extend %overlay-dark !optional;
-            }
-            @if $theme == 'light' {
-                @extend %overlay-light !optional;
-            }
-            @debug ('dark', $primary);
-            @debug ('dark', $accent);
-            @debug ('dark', $warn);
-            @debug ('dark', primary);
-            @debug ('dark', accent);
-            @debug ('dark', warn);
-        }
-
-        @debug ('dark', $primary);
-        @debug ('dark', $accent);
-        @debug ('dark', $warn);
-        @debug ('dark', primary);
-        @debug ('dark', accent);
-        @debug ('dark', warn);
-    }
 
 }
 
 @mixin app-component-typography($config) {
-    //@include theming.mat-base-typography($typography);
-    //@include mat-card-typography($typography);
-    //@include mat-select-typography($typography);
-    //@include mat-form-field-typography($typography);
-    //@include mat-slide-toggle-typography($typography);
-    //@include mat-toolbar-typography($typography);
-    //app-root {
-    //    h1 {
-    //        @include theming.mat-typography-level-to-styles($config, title);
-    //    }
-    //}
-
-
     @media (min-width: 0) {
         .responsive-test {
             color: red;
