@@ -43,6 +43,8 @@ body.light {
 
         background: primary;
     }
+
+    @include theme.lib-theme-color-grabber(theme.$lib-light-theme);
 }
 
 body.dark {
@@ -65,6 +67,8 @@ body.dark {
 
         background: accent;
     }
+
+    @include theme.lib-theme-color-grabber(theme.$lib-dark-theme);
 }
 
 @media screen and (max-width: 479px) {

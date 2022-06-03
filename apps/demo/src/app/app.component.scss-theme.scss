@@ -1,4 +1,9 @@
+@use 'sass:list';
 @use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:color';
 @use '@angular/material';
 @use '@angular/material/theming';
 
@@ -7,6 +12,7 @@
 
 $theme: var(--theme) !default;
 $is-light-theme: $theme == 'light';
+@debug('$is-light-theme =====================>', $is-light-theme);
 
 
 .root-main, main {
@@ -28,8 +34,8 @@ $is-light-theme: $theme == 'light';
         $accent: map.get($color-config, accent);
         $warn: map.get($color-config, warn);
 
-        $primary-color: mat-color($primary);
-        $accent-color: mat-color($accent);
+        $primary-color: material.get-color-from-palette($primary);
+        $accent-color: material.get-color-from-palette($accent);
         background: $primary-color;
         color: $accent-color;
 
@@ -43,8 +49,8 @@ $is-light-theme: $theme == 'light';
         $accent: map.get($color-config, accent);
         $warn: map.get($color-config, warn);
 
-        $primary-color: mat-color($primary);
-        $accent-color: mat-color($accent);
+        $primary-color: material.get-color-from-palette($primary);
+        $accent-color: material.get-color-from-palette($accent);
 
         background: $primary-color;
         color: $accent-color;

@@ -3,6 +3,7 @@
 @use 'sass:meta';
 @use 'sass:math';
 @use 'sass:string';
+@use 'sass:color';
 @use '@angular/material';
 @use '@angular/material/theming';
 
@@ -71,9 +72,9 @@ $danger-palette: material.define-palette(theming.$mat-indigo, 400, 300, 900, 500
 //$warn: material.get-color-from-palette($app-warn, 700, 300);
 //$light-primary-palette: material.define-palette(pgNf.$gray-color-grades);
 //$light-accent-palette: material.define-palette(pgNf.$teal-color-grades);
-$angular-primary: material.define-palette(pgNf.$gray-color-grades);
-$angular-accent: material.define-palette(pgNf.$teal-color-grades);
-$angular-warn: material.define-palette(pgNf.$mat-red);
+$primary: material.define-palette(pgNf.$gray-color-grades);
+$accent: material.define-palette(pgNf.$teal-color-grades);
+$warn: material.define-palette(pgNf.$mat-red);
 
 //$success-colors: theming.define-palette(theming.$green-palette, 400);
 //$warning-colors: theming.define-palette(theming.$amber-palette, 400);
@@ -112,9 +113,9 @@ $info-colors: material.define-palette(material.$blue-palette, 900);
 //
 //$grid-gutter-width: 0px;
 //
-//$angular-primary: material.define-palette(material.$cyan-palette, 500, 100, 900);
-//$angular-accent: material.define-palette(material.$pink-palette, A200, A100, A400);
-//$angular-warn: material.define-palette(material.$red-palette);
+//$primary: material.define-palette(material.$cyan-palette, 500, 100, 900);
+//$accent: material.define-palette(material.$pink-palette, A200, A100, A400);
+//$warn: material.define-palette(material.$red-palette);
 //
 $font-family: Roboto, 'Helvetica Neue', sans-serif;
 //
@@ -145,9 +146,9 @@ $mobile-font-config: material.define-typography-config(
 
 $light-theme: material.define-light-theme(
         (color: (
-            primary: $angular-primary,
-            accent: $angular-accent,
-            warn: $angular-warn,
+            primary: $primary,
+            accent: $accent,
+            warn: $warn,
             success: $success-colors,
             caution: $caution-colors,
             danger: $danger-colors,
@@ -159,9 +160,9 @@ $light-theme: material.define-light-theme(
 
 $dark-theme: material.define-dark-theme(
         (color: (
-            primary: $angular-primary,
-            accent: $angular-accent,
-            warn: $angular-warn,
+            primary: $primary,
+            accent: $accent,
+            warn: $warn,
             success: $success-colors,
             caution: $caution-colors,
             danger: $danger-colors,
@@ -278,3 +279,37 @@ $dark-theme: material.define-dark-theme(
 //    @return theming.define-light-theme($primary, $accent, $warn);
 //}
 
+// Define a custom mixin that takes in the current theme
+@mixin theme-color-grabber($theme) {
+    // Parse the theme and create variables for each color in the palette
+    $primary: map.get($theme, primary);
+    $accent: map.get($theme, accent);
+    $warn: map.get($theme, warn);
+    $success: map.get($theme, success);
+    $caution: map.get($theme, caution);
+    $danger: map.get($theme, danger);
+    $info: map.get($theme, info);
+
+    // Create theme specific styles
+    //.primaryColorBG {
+    //    background-color: theming.get-color-from-palette($primary);
+    //}
+    //.accentColorBG {
+    //    background-color: theming.mat-color($accent);
+    //}
+    //.warnColorBG {
+    //    background-color: theming.mat-color($warn);
+    //}
+    //.successColorBG {
+    //    background-color: theming.mat-color($success);
+    //}
+    //.cautionColorBG {
+    //    background-color: theming.mat-color($caution);
+    //}
+    //.dangerColorBG {
+    //    background-color: theming.mat-color($danger);
+    //}
+    //.infoColorBG {
+    //    background-color: theming.mat-color($info);
+    //}
+}

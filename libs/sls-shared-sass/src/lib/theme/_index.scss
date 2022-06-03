@@ -1,22 +1,17 @@
 /**
- *  !!! If nothing is applying, nothign changing, nothing theming on click actions?
+ *  !!! If nothing is applying, nothing changing, nothing theming on click actions?
  *  Its highly likely you forgot to @forward the actual logic to carry it all thru
  *  Like the first 4 lines here !!! This is why it was not changing to dark on everything
-
- ALSO, its the dark-theme, light-theme defs... which palettes and hwo they are modeled
+ *  ALSO, its the dark-theme, light-theme defs... which palettes and how they are modeled
+ *  Check map-get deprecated calls
  */
-@forward './_all-color';
-@forward './_all-theme';
-@forward './_all-density';
-@forward './_all-typography';
-
-@forward '../theme';
 @forward './mechanics';
 @forward './material';
 
-@forward './theme/_palettes-grades-fonts' as shared-*;
-@forward './theme/_all-color' as color-* show all-color;
-@forward './theme/_all-density' as density-* show all-density;
-@forward './theme/_all-theme' as theme-* show all-theme;
-@forward './theme/_all-typography' as typography-* show all-typography;
+@forward './_palettes-grades-fonts' as shared-*;
+
+@forward './_all-color' as color-* show all-color;
+@forward './_all-density' as density-* show all-density;
+@forward './_all-theme' as theme-* show all-theme;
+@forward './_all-typography' as typography-* show all-typography;
 

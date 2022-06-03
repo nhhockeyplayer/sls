@@ -1,9 +1,9 @@
 //@forward './_theme' as lib-* show $light-theme, $dark-theme, $font-config, $mobile-font-config;
 
+//@forward './_theme' as lib-* show all-color, all-theme, all-density, all-typography,
+//    theme, mechanics, material, theme-color-grabber, palettes-grades-fonts, all-color,
+//    all-density, all-theme, all-typography;
 @forward './_theme' as lib-*;
-
-
-
 
 
 

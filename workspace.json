@@ -11,5 +11,10 @@
         "sls-shared-sass": "libs/sls-shared-sass",
         "sls-shared-widgets": "libs/sls-shared-widgets",
         "sls-shared-widgets-e2e": "apps/sls-shared-widgets-e2e"
+    },
+    "cli": {
+        "cache": {
+            "enabled": false
+        }
     }
 }

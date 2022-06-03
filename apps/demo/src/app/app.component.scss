@@ -13,13 +13,13 @@ $is-light-theme: $theme == 'light';
     display: flex;
     flex-direction: row;
 
-    @if $is-light-theme {
-        background-color: red !important;
-        color: black;
-    } @else {
-        background-color: black !important;
-        color: red;
-    }
+    //@if $is-light-theme {
+    //    background-color: red !important;
+    //    color: black;
+    //} @else {
+    //    background-color: black !important;
+    //    color: red;
+    //}
 }
 
 :host {
@@ -47,7 +47,7 @@ $is-light-theme: $theme == 'light';
     $accent: map.get($color-config, accent);
     $warn: map.get($color-config, warn);
 
-    background: $primary;
+    //background: $primary;
 }
 
 %overlay-dark {
@@ -58,7 +58,7 @@ $is-light-theme: $theme == 'light';
     $accent: map.get($color-config, accent);
     $warn: map.get($color-config, warn);
 
-    background: $accent;
+    //background: $accent;
 }
 
 .root-main {

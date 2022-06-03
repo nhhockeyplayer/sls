@@ -35,9 +35,9 @@ $themes-map: (
     $background: map.get($mat-theme, background);
     $foreground: map.get($mat-theme, foreground);
 
-    $primary-color: mat-color($primary);
-    $accent-color: mat-color($accent);
-    $warn-color: mat-color($warn);
+    $primary-color: material.get-color-from-palette($primary);
+    $accent-color: material.get-color-from-palette($accent);
+    $warn-color: material.get-color-from-palette($warn);
 
     $status-bar-color:               map.get($background, 'status-bar'              );
     $app-bar-color:                  map.get($background, 'app-bar'                 );
@@ -128,13 +128,13 @@ $themes-map: (
 
     // Below stylesheets have been used in theme-switcher-tool (in the toolbar):
     .theme-primary.#{$css-class} {
-      background-color: mat-color($primary);
+      background-color: material.get-color-from-palette($primary);
     }
     .theme-accent.#{$css-class} {
-      background-color: mat-color($accent);
+      background-color: material.get-color-from-palette($accent);
     }
     .theme-warn.#{$css-class} {
-      background-color: mat-color($warn);
+      background-color: material.get-color-from-palette($warn);
     }
   }
 }
