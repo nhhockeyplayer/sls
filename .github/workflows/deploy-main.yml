@@ -1,9 +1,6 @@
-name: CI
+name: build-test
 
 on:
-    push:
-        branches:
-            - main
     pull_request:
 
 env:
@@ -13,52 +10,41 @@ env:
 
 jobs:
     build:
-        runs_on: ${{matrix.operating-system}}
-    strategy:
-        matrix:
-            node-version: [16.x]
-            operating-system:[ubuntu-latest]
-    steps:
-#        -uses: actions/checkout@v2
-#         with:
-#            - fetch-depth: 0
-        -uses: actions/cache@v2
-         with:
-            path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-        -name: Setup node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-            node-version: ${{ matrix.node-version }}
-#        -run: yarn install --frozen-lockfile
-#        -run: yarn build
-#        -run: yarn format::check
-        -run: affected:deploy --base $BEFORE_SHA
-#        -run: affected:deploy --base $BEFORE_SHA --head HEAD~1
-# BEFORE_SHA dont need --head because it automatically picks up the commit
-#github actions has several variables HEAD~1 you can use, last commit to repo before current push to main
-    say last week you merged a branch into main and the commit hash was 1
-    then you branched and committed something you worked on ten times last week
-    merged again and hash is now 11
-    github.event.before=1 by default can use this for your base commit to compare from that point to what your merging now
-    inside .env
-#affected takes two comparison flags base and head comparing code against whatever yous et them to BASE=main by default, HEAD=git history index
-# passing nothing it will be main and whatever commit your on
-
-    main:
-        name: Nx Cloud - Main Job
-        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.4
-        with:
-            parallel-commands: |
-                yarn nx-cloud record -- yarn nx workspace-lint
-                yarn nx-cloud record -- yarn nx format:check
-            parallel-commands-on-agents: |
-                yarn nx affected --target=lint --parallel=3
-                yarn nx affected --target=test --parallel=3 --ci --code-coverage
-                yarn nx affected --target=build --parallel=3
-
-    agents:
-        name: Nx Cloud - Agents
-        uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.4
-        with:
-            number-of-agents: 3
+        runs-on: ${{ matrix.operating-system }}
+        strategy:
+            matrix:
+                node-version: [14.x]
+                operating-system: [ubuntu-latest]
+        services:
+            postgres:
+                image: postgres:12
+                env:
+                    POSTGRES_DB: prisma
+                    POSTGRES_USER: prisma
+                    POSTGRES_PASSWORD: prisma
+                ports: ['5432:5432']
+                options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - uses: actions/cache@v2
+              with:
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-
+            - name: Setup node ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Install dependencies
+              uses: pnpm/action-setup@v2.0.1
+              with:
+                  version: 6.24.3
+                  run_install: |
+                      - args: [--frozen-lockfile, --strict-peer-dependencies]
+            - run: pnpm run build
+            - run: pnpm run format:check -- --base=remotes/origin/main
+            #      - run: yarn affected:test --base=remotes/origin/main
+            - run: pnpm run affected:e2e -- --base=remotes/origin/main
