@@ -9,7 +9,7 @@
     "scripts": {
         "prepare": "husky install",
         "precommit": "eslint src/**/*.ts",
-        "preinstall": "nx reset",
+        "preinstalll": "nx reset",
         "dep-graph": "nx reset && rm -rf node_modules/.cache && nx dep-graph",
         "ng": "nx",
         "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
