@@ -27,7 +27,7 @@
         "format": "nx format:write",
         "format:write": "nx format:write",
         "format:check": "nx format:check",
-        "predeploy": "npm run build:demo",
+        "predeploy": "npm run build",
         "deploy": "angular-cli-ghpages --dir ./dist/sls --name=Meanstack --email=meanstack@hotmail.com"
     },
     "private": true,
