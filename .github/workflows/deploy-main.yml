@@ -1,6 +1,9 @@
 name: build-test
 
 on:
+    push:
+        branches:
+            - main
     pull_request:
 
 env:
@@ -9,36 +12,20 @@ env:
     NX_RUN_GROUP: ${{ github.run_id }}
 
 jobs:
-    build:
-        runs-on: ${{ matrix.operating-system }}
-        strategy:
-            matrix:
-                node-version: [16.x]
-                operating-system: [ubuntu-latest]
-        services:
-            postgres:
-                image: postgres:13
-                env:
-                    POSTGRES_DB: energy
-                    POSTGRES_USER: admin
-                    POSTGRES_PASSWORD: admin
-                ports: ['5432:5432']
-                options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-        steps:
-            - uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
-            - uses: actions/cache@v2
-            - name: Setup node ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - name: Install dependencies
-              uses: pnpm/action-setup@v2.0.1
-              with:
-                  version: 6.24.3
-                  run_install: |
-                      - args: [--frozen-lockfile, --strict-peer-dependencies]
-            - run: npm run build
-            - run: npm run format:check -- --base=remotes/origin/main
-            - run: npm run affected:e2e -- --base=remotes/origin/main
+    main:
+        name: Nx Cloud - Main Job
+        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.4
+        with:
+            parallel-commands: |
+                yarn nx-cloud record -- yarn nx workspace-lint
+                yarn nx-cloud record -- yarn nx format:check
+            parallel-commands-on-agents: |
+                yarn nx affected --target=lint --parallel=3
+                yarn nx affected --target=test --parallel=3 --ci --code-coverage
+                yarn nx affected --target=build --parallel=3
+
+    agents:
+        name: Nx Cloud - Agents
+        uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.4
+        with:
+            number-of-agents: 3
