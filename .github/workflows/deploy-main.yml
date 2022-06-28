@@ -13,15 +13,15 @@ jobs:
         runs-on: ${{ matrix.operating-system }}
         strategy:
             matrix:
-                node-version: [14.x]
+                node-version: [16.x]
                 operating-system: [ubuntu-latest]
         services:
             postgres:
-                image: postgres:12
+                image: postgres:13
                 env:
-                    POSTGRES_DB: prisma
-                    POSTGRES_USER: prisma
-                    POSTGRES_PASSWORD: prisma
+                    POSTGRES_DB: energy
+                    POSTGRES_USER: admin
+                    POSTGRES_PASSWORD: admin
                 ports: ['5432:5432']
                 options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         steps:
@@ -29,11 +29,6 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: actions/cache@v2
-              with:
-                  path: ~/.pnpm-store
-                  key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-                  restore-keys: |
-                      ${{ runner.os }}-
             - name: Setup node ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
