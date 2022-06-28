@@ -133,6 +133,16 @@
                     "quiet": true
                 }
             }
+        },
+        "deploy": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": [
+                    {
+                        "command": "yarn affected:deploy"
+                    }
+                ]
+            }
         }
     },
     "tags": []

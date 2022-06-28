@@ -24,7 +24,17 @@
           "apps/sls-shared-widgets-e2e/**/*.{js,ts}"
         ]
       }
-    }
+    },
+      "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+              "commands": [
+                  {
+                      "command": "yarn affected:deploy"
+                  }
+              ]
+          }
+      }
   },
   "tags": [],
   "implicitDependencies": [

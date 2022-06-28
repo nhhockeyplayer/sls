@@ -2,6 +2,10 @@
   "name": "sls",
   "version": "0.0.0",
   "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nhhockeyplayer/sls.git"
+    },
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
@@ -25,6 +29,7 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
     "@nrwl/angular": "14.1.9",
+    "@nrwl/nx-cloud": "^14.1.2",
     "@storybook/core-server": "6.4.22",
     "bootstrap": "^5.1.3",
     "reflect-metadata": "^0.1.13",
@@ -74,8 +79,7 @@
     "postcss-url": "^10.1.1",
     "prettier": "^2.5.1",
     "ts-jest": "27.1.4",
-    "typescript": "4.6.4",
+    "typescript": "^4.6.4",
     "webpack": "^5.64.0"
   }
 }
-

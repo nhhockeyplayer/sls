@@ -17,8 +17,8 @@ https://www.google.com/search?q=nx+angular+storybook&sxsrf=APq-WBvDbEp14WAt2cON8
 
 
 
-nx generate @nrwl/angular:storybook-configuration sls-shared-widgets
-nx run sls-shared-widgets:storybook
+nx generate @nrwl/angular:storybook-configuration shared-ui-widget
+nx run shared-ui-widget:storybook
 
 2022
 https://nx.dev/storybook/overview-angular
