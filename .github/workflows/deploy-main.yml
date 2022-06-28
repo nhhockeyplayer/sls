@@ -19,7 +19,7 @@ jobs:
                   node-version: ${{ env.NODE_LATEST }}
 
             - name: Install
-              uses: meanstacknh/npm-install@v1
+              uses: bahmutov/npm-install@v1
               with:
                   install-command: npm ci --legacy-peer-deps
 
