@@ -1,6 +1,9 @@
 name: Build, Test, and Deploy
 
 env:
+    BEFORE_SHA: ${{ github.event.before }}
+    NX_BRANCH: ${{ github.event.number }}
+    NX_RUN_GROUP: ${{ github.run_id }}
     NODE_LATEST: 16.x
     NODE_OPTIONS: --max_old_space_size=6144
 
