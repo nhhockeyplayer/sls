@@ -36,7 +36,17 @@
         "jestConfig": "libs/shared-env/jest.config.ts",
         "passWithNoTests": true
       }
-    }
+    },
+      "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+              "commands": [
+                  {
+                      "command": "yarn affected:deploy"
+                  }
+              ]
+          }
+      }
   },
   "tags": []
 }

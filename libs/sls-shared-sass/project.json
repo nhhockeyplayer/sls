@@ -39,7 +39,17 @@
           "libs/sls-shared-sass/src/**/*.html"
         ]
       }
-    }
+    },
+      "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+              "commands": [
+                  {
+                      "command": "yarn affected:deploy"
+                  }
+              ]
+          }
+      }
   },
   "tags": [
     "scope:public",

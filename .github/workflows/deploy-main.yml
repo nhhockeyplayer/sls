@@ -6,6 +6,11 @@ on:
             - main
     pull_request:
 
+env:
+    BEFORE_SHA: ${{ github.event.before }}
+    NX_BRANCH: ${{ github.event.number }}
+    NX_RUN_GROUP: ${{ github.run_id }}
+
 jobs:
     build:
         runs_on: ${{matrix.operating-system}}
@@ -28,7 +33,9 @@ jobs:
 #        -run: yarn install --frozen-lockfile
 #        -run: yarn build
 #        -run: yarn format::check
-        -run: affected:deploy --base main --head HEAD~1
+        -run: affected:deploy --base $BEFORE_SHA
+#        -run: affected:deploy --base $BEFORE_SHA --head HEAD~1
+# BEFORE_SHA dont need --head because it automatically picks up the commit
 #github actions has several variables HEAD~1 you can use, last commit to repo before current push to main
     say last week you merged a branch into main and the commit hash was 1
     then you branched and committed something you worked on ten times last week
