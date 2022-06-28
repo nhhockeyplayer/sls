@@ -26,10 +26,6 @@ export class RxjsComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // this.doMergeSwitchConcatExhaust()
-        // this.doMergeMap()
-
-
         this.formControl.valueChanges.pipe(
             mergeMap((str) => {
                 return this.httpClient.get(`https://jsonplaceholder.typicode.com/posts?query=${str}`)
@@ -37,6 +33,10 @@ export class RxjsComponent implements AfterViewInit {
         ).subscribe(response => {
             console.log(response)
         })
+
+        // this.doMergeSwitchConcatExhaust()
+        // this.doMergeMap()
+        this.doColdObservableDataSourceComesFromInsideObservable()
     }
 
     doMergeMap() {
@@ -70,5 +70,25 @@ export class RxjsComponent implements AfterViewInit {
                     )
                 })
             ).subscribe(console.log)
+    }
+
+    doColdObservableDataSourceComesFromInsideObservable() {
+        function fromTimeStampWithin (): Observable<number> {
+            const timestamp = Date.now()
+            return new Observable((subscriber) => {
+                subscriber.next(timestamp)
+            })
+        }
+        const obs$ = fromTimeStampWithin ()
+
+        obs$.subscribe({
+            next: ((value) => console.log(value))
+        })
+
+        setTimeout(() => {
+            obs$.subscribe({
+                next: (value) => console.log(value)
+            })
+        }, 2000)
     }
 }
