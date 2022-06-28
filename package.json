@@ -8,6 +8,7 @@
   },
   "scripts": {
       "prepare": "husky install",
+      "precommit": "eslint src/**/*.js",
     "preinstall": "nx reset",
     "dep-graph": "nx reset && rm -rf node_modules/.cache && nx dep-graph",
     "ng": "nx",
