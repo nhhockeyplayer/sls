@@ -44,7 +44,6 @@ jobs:
                   version: 6.24.3
                   run_install: |
                       - args: [--frozen-lockfile, --strict-peer-dependencies]
-            - run: pnpm run build
-            - run: pnpm run format:check -- --base=remotes/origin/main
-            #      - run: yarn affected:test --base=remotes/origin/main
-            - run: pnpm run affected:e2e -- --base=remotes/origin/main
+            - run: npm run build
+            - run: npm run format:check -- --base=remotes/origin/main
+            - run: npm run affected:e2e -- --base=remotes/origin/main
