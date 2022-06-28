@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core'
-import {concatMap, exhaustMap, fromEvent, interval, map, mergeMap, Observable, switchMap} from 'rxjs'
+import {concatMap, exhaustMap, fromEvent, interval, map, mergeMap, Observable, shareReplay, switchMap} from 'rxjs'
 import {HttpClient} from '@angular/common/http'
 import {FormControl} from '@angular/forms'
 
@@ -26,10 +26,6 @@ export class RxjsComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // this.doMergeSwitchConcatExhaust()
-        // this.doMergeMap()
-
-
         this.formControl.valueChanges.pipe(
             mergeMap((str) => {
                 return this.httpClient.get(`https://jsonplaceholder.typicode.com/posts?query=${str}`)
@@ -37,6 +33,10 @@ export class RxjsComponent implements AfterViewInit {
         ).subscribe(response => {
             console.log(response)
         })
+
+        // this.doMergeSwitchConcatExhaust()
+        // this.doMergeMap()
+        this.doColdObservableDataSourceComesFromInsideObservable()
     }
 
     doMergeMap() {
@@ -56,6 +56,18 @@ export class RxjsComponent implements AfterViewInit {
         ).subscribe(combinedValue => {
             this.span1.nativeElement.textContent = combinedValue
         })
+
+        // let clock = 0
+        // const obs$ = fromEvent(this.button.nativeElement, 'click')
+        //     .pipe(
+        //         map(() => ++clock),
+        //         exhaustMap((clock) => {
+        //             // inner Observable
+        //             return interval(1000).pipe(
+        //                 map((time) => `Clock ${clock} ${time}`)
+        //             )
+        //         })
+        //     )
     }
 
     doMergeSwitchConcatExhaust() {
@@ -70,5 +82,48 @@ export class RxjsComponent implements AfterViewInit {
                     )
                 })
             ).subscribe(console.log)
+    }
+
+    doColdObservableDataSourceComesFromInsideObservable() {
+        // COLD observables only emit when we subscribe to them
+        // HOT observables emit always
+        // Cold observables are unicast
+        // HOT observables are multicast (share values to multiple subscribers... ie. http)
+        // HOT observables source is created and activated outside the observable
+        // COLD observables source is created and activated inside the observable
+        // Theres no magic to hot/cold.
+        // HOT observables are mouse/keyboard live flowing streams emitting at any moment
+        // COLD Observables are prefabricated data waiting to be subscribed to attached to a stream
+        // HTTP is COLD by default and if you do not shareReplay() which makes it HOT individual subscribes will be unique different data and could be trapped in race conditions
+        let posts$: Observable<any>
+
+        // http always returns cold observables,
+        posts$ = this.httpClient.get('https://jsonplaceholder/typicode.com/posts')
+            .pipe(
+                shareReplay()
+            )
+
+        function sourceObservableDataFromWithinANDfromOutsideHotANDCold (): Observable<number> {
+            // const timestamp = Date.now()    // HOT outside observable HOT will always emit even if not subscribed
+            return new Observable((subscriber) => {
+                const timestamp = Date.now()    // COLD within observable COLD will ONLY emit if subscribed to
+                subscriber.next(timestamp)
+            })
+        }
+        const obs$ = sourceObservableDataFromWithinANDfromOutsideHotANDCold ()
+
+        obs$.subscribe({
+            next: ((value) => console.log(value))
+        })
+        // RACE CONDITION TRAP during subscribing latency gaps in async
+        obs$.subscribe({    // race condition will be same time
+            next: (value) => console.log(value)
+        })
+        // RACE CONDITION TRAP TRAP SOLUTION add time out
+        setTimeout(() => {
+            obs$.subscribe({
+                next: (value) => console.log(value)
+            })
+        }, 2000)
     }
 }
