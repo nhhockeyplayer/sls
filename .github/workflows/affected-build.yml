@@ -20,7 +20,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: ${{ env.NODE_LATEST }}
+                node-version: '16'
                 os: [ubuntu-latest, windows-latest]
 
         if: ${{ github.event_name != 'pull_request' }}
@@ -37,7 +37,7 @@ jobs:
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
             - uses: actions/setup-node@v1
               with:
-                  node-version: ${{ matrix.node-version }}
+                  node-version: '16'
             - run: yarn install --frozen-lockfile
             - run: yarn nx affected --target=build --parallel --max-parallel=3
             - run: nx run-many --all --target build
@@ -59,7 +59,7 @@ jobs:
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
             - uses: actions/setup-node@v1
               with:
-                  node-version: ${{ matrix.node-version }}
+                  node-version: '16'
             - run: yarn install --frozen-lockfile
             - run: yarn nx affected --target=build --parallel --max-parallel=3
             - run: nx run-many --all --target build
