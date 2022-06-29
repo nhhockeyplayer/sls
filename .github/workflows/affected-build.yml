@@ -17,12 +17,6 @@ env:
 jobs:
     main:
         runs-on: ${{ matrix.os }}
-
-        strategy:
-            matrix:
-                node-version: '16'
-                os: [ubuntu-latest, windows-latest]
-
         if: ${{ github.event_name != 'pull_request' }}
         steps:
             - uses: actions/checkout@v3
