@@ -16,7 +16,7 @@ env:
 
 jobs:
     main:
-        runs-on: ${{ matrix.os }}
+        runs-on: ubuntu-latest
         if: ${{ github.event_name != 'pull_request' }}
         steps:
             - uses: actions/checkout@v3
