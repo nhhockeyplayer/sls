@@ -1,0 +1,66 @@
+name: affected-build
+
+on:
+    pull_request:
+    push:
+        branches:
+            - dev
+            - main
+env:
+    NX_CLOUD_DISTRIBUTED_EXECUTION: true
+    BEFORE_SHA: ${{ github.event.before }}
+    NX_BRANCH: ${{ github.event.number }}
+    NX_RUN_GROUP: ${{ github.run_id }}
+    NODE_LATEST: 16.x
+    NODE_OPTIONS: --max_old_space_size=6144
+
+jobs:
+    main:
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            matrix:
+                node-version: ${{ env.NODE_LATEST }}
+                os: [ubuntu-latest, windows-latest]
+
+        if: ${{ github.event_name != 'pull_request' }}
+        steps:
+            - uses: actions/checkout@v3
+              name: Checkout [main]
+              with:
+                  fetch-depth: 0
+            - name: Derive appropriate SHAs for base and head for `nx affected` commands
+              uses: nrwl/nx-set-shas@v2
+            - uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: yarn install --frozen-lockfile
+            - run: yarn nx affected --target=build --parallel --max-parallel=3
+            - run: nx run-many --all --target build
+            - run: affected:deploy --base main --head HEAD~1
+    pr:
+        runs-on: ubuntu-20.04
+        if: ${{ github.event_name == 'pull_request' }}
+        steps:
+            - uses: actions/checkout@v2
+              name: Checkout pr
+              with:
+                  ref: ${{ github.event.pull_request.head.ref }}
+                  fetch-depth: 0
+            - name: Derive appropriate SHAs for base and head for `nx affected` commands
+              uses: nrwl/nx-set-shas@v2
+            - uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: yarn install --frozen-lockfile
+            - run: yarn nx affected --target=build --parallel --max-parallel=3
+            - run: nx run-many --all --target build
+            - run: affected:deploy --base main --head HEAD~1
