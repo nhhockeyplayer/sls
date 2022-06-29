@@ -1,0 +1,49 @@
+name: Build, Test, and Deploy
+
+env:
+    BEFORE_SHA: ${{ github.event.before }}
+    NX_BRANCH: ${{ github.event.number }}
+    NX_RUN_GROUP: ${{ github.run_id }}
+    NODE_LATEST: 16.x
+    NODE_OPTIONS: --max_old_space_size=6144
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            matrix:
+                node-version: ${{ env.NODE_LATEST }}
+                os: [ubuntu-latest, windows-latest]
+
+        services:
+            postgres:
+                image: postgres:13
+                env:
+                    POSTGRES_DB: postgres
+                    POSTGRES_USER: postgres
+                    POSTGRES_PASSWORD: postgres
+                ports: ['5432:5432']
+                options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+            -name: Setup node ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+              -run: yarn install
+
+            run: nx run-many --all --target build
+            run: affected:deploy --base main --head HEAD~1
